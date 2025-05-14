@@ -60,27 +60,40 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-medium">From</label>
-                            <select class="w-full border rounded px-3 py-2">
-                                <option>Sydney, Australia</option>
-                                <option>Other, Location</option>
+                            <select id="from" class="w-full border rounded px-3 py-2">
+                                <option value="SYD">Sydney, Australia</option>
+                                <option value="MEL">Melbourne, Australia</option>
+                                <option value="BNE">Brisbane, Australia</option>
+                                <option value="PER">Perth, Australia</option>
+                                <option value="ADL">Adelaide, Australia</option>
+                                <option value="DRW">Darwin, Australia</option>
+                                <option value="HBA">Hobart, Australia</option>
+                                <option value="CNS">Cairns, Australia</option>
+                                <option value="OOL">Gold Coast, Australia</option>
                             </select>
                         </div>
                         <div>
                             <label class="block text-sm font-medium">To</label>
-                            <select class="w-full border rounded px-3 py-2">
-                                <option>Manila, Philippines</option>
-                                <option>Other, Location</option>
+                            <select id="to" class="w-full border rounded px-3 py-2">
+                                <option value="MNL">Manila, Philippines</option>
+                                <option value="SGN">Ho Chi Minh, Vietnam</option>
+                                <option value="HND">Tokyo, Japan</option>
+                                <option value="CDG">Paris, France</option>
+                                <option value="LHR">London, UK</option>
+                                <option value="JFK">New York, USA</option>
+                                <option value="SIN">Singapore</option>
+                                <option value="BKK">Bangkok, Thailand</option>
                             </select>
                         </div>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-medium">Departure</label>
-                            <input type="date" class="w-full border rounded px-3 py-2" value="2025-04-07">
+                            <input type="date" id="departure" class="w-full border rounded px-3 py-2" min="2024-04-07">
                         </div>
                         <div>
                             <label class="block text-sm font-medium">Return</label>
-                            <input type="date" class="w-full border rounded px-3 py-2" value="2025-04-11">
+                            <input type="date" id="return" class="w-full border rounded px-3 py-2" min="2024-04-07">
                         </div>
                     </div>
                     <div>
@@ -93,6 +106,11 @@
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
                                 </select>
                             </div>
                             <div>
@@ -101,6 +119,10 @@
                                     <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
                                 </select>
                             </div>
                             <div>
@@ -108,12 +130,15 @@
                                 <select id="infants" class="w-full border rounded px-3 py-2">
                                     <option value="0">0</option>
                                     <option value="1">1</option>
+                                    <option value="2">2</option>
                                 </select>
                             </div>
                         </div>
                     </div>
-                    <button class="w-full text-white py-2 rounded font-semibold" style="background-color: #262A3F;">BOOK
-                        NOW</button>
+
+                    <button class="w-full text-white py-2 rounded font-semibold" style="background-color: #262A3F;">
+                        <a id="book-now">Book Now</a>
+                    </button>
                 </form>
             </div>
         </div>
@@ -236,6 +261,98 @@
     </section>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const bookNowButton = document.getElementById('book-now');
+
+            // Function to get airport code from city name
+            function getAirportCode(cityName) {
+                const airportCodes = {
+                    'SYDNEY': 'SYD',
+                    'MANILA': 'MNL',
+                    'MELBOURNE': 'MEL',
+                    'BRISBANE': 'BNE',
+                    'PERTH': 'PER',
+                    'ADELAIDE': 'ADL',
+                    'DARWIN': 'DRW',
+                    'HOBART': 'HBA',
+                    'CAIRNS': 'CNS',
+                    'GOLD COAST': 'OOL'
+                };
+                return airportCodes[cityName] || cityName;
+            }
+
+            // Set default values
+            const defaultDepartureDate = '2025-04-07';
+            const defaultReturnDate = '2025-04-11';
+
+            // Set default values for form fields
+            if (document.getElementById('from')) document.getElementById('from').value = 'SYD';
+            if (document.getElementById('to')) document.getElementById('to').value = 'MNL';
+            if (document.getElementById('departure')) document.getElementById('departure').value = defaultDepartureDate;
+            if (document.getElementById('return')) document.getElementById('return').value = defaultReturnDate;
+            if (document.getElementById('adults')) document.getElementById('adults').value = '1';
+            if (document.getElementById('children')) document.getElementById('children').value = '0';
+            if (document.getElementById('infants')) document.getElementById('infants').value = '0';
+
+            // Function to handle form submission
+            function handleFlightSearch(e) {
+                if (e) e.preventDefault();
+
+                try {
+                    // Get form values
+                    const fromLocation = document.getElementById('from')?.value;
+                    const toLocation = document.getElementById('to')?.value;
+                    const departureDate = document.getElementById('departure')?.value;
+                    const returnDate = document.getElementById('return')?.value;
+                    const adults = document.getElementById('adults')?.value;
+                    const children = document.getElementById('children')?.value;
+                    const infants = document.getElementById('infants')?.value;
+
+                    // Validate required fields
+                    if (!fromLocation || !toLocation || !departureDate || !returnDate || !adults) {
+                        alert('Please fill in all required fields');
+                        return;
+                    }
+
+                    // Get city names and convert to airport codes
+                    const fromCity = fromLocation.split(',')[0].trim().toUpperCase();
+                    const toCity = toLocation.split(',')[0].trim().toUpperCase();
+
+                    // Save to localStorage with new structure using form values
+                    const flightSearch = {
+                        tripType: "one-way",
+                        adults: parseInt(adults) || 0,
+                        children: parseInt(children) || 0,
+                        infants: parseInt(infants) || 0,
+                        classType: "Economy",
+                        departure: getAirportCode(fromCity),
+                        arrival: getAirportCode(toCity),
+                        departureDate: departureDate,
+                        arrivalDate: returnDate
+                    };
+
+                    localStorage.setItem('flightSearch', JSON.stringify(flightSearch));
+
+                    // Redirect to seat selection page
+                    window.location.href = '/book-flight';
+                } catch (error) {
+                    console.error('Error processing flight search:', error);
+                    alert('An error occurred while processing your request. Please try again.');
+                }
+            }
+
+            // Add click event listener to the Book Now button
+            if (bookNowButton) {
+                bookNowButton.addEventListener('click', handleFlightSearch);
+            }
+
+            // Also handle form submission
+            const searchForm = document.querySelector('form');
+            if (searchForm) {
+                searchForm.addEventListener('submit', handleFlightSearch);
+            }
+        });
+
         function updateServiceDescription(event, service) {
             const descriptionElement = document.getElementById('service-description');
             const headingElement = document.getElementById('service-heading');
