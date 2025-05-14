@@ -37,6 +37,24 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('flightSearchForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
+    const departureDate = document.getElementById('departureDate').value;
+    const arrivalDate = document.getElementById('arrivalDate').value;
+
+    // Validate dates
+    if (departureDate && arrivalDate) {
+      const departDate = new Date(departureDate);
+      const arriveDate = new Date(arrivalDate);
+
+      // Set time to midnight for accurate date comparison
+      departDate.setHours(0, 0, 0, 0);
+      arriveDate.setHours(0, 0, 0, 0);
+
+      if (departDate > arriveDate) {
+        alert('Departure date cannot be later than return date');
+        return;
+      }
+    }
+
     const updatedSearch = {
       tripType: document.getElementById('tripType').value,
       adults: document.getElementById('adultCount').value,
@@ -44,8 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
       classType: document.getElementById('classType').value,
       departure: document.getElementById('departure').value.trim(),
       arrival: document.getElementById('arrival').value.trim(),
-      departureDate: document.getElementById('departureDate').value,
-      arrivalDate: document.getElementById('arrivalDate').value,
+      departureDate: departureDate,
+      arrivalDate: arrivalDate,
     };
 
     localStorage.setItem('flightSearch', JSON.stringify(updatedSearch));
