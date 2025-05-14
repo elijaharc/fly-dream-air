@@ -2,22 +2,33 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlyDreamAir</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlyDreamAir - Your Dream Journey Begins Here</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
         }
+
+        .hero-bg {
+            background-image: url('/img/sky.gif');
+            background-size: cover;
+            background-position: center;
+        }
     </style>
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- Header -->
     <header class="bg-white py-4 shadow-md">
         <div class="container mx-auto flex justify-between items-center px-4">
-            <a href="/" class="text-xl font-semibold text-gray-800">FlyDreamAir!</a>
+            <a href="/" class="flex items-center gap-2">
+                <img src="/img/logo.png" alt="FlyDreamAir logo" class="h-8 w-8">
+                <span class="font-bold text-lg" style="color: #262A3F;">FlyDreamAir</span>
+            </a>
             <nav class="space-x-4">
                 <a href="/book-flight" class="text-gray-600 hover:text-blue-500 transition duration-300">Book</a>
                 <a href="/user-flight-info" class="text-gray-600 hover:text-blue-500 transition duration-300">Travel
@@ -27,349 +38,259 @@
         </div>
     </header>
 
-    <main class="container mx-auto px-4 py-10 flex flex-col md:flex-row items-center gap-8">
-        <div class="md:w-1/2 text-center md:text-left">
-            <h1 class="text-4xl font-bold text-gray-800 mb-4">Have your dream flight with us.</h1>
-            <p class="text-gray-600 font-semibold mb-8">Get the best flights with FlyDreamAir now.</p>
-            <svg width="300" height="267" viewBox="0 0 898 800" fill="none" xmlns="http://www.w3.org/2000/svg"
-                class="mx-auto md:mx-0">
-                <path
-                    d="M511.243 771.305L462.269 795.74C457.348 798.194 451.89 799.374 446.394 799.174C440.898 798.974 435.54 797.399 430.81 794.593C426.081 791.788 422.13 787.841 419.319 783.115C416.508 778.388 414.926 773.032 414.72 767.536L402.735 446.666L222.694 531.556L197.011 642.644C192.395 664.385 185.977 676.25 160.772 688.826L127.804 705.275C122.668 708.047 116.94 709.541 111.104 709.628C105.268 709.716 99.497 708.396 94.2799 705.78C86.9548 702.059 77.6564 694.199 74.7279 677.829L46.0193 529.016C45.8088 527.903 45.6535 526.763 45.5441 525.622C45.517 525.522 45.4702 525.428 45.4064 525.346C44.5495 524.58 43.7367 523.766 42.9719 522.908L-59.1134 409.671C-70.0542 397.644 -70.6141 385.699 -69.1454 377.775C-68.1601 372.451 -65.9395 367.434 -62.6621 363.125C-59.3848 358.816 -55.1421 355.336 -50.2752 352.965L-15.4675 335.598C3.3529 326.208 25.8346 325.537 43.3804 333.809L145.578 379.437L323.299 287.456L74.4025 85.3655C70.1343 81.899 66.8031 77.4179 64.7135 72.3319C62.6238 67.2459 61.8423 61.7172 62.4405 56.2513C63.0387 50.7854 64.9975 45.5566 68.1377 41.043C71.278 36.5293 75.4996 32.8748 80.4165 30.4136L129.924 5.71247C136.9 2.40518 144.531 0.711841 152.251 0.758189C159.971 0.804522 167.582 2.58935 174.518 5.98015L544.099 170.833L648.985 115.009C656.556 110.703 678.044 99.798 683.03 97.3104C784.72 46.6416 861.899 49.3551 889.491 104.657C898.175 122.061 907.321 157.8 871.038 201.545C849.629 227.392 816.048 251.821 771.232 274.182C766.302 276.642 744.722 287.225 736.618 290.74L628.942 340.925L537.837 735.634C536.36 743.192 533.203 750.322 528.6 756.496C523.997 762.671 518.065 767.732 511.243 771.305Z"
-                    fill="#21272A" />
-                <path
-                    d="M511.243 771.305L462.269 795.74C457.348 798.194 451.89 799.374 446.394 799.174C440.898 798.974 435.54 797.399 430.81 794.593C426.081 791.788 422.13 787.841 419.319 783.115C416.508 778.388 414.926 773.032 414.72 767.536L402.735 446.666L222.694 531.556L197.011 642.644C192.395 664.385 185.977 676.25 160.772 688.826L127.804 705.275C122.668 708.047 116.94 709.541 111.104 709.628C105.268 709.716 99.497 708.396 94.2799 705.78C86.9548 702.059 77.6564 694.199 74.7279 677.829L46.0193 529.016C45.8088 527.903 45.6535 526.763 45.5441 525.622C45.517 525.522 45.4702 525.428 45.4064 525.346C44.5495 524.58 43.7367 523.766 42.9719 522.908L-59.1134 409.671C-70.0542 397.644 -70.6141 385.699 -69.1454 377.775C-68.1601 372.451 -65.9395 367.434 -62.6621 363.125C-59.3848 358.816 -55.1421 355.336 -50.2752 352.965L-15.4675 335.598C3.3529 326.208 25.8346 325.537 43.3804 333.809L145.578 379.437L323.299 287.456L74.4025 85.3655C70.1343 81.899 66.8031 77.4179 64.7135 72.3319C62.6238 67.2459 61.8423 61.7172 62.4405 56.2513C63.0387 50.7854 64.9975 45.5566 68.1377 41.043C71.278 36.5293 75.4996 32.8748 80.4165 30.4136L129.924 5.71247C136.9 2.40518 144.531 0.711841 152.251 0.758189C159.971 0.804522 167.582 2.58935 174.518 5.98015L544.099 170.833L648.985 115.009C656.556 110.703 678.044 99.798 683.03 97.3104C784.72 46.6416 861.899 49.3551 889.491 104.657C898.175 122.061 907.321 157.8 871.038 201.545C849.629 227.392 816.048 251.821 771.232 274.182C766.302 276.642 744.722 287.225 736.618 290.74L628.942 340.925L537.837 735.634C536.36 743.192 533.203 750.322 528.6 756.496C523.997 762.671 518.065 767.732 511.243 771.305Z"
-                    fill="black" fill-opacity="0.2" />
-            </svg>
-        </div>
+    <!-- Hero / Search Section -->
+    <section class="relative text-white hero-bg overflow-hidden">
+        <img src="/img/airplane.png"
+            class="absolute bottom-[-90px] -left-60 z-50 w-[px] md:w-[1080px] pointer-events-none"
+            alt="Airplane overlay">
 
-        <div class="md:w-1/2 bg-white rounded-lg shadow-lg p-6">
-            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Search Flight</h2>
-            <p class="text-gray-600 mb-4">Choose from our wide range of locations.</p>
-
-            <div class="mb-4">
-                <label for="from" class="block text-gray-700 text-sm font-bold mb-2">From</label>
-                <div class="relative">
-                    <div class="flex items-center">
-                        <select id="from"
-                            class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                            <option>Sydney, Australia</option>
-                            <option>Other, Location</option>
-                        </select>
-                    </div>
-                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-chevron-down text-gray-500">
-                            <path d="m7 10 5 5 5-5" />
-                        </svg>
-                    </div>
-                </div>
+        <div class="relative z-20 container mx-auto px-6 pt-24 pb-24 flex flex-col md:flex-row items-center">
+            <!-- Hero Text -->
+            <div class="md:w-1/2 mb-10 md:mb-0 -mt-60">
+                <h1 class="text-5xl font-black leading-tight drop-shadow-lg">
+                    YOUR DREAM<br>JOURNEY<br>BEGINS HERE.
+                </h1>
+                <p class="mt-4 text-lg drop-shadow">Get the best flights with FlyDreamAir.</p>
             </div>
 
-            <div class="mb-4">
-                <label for="to" class="block text-gray-700 text-sm font-bold mb-2">To</label>
-                <div class="relative">
-                    <select id="to"
-                        class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                        <option>Manila, Philippines</option>
-                        <option>Other, Location</option>
-                    </select>
-                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-chevron-down text-gray-500">
-                            <path d="m7 10 5 5 5-5" />
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex space-x-4 mb-4">
-                <div class="flex-1">
-                    <label for="departure" class="block text-gray-700 text-sm font-bold mb-2">Departure</label>
-                    <div class="relative">
-                        <input type="date" id="departure"
-                            class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            value="2025-04-07">
-                    </div>
-                </div>
-                <div class="flex-1">
-                    <label for="return" class="block text-gray-700 text-sm font-bold mb-2">Return</label>
-                    <div class="relative">
-                        <input type="date" id="return"
-                            class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            value="2025-04-11">
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-6">
-                <label class="block text-gray-700 text-sm font-bold mb-2">Passengers</label>
-                <div class="grid grid-cols-3 gap-4">
-                    <div>
-                        <label for="adults" class="block text-gray-600 text-xs mb-1">Adults (12+ years)</label>
-                        <div class="relative">
-                            <select id="adults"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
+            <!-- Search Form -->
+            <div class="bg-white text-gray-800 p-6 rounded-xl shadow-lg md:ml-10 md:w-1/2 w-full">
+                <h2 class="font-bold mb-4 text-lg" style="color: #262A3F;">SEARCH FLIGHT</h2>
+                <form class="space-y-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium">From</label>
+                            <select class="w-full border rounded px-3 py-2">
+                                <option>Sydney, Australia</option>
+                                <option>Other, Location</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium">To</label>
+                            <select class="w-full border rounded px-3 py-2">
+                                <option>Manila, Philippines</option>
+                                <option>Other, Location</option>
                             </select>
                         </div>
                     </div>
-                    <div>
-                        <label for="children" class="block text-gray-600 text-xs mb-1">Children (2-11)</label>
-                        <div class="relative">
-                            <select id="children"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                            </select>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium">Departure</label>
+                            <input type="date" class="w-full border rounded px-3 py-2" value="2025-04-07">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium">Return</label>
+                            <input type="date" class="w-full border rounded px-3 py-2" value="2025-04-11">
                         </div>
                     </div>
                     <div>
-                        <label for="infants" class="block text-gray-600 text-xs mb-1">Infants (0-2)</label>
-                        <div class="relative">
-                            <select id="infants"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
+                        <label class="block text-sm font-medium">Passengers</label>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div>
+                                <label for="adults" class="block text-gray-600 text-xs mb-1">Adults (12+ years)</label>
+                                <select id="adults" class="w-full border rounded px-3 py-2">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="children" class="block text-gray-600 text-xs mb-1">Children (2–11)</label>
+                                <select id="children" class="w-full border rounded px-3 py-2">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="infants" class="block text-gray-600 text-xs mb-1">Infants (0–2)</label>
+                                <select id="infants" class="w-full border rounded px-3 py-2">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <button class="w-full text-white py-2 rounded font-semibold" style="background-color: #262A3F;">BOOK
+                        NOW</button>
+                </form>
             </div>
-            <button class="w-full">
-                <a id="book-now"
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full w-full focus:outline-none focus:shadow-outline flex items-center justify-center">
-                    Book Now
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-arrow-right ml-2">
-                        <path d="M5 12h14" />
-                        <path d="m12 5 7 7-7 7" />
-                    </svg>
-                </a>
+        </div>
+    </section>
+
+
+    <!-- Domestic Flights -->
+    <section class="py-12">
+        <div class="text-center">
+            <h2 class="text-2xl font-extrabold" style="color: #262A3F;">DOMESTIC FLIGHTS</h2>
+            <p class="text-gray-600">Travel locally with the best deals.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 px-6">
+            <div class="bg-white rounded-xl shadow p-4">
+                <img src="/img/melbourne.jpg" alt="Melbourne" class="rounded-md w-full h-64 object-cover">
+                <h3 class="font-bold mt-4">MELBOURNE</h3>
+                <p class="text-sm text-gray-500">From $259.00</p>
+                <button class="mt-2 text-white px-4 py-2 rounded" style="background-color: #262A3F;">Book Now</button>
+            </div>
+            <div class="bg-white rounded-xl shadow p-4">
+                <img src="/img/brisbane.jpg" alt="Brisbane" class="rounded-md w-full h-64 object-cover">
+                <h3 class="font-bold mt-4">BRISBANE</h3>
+                <p class="text-sm text-gray-500">From $231.00</p>
+                <button class="mt-2 text-white px-4 py-2 rounded" style="background-color: #262A3F;">Book Now</button>
+            </div>
+            <div class="bg-white rounded-xl shadow p-4">
+                <img src="/img/perth.jpg" alt="Perth" class="rounded-md w-full h-64 object-cover">
+                <h3 class="font-bold mt-4">PERTH</h3>
+                <p class="text-sm text-gray-500">From $391.00</p>
+                <button class="mt-2 text-white px-4 py-2 rounded" style="background-color: #262A3F;">Book Now</button>
+            </div>
+        </div>
+        <div class="text-center mt-6">
+            <button class="text-white px-6 py-2 rounded-full inline-flex items-center gap-2"
+                style="background-color: #262A3F;">
+                Search More <i class="fas fa-plane"></i>
             </button>
         </div>
-    </main>
+    </section>
 
-
-
-    <div class="flights-section bg-gray-200 py-10">
-        <div class="container mx-auto px-4">
-            <h2 class="text-center mb-6"
-                style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 50px; line-height: 100%; letter-spacing: 0%; text-align: center;">
-                Domestic Flights</h2>
-            <p class="text-center mb-8"
-                style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 16px; line-height: 100%; letter-spacing: 0%; text-align: center;">
-                Great flights with great deals.</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                <div
-                    class="bg-white rounded-lg shadow-md p-6 text-center max-w-xs mx-auto min-h-[355px] w-[424px] h-[355px]">
-                    <h3 class="font-bold text-lg">Location</h3>
-                    <p class="text-gray-600">For as low as $90*</p>
-                </div>
-                <div
-                    class="bg-white rounded-lg shadow-md p-6 text-center max-w-xs mx-auto min-h-[355px] w-[424px] h-[355px]">
-                    <h3 class="font-bold text-lg">Location</h3>
-                    <p class="text-gray-600">For as low as $90*</p>
-                </div>
-                <div
-                    class="bg-white rounded-lg shadow-md p-6 text-center max-w-xs mx-auto min-h-[355px] w-[424px] h-[355px]">
-                    <h3 class="font-bold text-lg">Location</h3>
-                    <p class="text-gray-600">For as low as $90*</p>
-                </div>
+    <!-- International Flights -->
+    <section class="py-12 bg-gray-50">
+        <div class="text-center">
+            <h2 class="text-2xl font-extrabold" style="color: #262A3F;">INTERNATIONAL FLIGHTS</h2>
+            <p class="text-gray-600">Explore the world with us.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 px-6">
+            <div class="bg-white rounded-xl shadow p-4">
+                <img src="/img/hochiminh.jpg" alt="Ho Chi Minh" class="rounded-md w-full h-64 object-cover">
+                <h3 class="font-bold mt-4">HO CHI MINH</h3>
+                <p class="text-sm text-gray-500">From $447.00</p>
+                <button class="mt-2 text-white px-4 py-2 rounded" style="background-color: #262A3F;">Book Now</button>
             </div>
-            <button
-                class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full flex items-center justify-center mx-auto">
-                Search More
-                <img src="img/plane-vector.png" alt="Plane Vector" class="ml-2 w-4 h-4">
+            <div class="bg-white rounded-xl shadow p-4">
+                <img src="/img/tokyo.jpg" alt="Tokyo" class="rounded-md w-full h-64 object-cover">
+                <h3 class="font-bold mt-4">TOKYO</h3>
+                <p class="text-sm text-gray-500">From $718.00</p>
+                <button class="mt-2 text-white px-4 py-2 rounded" style="background-color: #262A3F;">Book Now</button>
+            </div>
+            <div class="bg-white rounded-xl shadow p-4">
+                <img src="/img/paris.jpg" alt="Paris" class="rounded-md w-full h-64 object-cover">
+                <h3 class="font-bold mt-4">PARIS</h3>
+                <p class="text-sm text-gray-500">From $1248.00</p>
+                <button class="mt-2 text-white px-4 py-2 rounded" style="background-color: #262A3F;">Book Now</button>
+            </div>
+        </div>
+        <div class="text-center mt-6">
+            <button class="text-white px-6 py-2 rounded-full inline-flex items-center gap-2"
+                style="background-color: #262A3F;">
+                Search More <i class="fas fa-plane"></i>
             </button>
         </div>
-    </div>
+    </section>
 
-    <div class="flights-section bg-gray-200 py-10">
-        <div class="container mx-auto px-4">
-            <h2 class="text-center mb-6"
-                style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 50px; line-height: 100%; letter-spacing: 0%; text-align: center;">
-                International Flights</h2>
-            <p class="text-center mb-8"
-                style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 16px; line-height: 100%; letter-spacing: 0%; text-align: center;">
-                Explore the world with us.</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                <div
-                    class="bg-white rounded-lg shadow-md p-6 text-center max-w-xs mx-auto min-h-[355px] w-[424px] h-[355px]">
-                    <h3 class="font-bold text-lg">Location</h3>
-                    <p class="text-gray-600">For as low as $90*</p>
-                </div>
-                <div
-                    class="bg-white rounded-lg shadow-md p-6 text-center max-w-xs mx-auto min-h-[355px] w-[424px] h-[355px]">
-                    <h3 class="font-bold text-lg">Location</h3>
-                    <p class="text-gray-600">For as low as $90*</p>
-                </div>
-                <div
-                    class="bg-white rounded-lg shadow-md p-6 text-center max-w-xs mx-auto min-h-[355px] w-[424px] h-[355px]">
-                    <h3 class="font-bold text-lg">Location</h3>
-                    <p class="text-gray-600">For as low as $90*</p>
+    <!-- Our Services Section -->
+    <section class="bg-blue-100 py-16">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <!-- Left Column -->
+            <div class="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
+                <h1 class="text-4xl font-extrabold text-[#262A3F] tracking-tight">Our Services</h1>
+                <h2 class="text-2xl font-medium text-[#262A3F]">Why fly with us?</h2>
+                <img src="/img/passenger.jpg" alt="Passenger"
+                    class="rounded-xl shadow-xl w-full max-w-sm object-cover mx-auto md:mx-0">
+
+                <div class="mt-4">
+                    <h3 id="service-heading" class="text-xl md:text-2xl font-semibold text-[#262A3F]">Book Flights
+                        Easily</h3>
+                    <p id="service-description" class="text-[#262A3F] mt-2 leading-relaxed">
+                        At FlyDreamAir, we are committed to...
+                    </p>
+                    <a href="#" class="inline-block mt-4 text-blue-900 underline hover:text-blue-700 transition">Learn
+                        More →</a>
                 </div>
             </div>
-            <button
-                class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full flex items-center justify-center mx-auto">
-                Search More
-                <img src="img/plane-vector.png" alt="Plane Vector" class="ml-2 w-4 h-4">
-            </button>
-        </div>
-    </div>
 
-    <div class="services-section bg-gray-100 py-10">
-        <div class="container mx-auto px-4">
-            <h2 class="mb-4 text-4xl font-bold"
-                style="font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 50px; line-height: 100%; letter-spacing: 0%;">
-                OUR SERVICES
-            </h2>
-            <p class="mb-8 text-lg"
-                style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 18px; line-height: 100%; letter-spacing: 0%;">
-                Why choose with us?</p>
-            <div class="flex flex-col md:flex-row gap-6">
-                <div class="flex-1 bg-gray-300 rounded-lg p-6">
-                    <h3 id="service-heading" class="text-xl font-bold mb-2">BOOK FLIGHTS EASILY</h3>
-                    <p id="service-description" class="text-gray-700 mb-4">Book your flights with ease through our
-                        user-friendly platform. Search, compare, and book flights in minutes with our intuitive booking
-                        system. Get the best deals and flexible options for your travel needs.</p>
-                    <a href="#services" class="text-blue-500 font-bold">Learn More</a>
-                </div>
-                <div class="flex flex-col gap-4">
-                    <button onclick="updateServiceDescription('book')"
-                        class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-3 px-6 rounded-lg">Book Flights
-                        Easily</button>
-                    <button onclick="updateServiceDescription('manage')"
-                        class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-3 px-6 rounded-lg">Manage Your
-                        Booking</button>
-                    <button onclick="updateServiceDescription('status')"
-                        class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-3 px-6 rounded-lg">Flight
-                        Status</button>
-                    <button onclick="updateServiceDescription('inflight')"
-                        class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-3 px-6 rounded-lg">In-Flight
-                        Services</button>
-                </div>
+            <!-- Right Column -->
+            <div class="space-y-4">
+                <button
+                    class="service-button bg-white text-[#262A3F] hover:bg-[#f1f1f1] transition p-4 rounded-xl shadow w-full text-left font-medium"
+                    onclick="updateServiceDescription(event, 'book')">
+                    Book Flights Easily
+                </button>
+                <button
+                    class="service-button bg-white text-[#262A3F] hover:bg-[#f1f1f1] transition p-4 rounded-xl shadow w-full text-left font-medium"
+                    onclick="updateServiceDescription(event, 'manage')">
+                    Manage Your Flight
+                </button>
+                <button
+                    class="service-button bg-white text-[#262A3F] hover:bg-[#f1f1f1] transition p-4 rounded-xl shadow w-full text-left font-medium"
+                    onclick="updateServiceDescription(event, 'status')">
+                    Flight Status
+                </button>
+                <button
+                    class="service-button bg-white text-[#262A3F] hover:bg-[#f1f1f1] transition p-4 rounded-xl shadow w-full text-left font-medium"
+                    onclick="updateServiceDescription(event, 'inflight')">
+                    In-Flight Services
+                </button>
             </div>
         </div>
-    </div>
+    </section>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const bookNowButton = document.getElementById('book-now');
-
-            // Function to get airport code from city name
-            function getAirportCode(cityName) {
-                const airportCodes = {
-                    'SYDNEY': 'SYD',
-                    'MANILA': 'MNL',
-                    'MELBOURNE': 'MEL',
-                    'BRISBANE': 'BNE',
-                    'PERTH': 'PER',
-                    'ADELAIDE': 'ADL',
-                    'DARWIN': 'DRW',
-                    'HOBART': 'HBA',
-                    'CAIRNS': 'CNS',
-                    'GOLD COAST': 'OOL'
-                };
-                return airportCodes[cityName] || cityName;
-            }
-
-            bookNowButton.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                // Get form values
-                const fromLocation = document.getElementById('from').value;
-                const toLocation = document.getElementById('to').value;
-                const departureDate = document.getElementById('departure').value;
-                const returnDate = document.getElementById('return').value;
-                const adults = document.getElementById('adults').value;
-                const children = document.getElementById('children').value;
-                const infants = document.getElementById('infants').value;
-
-                // Get city names and convert to airport codes
-                const fromCity = fromLocation.split(',')[0].trim().toUpperCase();
-                const toCity = toLocation.split(',')[0].trim().toUpperCase();
-
-                // Save to localStorage with new structure using form values
-                const flightSearch = {
-                    tripType: "one-way",
-                    adults: parseInt(adults),
-                    children: parseInt(children),
-                    classType: "Economy",
-                    departure: getAirportCode(fromCity),
-                    arrival: getAirportCode(toCity),
-                    departureDate: departureDate,
-                    arrivalDate: returnDate
-                };
-
-                localStorage.setItem('flightSearch', JSON.stringify(flightSearch));
-
-                // Redirect to seat selection page
-                window.location.href = '/book-flight';
-            });
-        });
-
-        function updateServiceDescription(service) {
+        function updateServiceDescription(event, service) {
             const descriptionElement = document.getElementById('service-description');
             const headingElement = document.getElementById('service-heading');
-            const buttons = document.querySelectorAll('.flex-col button');
+            const buttons = document.querySelectorAll('.service-button');
 
-            // Reset all buttons to default style
+            // Reset all buttons
             buttons.forEach(button => {
-                button.classList.remove('bg-gray-400', 'text-white');
-                button.classList.add('bg-gray-200', 'text-black');
+                button.classList.remove('bg-[#262A3F]', 'text-white');
+                button.classList.add('bg-white', 'text-[#262A3F]');
             });
 
-            // Update the clicked button style
-            const clickedButton = event.target;
-            clickedButton.classList.remove('bg-gray-200', 'text-black');
-            clickedButton.classList.add('bg-gray-400', 'text-white');
+            // Highlight active button
+            const clickedButton = event.currentTarget;
+            clickedButton.classList.remove('bg-white', 'text-[#262A3F]');
+            clickedButton.classList.add('bg-[#262A3F]', 'text-white');
 
-            // Update heading and description based on service
+            // Service content
             const content = {
                 book: {
-                    heading: "BOOK FLIGHTS EASILY",
+                    heading: "Book Flights Easily",
                     description: "Book your flights with ease through our user-friendly platform. Search, compare, and book flights in minutes with our intuitive booking system. Get the best deals and flexible options for your travel needs."
                 },
                 manage: {
-                    heading: "MANAGE YOUR BOOKING",
-                    description: "Take control of your booking with our comprehensive management system. Modify your flight details, update passenger information, and make changes to your itinerary all in one place."
+                    heading: "Manage Your Booking",
+                    description: "Take control of your booking with our comprehensive management system. Modify your flight details, update passenger information, and make changes to your itinerary."
                 },
                 status: {
-                    heading: "FLIGHT STATUS",
-                    description: "Stay informed about your flight with real-time status updates. Track your flight's departure and arrival times, gate information, and any schedule changes to ensure a smooth travel experience."
+                    heading: "Flight Status",
+                    description: "Stay informed about your flight with real-time status updates. Track your flight's departure, arrival times, gate information, and any schedule changes."
                 },
                 inflight: {
-                    heading: "IN-FLIGHT SERVICES",
-                    description: "Experience premium in-flight services designed for your comfort. Enjoy complimentary meals, entertainment options, and attentive service throughout your journey with FlyDreamAir."
+                    heading: "In-Flight Services",
+                    description: "Enjoy a premium flying experience with our in-flight services. From gourmet meals to entertainment, we ensure you're comfortable and relaxed throughout your flight."
                 }
             };
 
-            const selectedContent = content[service] || content.book;
+            const selectedContent = content[service];
             headingElement.textContent = selectedContent.heading;
             descriptionElement.textContent = selectedContent.description;
         }
     </script>
+
+    <!-- Footer -->
+    <footer class="bg-white py-6 border-t text-sm text-gray-600">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center px-6">
+            <div class="flex gap-4">
+                <a href="#">Privacy and Cookie Policy</a>
+                <a href="#">Terms</a>
+                <a href="#">Accessibility</a>
+                <a href="#">Site Map</a>
+            </div>
+            <div class="mt-4 md:mt-0">© Copyright 2025 FlyDreamAir</div>
+        </div>
+    </footer>
+
 </body>
 
 </html>
