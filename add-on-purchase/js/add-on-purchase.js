@@ -225,13 +225,19 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateAddonSummary() {
         const summaryDiv = document.getElementById('addon-summary-content');
         summaryDiv.innerHTML = `
-            <div><span class="font-bold">7kg Bags:</span> ${baggageCounts['7kg']}</div>
-            <div><span class="font-bold">10kg Bags:</span> ${baggageCounts['10kg']}</div>
-            <div><span class="font-bold">20kg Bags:</span> ${baggageCounts['20kg']}</div>
-            <div><span class="font-bold">Meals per Ticket:</span> ${selectedMeals}</div>
-            <div><span class="font-bold">Check-in Priority:</span> ${addonStates.checkin ? 'True' : 'False'}</div>
-            <div><span class="font-bold">In-flight Entertainment:</span> ${addonStates.entertainment ? 'True' : 'False'}</div>
-            <div><span class="font-bold">Flight Insurance:</span> ${addonStates.insurance ? 'True' : 'False'}</div>
+            <div class="flex flex-wrap gap-6 items-center justify-center text-lg">
+                <span class="font-bold">7kg Bags:</span> ${baggageCounts['7kg']}
+                <span class="font-bold">10kg Bags:</span> ${baggageCounts['10kg']}
+                <span class="font-bold">20kg Bags:</span> ${baggageCounts['20kg']}
+            </div>
+            <div class="flex flex-wrap gap-6 items-center justify-center text-lg">
+                <span class="font-bold">Meals per Ticket:</span> ${selectedMeals}
+            </div>
+            <div class="flex flex-wrap gap-8 items-center justify-center text-lg">
+                <span class="font-bold">Check-in Priority:</span> ${addonStates.checkin ? 'Yes' : 'No'}
+                <span class="font-bold">In-flight Entertainment:</span> ${addonStates.entertainment ? 'Yes' : 'No'}
+                <span class="font-bold">Flight Insurance:</span> ${addonStates.insurance ? 'Yes' : 'No'}
+            </div>
         `;
     }
     // Patch baggage update to also update summary
