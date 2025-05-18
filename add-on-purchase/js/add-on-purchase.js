@@ -211,4 +211,59 @@ document.addEventListener('DOMContentLoaded', () => {
         mealButtons[0].style.outline = '2px solid #6AABDD';
         mealButtons[0].style.outlineOffset = '-2px';
     }
+
+    // --- Add-On Summary Logic ---
+    // State for optional add-ons
+    const addonStates = {
+        checkin: false,
+        entertainment: false,
+        insurance: false
+    };
+    // State for meals
+    let selectedMeals = 0;
+    // Helper to update the summary
+    function updateAddonSummary() {
+        const summaryDiv = document.getElementById('addon-summary-content');
+        summaryDiv.innerHTML = `
+            <div><span class="font-bold">7kg Bags:</span> ${baggageCounts['7kg']}</div>
+            <div><span class="font-bold">10kg Bags:</span> ${baggageCounts['10kg']}</div>
+            <div><span class="font-bold">20kg Bags:</span> ${baggageCounts['20kg']}</div>
+            <div><span class="font-bold">Meals per Ticket:</span> ${selectedMeals}</div>
+            <div><span class="font-bold">Check-in Priority:</span> ${addonStates.checkin ? 'True' : 'False'}</div>
+            <div><span class="font-bold">In-flight Entertainment:</span> ${addonStates.entertainment ? 'True' : 'False'}</div>
+            <div><span class="font-bold">Flight Insurance:</span> ${addonStates.insurance ? 'True' : 'False'}</div>
+        `;
+    }
+    // Patch baggage update to also update summary
+    const origUpdateCounter = updateCounter;
+    updateCounter = function(weight) {
+        origUpdateCounter(weight);
+        updateAddonSummary();
+    };
+    // Meals logic
+    mealButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            selectedMeals = parseInt(button.dataset.meals, 10);
+            updateAddonSummary();
+        });
+    });
+    // Set default selected meals
+    if (mealButtons.length > 0) {
+        selectedMeals = parseInt(mealButtons[0].dataset.meals, 10);
+    }
+    // Addon buttons logic
+    const addonBtns = [
+        ...document.querySelectorAll('.tick-btn[data-addon]'),
+        ...document.querySelectorAll('.x-btn[data-addon]')
+    ];
+    addonBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const addon = btn.dataset.addon;
+            const value = btn.dataset.value === 'yes';
+            addonStates[addon] = value;
+            updateAddonSummary();
+        });
+    });
+    // Initial summary render
+    updateAddonSummary();
 });

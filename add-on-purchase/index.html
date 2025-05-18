@@ -171,7 +171,7 @@
                 </button>
             </div>
 
-            <!-- ⬇️ ADD THIS BUTTON GROUP HERE -->
+            <!-- Meal Options -->
             <div id="meal-button-group" class="flex justify-between items-center mt-6">
                 <button data-meals="0" class="meal-btn bg-white text-gray-700 text-lg font-semibold w-1/4 h-16 rounded-lg shadow-md flex items-center justify-center hover:scale-105 transition-transform">
                     0 meals
@@ -186,9 +186,73 @@
             <p class="text-center text-sm text-gray-600 mt-2" style="opacity: 0.75;">Number of meals each ticketholder can have throughout their flight</p>
 
         </div>
+
+        <!-- Optional Add-ons Section -->
+        <div class="bg-gray-300 rounded-xl shadow-md px-6 py-4 mt-8">
+            <h2 class="text-center text-2xl font-semibold mb-6">Optional add-ons</h2>
+            <div class="flex justify-between items-center">
+                <!-- Check-in Priority -->
+                <div class="bg-white rounded-lg shadow-md w-1/4 h-48 flex flex-col items-center py-2 mx-2">
+                    <div class="flex items-center w-full justify-between px-2 mt-2">
+                        <button class="tick-btn w-8 h-8 bg-green-200 rounded-full flex items-center justify-center text-green-700 text-xl font-bold transition-transform duration-200 scale-100 opacity-50 hover:scale-110" data-addon="checkin" data-value="yes">&#10003;</button>
+                        <h3 class="text-lg font-semibold text-center flex-1">Check-in Priority</h3>
+                        <button class="x-btn w-8 h-8 bg-red-200 rounded-full flex items-center justify-center text-red-700 text-xl font-bold transition-transform duration-200 scale-100 hover:scale-110" data-addon="checkin" data-value="no">&#10005;</button>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-4 px-2 text-center">Skip the regular lines and enjoy priority check-in for a faster, smoother airport experience.</p>
+                </div>
+                <!-- In-flight Entertainment -->
+                <div class="bg-white rounded-lg shadow-md w-1/4 h-48 flex flex-col items-center py-2 mx-2">
+                    <div class="flex items-center w-full justify-between px-2 mt-2">
+                        <button class="tick-btn w-8 h-8 bg-green-200 rounded-full flex items-center justify-center text-green-700 text-xl font-bold transition-transform duration-200 scale-100 opacity-50 hover:scale-110" data-addon="entertainment" data-value="yes">&#10003;</button>
+                        <h3 class="text-lg font-semibold text-center flex-1">In-flight Entertainment</h3>
+                        <button class="x-btn w-8 h-8 bg-red-200 rounded-full flex items-center justify-center text-red-700 text-xl font-bold transition-transform duration-200 scale-100 hover:scale-110" data-addon="entertainment" data-value="no">&#10005;</button>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-4 px-2 text-center">Access a wide selection of movies, TV shows, and games to enjoy during your flight.</p>
+                </div>
+                <!-- Flight Insurance -->
+                <div class="bg-white rounded-lg shadow-md w-1/4 h-48 flex flex-col items-center py-2 mx-2">
+                    <div class="flex items-center w-full justify-between px-2 mt-2">
+                        <button class="tick-btn w-8 h-8 bg-green-200 rounded-full flex items-center justify-center text-green-700 text-xl font-bold transition-transform duration-200 scale-100 opacity-50 hover:scale-110" data-addon="insurance" data-value="yes">&#10003;</button>
+                        <h3 class="text-lg font-semibold text-center flex-1">Flight Insurance</h3>
+                        <button class="x-btn w-8 h-8 bg-red-200 rounded-full flex items-center justify-center text-red-700 text-xl font-bold transition-transform duration-200 scale-100 hover:scale-110" data-addon="insurance" data-value="no">&#10005;</button>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-4 px-2 text-center">Protect your trip with insurance coverage for delays, cancellations, and lost baggage.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add-On Summary (NEW) -->
+        <div id="addon-summary" class="bg-[#6AABDD] rounded-xl w-full max-w-3xl mx-auto mt-10 mb-8 shadow-md px-8 py-6 text-white">
+            <h2 class="text-xl font-bold mb-4">Add-On Summary</h2>
+            <div id="addon-summary-content" class="space-y-2">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </div>
     </main>
 
     <script src="js/add-on-purchase.js"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // For each addon, set up toggle logic
+    const addons = ['checkin', 'entertainment', 'insurance'];
+    addons.forEach(function(addon) {
+        const yesBtn = document.querySelector(`button[data-addon="${addon}"][data-value="yes"]`);
+        const noBtn = document.querySelector(`button[data-addon="${addon}"][data-value="no"]`);
+        // Default: x (no) selected
+        yesBtn.classList.add('opacity-50');
+        noBtn.classList.remove('opacity-50');
+        // Click handlers
+        yesBtn.addEventListener('click', function() {
+            yesBtn.classList.remove('opacity-50');
+            noBtn.classList.add('opacity-50');
+        });
+        noBtn.addEventListener('click', function() {
+            noBtn.classList.remove('opacity-50');
+            yesBtn.classList.add('opacity-50');
+        });
+    });
+});
+</script>
 </body>
 
 </html>
