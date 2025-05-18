@@ -47,3 +47,7 @@ main {
 .ticket-box span {
     font-weight: bold;
 }
+
+#save-proceed-btn:hover {
+    transform: scale(1.08);
+}

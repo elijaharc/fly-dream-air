@@ -239,6 +239,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="font-bold">Flight Insurance:</span> ${addonStates.insurance ? 'Yes' : 'No'}
             </div>
         `;
+        // Update Save and Proceed button state
+        const saveBtn = document.getElementById('save-proceed-btn');
+        const totalBaggageCount = Object.values(baggageCounts).reduce((sum, count) => sum + count, 0);
+        if (totalBaggageCount === totalTickets) {
+            saveBtn.disabled = false;
+            saveBtn.classList.remove('bg-gray-400', 'cursor-not-allowed', 'hover:bg-[#1b2e7a]');
+            saveBtn.classList.add('bg-[#263FAD]', 'hover:bg-[#1b2e7a]');
+        } else {
+            saveBtn.disabled = true;
+            saveBtn.classList.remove('bg-[#263FAD]', 'hover:bg-[#1b2e7a]');
+            saveBtn.classList.add('bg-gray-400', 'cursor-not-allowed');
+        }
     }
     // Patch baggage update to also update summary
     const origUpdateCounter = updateCounter;
@@ -272,4 +284,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     // Initial summary render
     updateAddonSummary();
+
+    // Add navigation to seat selection on button click
+    const saveBtn = document.getElementById('save-proceed-btn');
+    if (saveBtn) {
+        saveBtn.addEventListener('click', function() {
+            if (!saveBtn.disabled) {
+                window.location.href = '../seat-selection/';
+            }
+        });
+    }
 });
