@@ -86,7 +86,7 @@
                 class="absolute -top-8 bg-white text-[#6A7BD9] w-9 h-9 rounded-full flex items-center justify-center font-bold border border-gray-300">
                 2
             </div>
-            <span class="mt-3 text-white">
+            <span class="mt-3 text-black">
                 Add-Ons
             </span>
         </div>
@@ -166,12 +166,22 @@
         <div class="bg-gray-300 rounded-xl shadow-md px-6 py-4 mt-8 relative"> <!-- Light gray background -->
             <h2 class="text-2xl font-semibold mb-6 text-center">In-Flight Meals</h2> <!-- Centered text -->
             <div class="absolute top-0 right-0 mt-4 mr-6">
-                <button class="bg-white text-gray-700 text-lg font-semibold px-6 py-2 rounded-lg shadow-md hover:scale-105 transition-transform">View Menu</button>
+                <button class="bg-white text-gray-700 text-lg font-semibold px-6 py-2 rounded-lg shadow-md hover:scale-105 transition-transform">
+                    View Menu
+                </button>
             </div>
-            <div class="flex justify-between items-center mt-6"> <!-- Adjusted margin for spacing -->
-                <button class="bg-white text-gray-700 text-lg font-semibold w-1/4 h-16 rounded-lg shadow-md flex items-center justify-center hover:scale-105 transition-transform">0 meals</button>
-                <button class="bg-white text-gray-700 text-lg font-semibold w-1/4 h-16 rounded-lg shadow-md flex items-center justify-center hover:scale-105 transition-transform">1 meal</button>
-                <button class="bg-white text-gray-700 text-lg font-semibold w-1/4 h-16 rounded-lg shadow-md flex items-center justify-center hover:scale-105 transition-transform">2 meals</button>
+
+            <!-- ⬇️ ADD THIS BUTTON GROUP HERE -->
+            <div id="meal-button-group" class="flex justify-between items-center mt-6">
+                <button data-meals="0" class="meal-btn bg-white text-gray-700 text-lg font-semibold w-1/4 h-16 rounded-lg shadow-md flex items-center justify-center hover:scale-105 transition-transform">
+                    0 meals
+                </button>
+                <button data-meals="1" class="meal-btn bg-white text-gray-700 text-lg font-semibold w-1/4 h-16 rounded-lg shadow-md flex items-center justify-center hover:scale-105 transition-transform">
+                    1 meal
+                </button>
+                <button data-meals="2" class="meal-btn bg-white text-gray-700 text-lg font-semibold w-1/4 h-16 rounded-lg shadow-md flex items-center justify-center hover:scale-105 transition-transform">
+                    2 meals
+                </button>
             </div>
             <p class="text-center text-sm text-gray-600 mt-2" style="opacity: 0.75;">Number of meals each ticketholder can have throughout their flight</p>
 

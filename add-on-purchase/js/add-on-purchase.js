@@ -101,8 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
     menuContent.style.position = 'relative';
 
     // Adjust the menu content size
-    menuContent.style.width = '80%';
-    menuContent.style.height = '80%';
+    menuContent.style.width = '50%';
+    menuContent.style.height = '50%';
     menuContent.style.overflowY = 'auto';
 
     // Add header to menu content
@@ -129,42 +129,55 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     menuContent.appendChild(closeButton);
 
-    // Create three light gray boxes for menu items
+    // Create the menu items container
     const menuItemsContainer = document.createElement('div');
     menuItemsContainer.style.display = 'flex';
-    menuItemsContainer.style.justifyContent = 'space-around';
+    menuItemsContainer.style.flexDirection = 'column';
+    menuItemsContainer.style.alignItems = 'center';
     menuItemsContainer.style.marginTop = '20px';
 
-    for (let i = 0; i < 3; i++) {
-        const menuItem = document.createElement('div');
-        menuItem.style.backgroundColor = 'lightgray';
-        menuItem.style.width = '30%';
-        menuItem.style.height = '60%';
-        menuItem.style.borderRadius = '8px';
-        menuItem.style.display = 'flex';
-        menuItem.style.flexDirection = 'column';
-        menuItem.style.alignItems = 'center';
-        menuItem.style.justifyContent = 'center';
-        menuItem.style.padding = '10px';
+    // Clear existing content and add three meals with details
+    menuItemsContainer.innerHTML = ''; // Clear existing content
 
-        // Add image placeholder
-        const imagePlaceholder = document.createElement('div');
-        imagePlaceholder.style.width = '100%';
-        imagePlaceholder.style.height = '70%';
-        imagePlaceholder.style.backgroundColor = 'white';
-        imagePlaceholder.style.borderRadius = '8px';
-        imagePlaceholder.style.marginBottom = '10px';
-        menuItem.appendChild(imagePlaceholder);
+    const meals = [
+        {
+            name: 'Grilled Teriyaki Chicken w/ rice',
+            details: '(not vegan, not gluten free)'
+        },
+        {
+            name: 'Lentil & Quinoa Salad',
+            details: '(vegan, gluten free)'
+        },
+        {
+            name: 'Chickpea & Sweet Potato Curry',
+            details: '(vegan, gluten free)'
+        }
+    ];
 
-        // Add meal name placeholder
+    meals.forEach(meal => {
+        const mealDiv = document.createElement('div');
+        mealDiv.style.backgroundColor = 'lightgray';
+        mealDiv.style.width = '80%';
+        mealDiv.style.margin = '10px auto';
+        mealDiv.style.padding = '20px';
+        mealDiv.style.borderRadius = '8px';
+        mealDiv.style.textAlign = 'center';
+
         const mealName = document.createElement('p');
-        mealName.textContent = `Meal ${i + 1}`;
-        mealName.style.fontSize = '1rem';
+        mealName.textContent = meal.name;
         mealName.style.fontWeight = 'bold';
-        menuItem.appendChild(mealName);
+        mealName.style.marginBottom = '5px';
 
-        menuItemsContainer.appendChild(menuItem);
-    }
+        const mealDetails = document.createElement('p');
+        mealDetails.textContent = meal.details;
+        mealDetails.style.fontSize = '0.9rem';
+        mealDetails.style.color = '#555';
+
+        mealDiv.appendChild(mealName);
+        mealDiv.appendChild(mealDetails);
+
+        menuItemsContainer.appendChild(mealDiv);
+    });
 
     menuContent.appendChild(menuItemsContainer);
 
@@ -175,4 +188,27 @@ document.addEventListener('DOMContentLoaded', () => {
     viewMenuButton.addEventListener('click', () => {
         menuOverlay.style.display = 'flex';
     });
+
+    // Add event listeners to meal amount buttons
+    const mealButtons = document.querySelectorAll('.meal-btn');
+
+    mealButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove outline from all buttons
+            mealButtons.forEach(btn => {
+                btn.style.outline = 'none';
+                btn.style.outlineOffset = '0';
+            });
+
+            // Add outline to the selected button
+            button.style.outline = '2px solid #6AABDD';
+            button.style.outlineOffset = '-2px';
+        });
+    });
+
+    // Set default selected button
+    if (mealButtons.length > 0) {
+        mealButtons[0].style.outline = '2px solid #6AABDD';
+        mealButtons[0].style.outlineOffset = '-2px';
+    }
 });
