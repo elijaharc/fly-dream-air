@@ -52,19 +52,24 @@
 
     <main class="container mx-auto px-4 py-10">
         <!-- Ticket Information -->
-        <div class="ticket-box flex justify-between items-center relative"> <!-- Updated relative positioning -->
+        <div class="ticket-box flex justify-between items-center relative">
             <div class="text-left">
                 <div id="from-location" class="text-lg font-semibold"></div>
                 <div id="departure-date" class="text-sm text-gray-600"></div>
             </div>
-            <div class="text-center">
-                <img src="../img/plane-vector.png" alt="Arrow" class="h-6 mx-auto">
+            <div class="text-center flex flex-col items-center justify-center w-1/3">
+                <div class="flex items-center justify-center w-full">
+                    <span class="text-xl font-mono tracking-widest select-none" style="letter-spacing: 0.2em;">======</span>
+                    <span class="text-2xl mx-2 select-none">✈</span>
+                    <span class="text-xl font-mono tracking-widest select-none" style="letter-spacing: 0.2em;">======></span>
+                </div>
+                <img src="../img/plane-vector.png" alt="Arrow" class="h-6 mx-auto mt-2" />
             </div>
             <div class="text-right">
                 <div id="to-location" class="text-lg font-semibold"></div>
                 <div id="return-date" class="text-sm text-gray-600"></div>
             </div>
-            <div id="ticket-count" class="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-sm font-semibold text-gray-700">0 tickets</div> <!-- Updated ticket count -->
+            <div id="ticket-count" class="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-sm font-semibold text-gray-700">0 tickets</div>
         </div>
 
             <!-- Step Progress -->
