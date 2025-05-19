@@ -290,6 +290,28 @@ document.addEventListener('DOMContentLoaded', () => {
     if (saveBtn) {
         saveBtn.addEventListener('click', function() {
             if (!saveBtn.disabled) {
+                // Get ticketPrice from SelectedFlight in localStorage
+                let ticketPrice = null;
+                try {
+                    const selectedFlight = JSON.parse(localStorage.getItem('selectedFlight'));
+                    if (selectedFlight && selectedFlight.price !== undefined) {
+                        ticketPrice = selectedFlight.price;
+                    }
+                } catch (e) {}
+                // Prepare addOnInfo object
+                const addOnInfo = {
+                    ticketPrice: ticketPrice,
+                    checkBaggage: {
+                        '7kg': baggageCounts['7kg'],
+                        '10kg': baggageCounts['10kg'],
+                        '20kg': baggageCounts['20kg']
+                    },
+                    meal: selectedMeals,
+                    insurance: addonStates.insurance,
+                    entertainment: addonStates.entertainment,
+                    priority: addonStates.checkin
+                };
+                localStorage.setItem('addOnInfo', JSON.stringify(addOnInfo));
                 window.location.href = '../seat-selection/';
             }
         });
