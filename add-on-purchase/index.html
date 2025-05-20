@@ -118,7 +118,7 @@
         >
           <div class="text-lg font-bold">STANDARD</div>
           <div>7kg</div>
-          <div class="text-[#262A3F] font-semibold mt-1">+ $0.00</div>
+          <div class="text-[#262A3F] font-semibold mt-1">+ $0.00 per ticket</div>
         </button>
         <button
           type="button"
@@ -128,7 +128,7 @@
         >
           <div class="text-lg font-bold">PREMIUM</div>
           <div>10kg</div>
-          <div class="text-[#262A3F] font-semibold mt-1">+ $25.00</div>
+          <div class="text-[#262A3F] font-semibold mt-1">+ $25.00 per ticket</div>
         </button>
         <button
           type="button"
@@ -138,7 +138,7 @@
         >
           <div class="text-lg font-bold">PLATINUM</div>
           <div>20kg</div>
-          <div class="text-[#262A3F] font-semibold mt-1">+ $50.00</div>
+          <div class="text-[#262A3F] font-semibold mt-1">+ $50.00 per ticket</div>
         </button>
       </div>
     </section>
@@ -291,6 +291,15 @@
           priority: false,
         };
 
+        // Get base price from localStorage (selectedFlight.price)
+        let basePrice = 500;
+        try {
+          const selectedFlight = JSON.parse(localStorage.getItem('selectedFlight'));
+          if (selectedFlight && selectedFlight.price !== undefined) {
+            basePrice = Number(selectedFlight.price);
+          }
+        } catch (e) {}
+
         // Baggage buttons
         const baggageButtons = document.querySelectorAll('button[data-addon="checkin"]');
         baggageButtons.forEach((btn) => {
@@ -303,13 +312,21 @@
           });
         });
 
-        // Menu buttons (allow only one selected)
+        // Menu buttons (allow only one selected, allow unselect)
         const menuButtons = document.querySelectorAll('button[data-addon="menu"]');
         menuButtons.forEach((btn) => {
           btn.addEventListener('click', () => {
-            menuButtons.forEach((b) => b.classList.add('opacity-50'));
-            btn.classList.remove('opacity-50');
-            selected.menu = btn.getAttribute('data-value');
+            const isSelected = !btn.classList.contains('opacity-50');
+            if (isSelected) {
+              // Unselect if already selected
+              btn.classList.add('opacity-50');
+              selected.menu = null;
+            } else {
+              // Select this, unselect others
+              menuButtons.forEach((b) => b.classList.add('opacity-50'));
+              btn.classList.remove('opacity-50');
+              selected.menu = btn.getAttribute('data-value');
+            }
             updateSummary();
           });
         });
@@ -333,7 +350,6 @@
         });
 
         function updateSummary() {
-          const basePrice = 500; // Flight base price
           const baggageCost = prices.checkin[selected.checkin];
           const menuCost = selected.menu ? prices.menu[selected.menu] : 0;
           const insuranceCost = selected.insurance ? prices.insurance : 0;
@@ -341,16 +357,75 @@
           const priorityCost = selected.priority ? prices.priority : 0;
           const addonsCost = insuranceCost + entertainmentCost + priorityCost;
 
-          document.getElementById('baggageCost').textContent = `$${baggageCost.toFixed(2)}`;
+          // Get total ticket number from bookingInfo in localStorage
+          let totalTicketNum = 1;
+          try {
+            const bookingInfo = JSON.parse(localStorage.getItem('bookingInfo'));
+            if (bookingInfo) {
+              totalTicketNum = (parseInt(bookingInfo.adults) || 0) + (parseInt(bookingInfo.children) || 0);
+              if (totalTicketNum === 0) totalTicketNum = 1;
+            }
+          } catch (e) {}
+
+          // Calculate total baggage cost
+          const baggageTotal = baggageCost * totalTicketNum;
+
+          document.getElementById('baggageCost').textContent = `$${baggageCost.toFixed(2)} x ${totalTicketNum} = $${baggageTotal.toFixed(2)}`;
           document.getElementById('menuCost').textContent = `$${menuCost.toFixed(2)}`;
           document.getElementById('addonsCost').textContent = `$${addonsCost.toFixed(2)}`;
 
-          const total = basePrice + baggageCost + menuCost + addonsCost;
+          document.querySelector('#summary .mb-2 > div > span.font-bold').textContent = `$${basePrice.toFixed(2)}`;
+
+          const total = basePrice + baggageTotal + menuCost + addonsCost;
           document.getElementById('totalCost').textContent = `TOTAL: $${total.toFixed(2)}`;
         }
 
         // Initialize summary
         updateSummary();
+
+        // Proceed button logic: save add-on info to localStorage and navigate
+        const proceedBtn = document.getElementById('proceedBtn');
+        if (proceedBtn) {
+          proceedBtn.addEventListener('click', function () {
+            // Get ticketPrice from selectedFlight in localStorage
+            let ticketPrice = basePrice;
+            try {
+              const selectedFlight = JSON.parse(localStorage.getItem('selectedFlight'));
+              if (selectedFlight && selectedFlight.price !== undefined) {
+                ticketPrice = Number(selectedFlight.price);
+              }
+            } catch (e) {}
+
+            // Get total ticket number
+            let totalTicketNum = 1;
+            try {
+              const bookingInfo = JSON.parse(localStorage.getItem('bookingInfo'));
+              if (bookingInfo) {
+                totalTicketNum = (parseInt(bookingInfo.adults) || 0) + (parseInt(bookingInfo.children) || 0);
+                if (totalTicketNum === 0) totalTicketNum = 1;
+              }
+            } catch (e) {}
+
+            // Calculate prices for each add-on
+            const baggagePrice = prices.checkin[selected.checkin] * totalTicketNum;
+            const menuPrice = selected.menu ? prices.menu[selected.menu] : 0;
+            const insurancePrice = selected.insurance ? prices.insurance : 0;
+            const entertainmentPrice = selected.entertainment ? prices.entertainment : 0;
+            const priorityPrice = selected.priority ? prices.priority : 0;
+
+            // Prepare addOnInfo object with prices only
+            const addOnInfo = {
+              ticketPrice: ticketPrice,
+              checkBaggage: baggagePrice,
+              meal: menuPrice,
+              insurance: insurancePrice,
+              entertainment: entertainmentPrice,
+              priority: priorityPrice
+            };
+            localStorage.setItem('addOnInfo', JSON.stringify(addOnInfo));
+            window.location.href = '../seat-selection/';
+          });
+        }
       });
     </script>
   </body>
