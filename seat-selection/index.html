@@ -26,16 +26,73 @@
             </nav>
         </div>
     </header>
+    <!-- Step Progress Bar: Move here, below nav bar -->
+    <div
+        class="bg-[#6AABDD] rounded-xl w-[1025px] mx-auto mt-6 shadow-md px-6 py-3 flex justify-between items-center text-white text-sm font-semibold">
+        <!-- Step 1 -->
+        <div class="flex flex-col items-center w-1/4 relative">
+            <div
+                class="absolute -top-8 bg-white text-[#263FAD] w-9 h-9 rounded-full flex items-center justify-center font-bold border border-gray-300">
+                1
+            </div>
+            <span class="mt-3 text-darkblue font-bold">
+                Choose Flight
+            </span>
+        </div>
+        <!-- Step 2 -->
+        <div class="flex flex-col items-center w-1/4 relative">
+            <div
+                class="absolute -top-8 bg-white text-[#6A7BD9] w-9 h-9 rounded-full flex items-center justify-center font-bold border border-gray-300">
+                2
+            </div>
+            <span class="mt-3 text-white">
+                Add-Ons
+            </span>
+        </div>
+        <!-- Step 3 -->
+        <div class="flex flex-col items-center w-1/4 relative">
+            <div
+                class="absolute -top-8 bg-white text-[#6A7BD9] w-9 h-9 rounded-full flex items-center justify-center font-bold border border-gray-300">
+                3
+            </div>
+            <span class="mt-3 text-black">
+                Seat Selection
+            </span>
+        </div>
+        <!-- Step 4 -->
+        <div class="flex flex-col items-center w-1/4 relative">
+            <div
+                class="absolute -top-8 bg-white text-[#6A7BD9] w-8 h-8 rounded-full flex items-center justify-center font-bold border border-gray-300">
+                4
+            </div>
+            <span class="mt-3 text-white">
+                Payment
+            </span>
+        </div>
+    </div>
     <main class="container mx-auto px-4 py-10 flex gap-8">
         <!-- Left Side (75%) -->
         <div class="w-3/4 flex flex-col gap-8">
-            <div class="bg-gray-300 rounded-xl shadow-md px-6 py-6 flex-1">
-                <!-- Top left div (flight info) -->
-                <h2 class="text-xl font-semibold mb-4 text-center">Flight Info</h2>
-                <p class="text-gray-700 text-center">Flight details or legend for seat selection can go here.</p>
+            <!-- Ticket Information  -->
+            <div class="ticket-box flex justify-between items-center relative bg-gray-300 rounded-xl px-6 py-4">
+                <div class="text-left">
+                    <div id="from-location" class="text-lg font-semibold"></div>
+                    <div id="departure-date" class="text-sm text-gray-600"></div>
+                </div>
+                <div class="text-center flex flex-col items-center justify-center w-1/3">
+                    <div class="flex items-center justify-center w-full">
+                        <span class="text-xl font-mono tracking-widest select-none" style="letter-spacing: 0.2em;">======</span>
+                        <span class="text-2xl mx-2 select-none">✈</span>
+                        <span class="text-xl font-mono tracking-widest select-none" style="letter-spacing: 0.2em;">======></span>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <div id="to-location" class="text-lg font-semibold"></div>
+                    <div id="return-date" class="text-sm text-gray-600"></div>
+                </div>
             </div>
+            <!-- Ticket Info (bottom left div) -->
             <div class="bg-gray-300 rounded-xl shadow-md px-6 py-6 flex-1">
-                <!-- Bottom left div (ticket info) -->
                 <h2 class="text-xl font-semibold mb-4 text-center">Ticket Info</h2>
                 <p class="text-gray-700 text-center">Ticket details or summary of selected seats and actions.</p>
             </div>
@@ -49,5 +106,19 @@
             </div>
         </div>
     </main>
+    <script src="js/seat-selection.js"></script>
+    <script>
+    // Populate ticket-box with booking info (same as add-on page, minus ticket count)
+    document.addEventListener('DOMContentLoaded', function() {
+        const bookingInfo = JSON.parse(localStorage.getItem('bookingInfo')) || {};
+        const { departure, arrival, departureDate, arrivalDate } = bookingInfo;
+        if (departure && arrival && departureDate && arrivalDate) {
+            document.getElementById('from-location').textContent = departure;
+            document.getElementById('departure-date').textContent = departureDate;
+            document.getElementById('to-location').textContent = arrival;
+            document.getElementById('return-date').textContent = arrivalDate;
+        }
+    });
+    </script>
 </body>
 </html>
