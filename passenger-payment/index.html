@@ -1,432 +1,467 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   FlyDreamAir | Payment Page
-  </title>
- </head>
- <body class="bg-bgLight font-sans text-#262A3F">
-  <!-- Header -->
-  <body class="bg-gray-100">
-    <header class="bg-white py-4 shadow-md">
-        <div class="container mx-auto flex justify-between items-center px-4">
-            <a href="/" class="text-xl font-semibold text-gray-800">FlyDreamAir!</a>
-            <nav class="space-x-4">
-                <a href="#" class="text-gray-600 hover:text-blue-500 transition duration-300">Book</a>
-                <a href="/user-flight-info/" class="text-gray-600 hover:text-blue-500 transition duration-300">Travel
-                    Info</a>
-                <a href="#" class="text-gray-600 hover:text-blue-500 transition duration-300">About</a>
-            </nav>
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        FlyDreamAir | Payment Page
+    </title>
+</head>
+
+<body class="bg-bgLight font-sans text-#262A3F">
+    <!-- Header -->
+
+    <body class="bg-gray-100">
+        <header class="bg-white py-4 shadow-md">
+            <div class="container mx-auto flex justify-between items-center px-4">
+                <a href="/" class="text-xl font-semibold text-gray-800">FlyDreamAir!</a>
+                <nav class="space-x-4">
+                    <a href="#" class="text-gray-600 hover:text-blue-500 transition duration-300">Book</a>
+                    <a href="/user-flight-info/"
+                        class="text-gray-600 hover:text-blue-500 transition duration-300">Travel
+                        Info</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-500 transition duration-300">About</a>
+                </nav>
+            </div>
+        </header>
+        <!-- Booking Summary -->
+        <section class="bg-secondary p-4 rounded-xl mx-4 md:mx-auto max-w-5xl text-darkblue mt-6">
+            <!-- Top dropdown-like options -->
+            <div class="flex flex-wrap justify-center md:justify-start gap-2 mb-4">
+                <!-- Round Trip Dropdown -->
+                <div>
+                    <select class="bg-[#8697C4] text-white text-sm px-4 py-1 rounded-full w-full cursor-not-allowed"
+                        disabled="" id="tripType">
+                        <option value="round-trip">
+                            Round Trip
+                        </option>
+                        <option value="one-way">
+                            One Way
+                        </option>
+                    </select>
+                </div>
+                <!-- Passengers Dropdown -->
+                <div>
+                    <div class="flex w-full">
+                        <!-- Adults -->
+                        <select
+                            class="bg-[#8697C4] text-white text-sm px-4 py-1 rounded-l-full border-r-0 border border-[#8697C4] w-1/2 cursor-not-allowed"
+                            disabled="" id="adultCount">
+                            <option value="0">
+                                0 Adult
+                            </option>
+                            <option value="1">
+                                1 Adult
+                            </option>
+                            <option value="2">
+                                2 Adults
+                            </option>
+                            <option value="3">
+                                3 Adults
+                            </option>
+                            <option value="4">
+                                4 Adults
+                            </option>
+                            <option value="5">
+                                5 Adults
+                            </option>
+                            <option value="6">
+                                6 Adults
+                            </option>
+                            <option value="7">
+                                7 Adults
+                            </option>
+                            <option value="8">
+                                8 Adults
+                            </option>
+                            <option value="9">
+                                9 Adults
+                            </option>
+                        </select>
+                        <!-- Children -->
+                        <select
+                            class="bg-[#8697C4] text-white text-sm px-4 py-1 rounded-r-full border-l-0 border border-[#8697C4] w-1/2 cursor-not-allowed"
+                            disabled="" id="childCount">
+                            <option value="0">
+                                0 Child
+                            </option>
+                            <option value="1">
+                                1 Child
+                            </option>
+                            <option value="2">
+                                2 Children
+                            </option>
+                            <option value="3">
+                                3 Children
+                            </option>
+                            <option value="4">
+                                4 Children
+                            </option>
+                            <option value="5">
+                                5 Children
+                            </option>
+                            <option value="6">
+                                6 Children
+                            </option>
+                            <option value="7">
+                                7 Children
+                            </option>
+                            <option value="8">
+                                8 Children
+                            </option>
+                            <option value="9">
+                                9 Children
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Class Dropdown -->
+                <div>
+                    <select class="bg-[#8697C4] text-white text-sm px-4 py-1 rounded-full w-full cursor-not-allowed"
+                        disabled="" id="classType">
+                        <option value="Economy">
+                            Economy
+                        </option>
+                        <option value="Business Class">
+                            Business Class
+                        </option>
+                        <option value="First Class">
+                            First Class
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <!-- Flight summary section -->
+            <div class="flex items-center justify-center gap-4 mt-4 flex-wrap">
+                <!-- Departure Box -->
+                <div class="bg-white rounded-xl px-6 py-3 shadow w-[459px] flex flex-col gap-1">
+                    <!-- Label -->
+                    <span class="text-xs font-bold" style="color: #262A3F;">
+                        DEPARTURE
+                    </span>
+                    <!-- City + Date Row -->
+                    <div>
+                        <div
+                            class="flex items-center justify-between bg-white border border-gray-300 rounded-md px-3 py-2">
+                            <!-- Icon + Input -->
+                            <div class="flex items-center gap-2">
+                                <span class="text-base">
+                                    ✈
+                                </span>
+                                <input class="w-20 text-sm outline-none" id="departure" placeholder="SYD" readonly=""
+                                    type="text" />
+                            </div>
+                            <!-- Date (auto-filled by JS) -->
+                            <input class="text-sm font-bold text-darkblue outline-none bg-transparent"
+                                id="departureDate" readonly="" type="date" />
+                        </div>
+                    </div>
+                </div>
+                <!-- Switch Icon -->
+                <div class="flex items-center justify-center">
+                    <div
+                        class="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-300 text-darkblue text-lg shadow">
+                        ⇆
+                    </div>
+                </div>
+                <!-- Arrival Box -->
+                <div class="bg-white rounded-xl px-6 py-3 shadow w-[459px] flex flex-col gap-1">
+                    <!-- Label -->
+                    <span class="text-xs font-bold" style="color: #262A3F;">
+                        ARRIVAL
+                    </span>
+                    <!-- City + Date Row -->
+                    <div>
+                        <div
+                            class="flex items-center justify-between bg-white border border-gray-300 rounded-md px-3 py-2">
+                            <!-- Icon + Input -->
+                            <div class="flex items-center gap-2">
+                                <span class="text-base">
+                                    ✈
+                                </span>
+                                <input class="w-20 text-sm outline-none" id="arrival" placeholder="MNL" readonly=""
+                                    type="text" />
+                            </div>
+                            <!-- Date (auto-filled by JS) -->
+                            <input class="text-sm font-bold text-darkblue outline-none bg-transparent" id="arrivalDate"
+                                readonly="" type="date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Step Progress -->
+        <div
+            class="bg-[#6AABDD] rounded-xl w-[1025px] mx-auto mt-6 shadow-md px-6 py-3 flex justify-between items-center text-white text-sm font-semibold">
+            <!-- Step 1 -->
+            <div class="flex flex-col items-center w-1/4 relative">
+                <div
+                    class="absolute -top-8 bg-white text-[#6A7BD9] w-9 h-9 rounded-full flex items-center justify-center font-bold border border-gray-300">
+                    1
+                </div>
+                <span class="mt-3 text-white">
+                    Choose Flight
+                </span>
+            </div>
+            <!-- Step 2 -->
+            <div class="flex flex-col items-center w-1/4 relative">
+                <div
+                    class="absolute -top-8 bg-white text-[#6A7BD9] w-9 h-9 rounded-full flex items-center justify-center font-bold border border-gray-300">
+                    2
+                </div>
+                <span class="mt-3 text-white">
+                    Add-Ons
+                </span>
+            </div>
+            <!-- Step 3 -->
+            <div class="flex flex-col items-center w-1/4 relative">
+                <div
+                    class="absolute -top-8 bg-white text-[#6A7BD9] w-9 h-9 rounded-full flex items-center justify-center font-bold border border-gray-300">
+                    3
+                </div>
+                <span class="mt-3 text-white">
+                    Seat Selection
+                </span>
+            </div>
+            <!-- Step 4 -->
+            <div class="flex flex-col items-center w-1/4 relative">
+                <div
+                    class="absolute -top-8 bg-white text-[#263FAD] w-8 h-8 rounded-full flex items-center justify-center font-bold border border-gray-300">
+                    4
+                </div>
+                <span class="mt-3 text-darkblue font-bold">
+                    Payment
+                </span>
+            </div>
         </div>
-    </header>
-  <!-- Booking Summary -->
-  <section class="bg-secondary p-4 rounded-xl mx-4 md:mx-auto max-w-5xl text-darkblue mt-6">
-   <!-- Top dropdown-like options -->
-   <div class="flex flex-wrap justify-center md:justify-start gap-2 mb-4">
-    <!-- Round Trip Dropdown -->
-    <div>
-     <select class="bg-[#8697C4] text-white text-sm px-4 py-1 rounded-full w-full cursor-not-allowed" disabled="" id="tripType">
-      <option value="round-trip">
-       Round Trip
-      </option>
-      <option value="one-way">
-       One Way
-      </option>
-     </select>
-    </div>
-    <!-- Passengers Dropdown -->
-    <div>
-     <div class="flex w-full">
-      <!-- Adults -->
-      <select class="bg-[#8697C4] text-white text-sm px-4 py-1 rounded-l-full border-r-0 border border-[#8697C4] w-1/2 cursor-not-allowed" disabled="" id="adultCount">
-       <option value="0">
-        0 Adult
-       </option>
-       <option value="1">
-        1 Adult
-       </option>
-       <option value="2">
-        2 Adults
-       </option>
-       <option value="3">
-        3 Adults
-       </option>
-       <option value="4">
-        4 Adults
-       </option>
-       <option value="5">
-        5 Adults
-       </option>
-       <option value="6">
-        6 Adults
-       </option>
-       <option value="7">
-        7 Adults
-       </option>
-       <option value="8">
-        8 Adults
-       </option>
-       <option value="9">
-        9 Adults
-       </option>
-      </select>
-      <!-- Children -->
-      <select class="bg-[#8697C4] text-white text-sm px-4 py-1 rounded-r-full border-l-0 border border-[#8697C4] w-1/2 cursor-not-allowed" disabled="" id="childCount">
-       <option value="0">
-        0 Child
-       </option>
-       <option value="1">
-        1 Child
-       </option>
-       <option value="2">
-        2 Children
-       </option>
-       <option value="3">
-        3 Children
-       </option>
-       <option value="4">
-        4 Children
-       </option>
-       <option value="5">
-        5 Children
-       </option>
-       <option value="6">
-        6 Children
-       </option>
-       <option value="7">
-        7 Children
-       </option>
-       <option value="8">
-        8 Children
-       </option>
-       <option value="9">
-        9 Children
-       </option>
-      </select>
-     </div>
-    </div>
-    <!-- Class Dropdown -->
-    <div>
-     <select class="bg-[#8697C4] text-white text-sm px-4 py-1 rounded-full w-full cursor-not-allowed" disabled="" id="classType">
-      <option value="Economy">
-       Economy
-      </option>
-      <option value="Business Class">
-       Business Class
-      </option>
-      <option value="First Class">
-       First Class
-      </option>
-     </select>
-    </div>
-   </div>
-   <!-- Flight summary section -->
-   <div class="flex items-center justify-center gap-4 mt-4 flex-wrap">
-    <!-- Departure Box -->
-    <div class="bg-white rounded-xl px-6 py-3 shadow w-[459px] flex flex-col gap-1">
-     <!-- Label -->
-     <span class="text-xs font-bold" style="color: #262A3F;">
-      DEPARTURE
-     </span>
-     <!-- City + Date Row -->
-     <div>
-      <div class="flex items-center justify-between bg-white border border-gray-300 rounded-md px-3 py-2">
-       <!-- Icon + Input -->
-       <div class="flex items-center gap-2">
-        <span class="text-base">
-         ✈
-        </span>
-        <input class="w-20 text-sm outline-none" id="departure" placeholder="SYD" readonly="" type="text"/>
-       </div>
-       <!-- Date (auto-filled by JS) -->
-       <input class="text-sm font-bold text-darkblue outline-none bg-transparent" id="departureDate" readonly="" type="date"/>
-      </div>
-     </div>
-    </div>
-    <!-- Switch Icon -->
-    <div class="flex items-center justify-center">
-     <div class="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-gray-300 text-darkblue text-lg shadow">
-      ⇆
-     </div>
-    </div>
-    <!-- Arrival Box -->
-    <div class="bg-white rounded-xl px-6 py-3 shadow w-[459px] flex flex-col gap-1">
-     <!-- Label -->
-     <span class="text-xs font-bold" style="color: #262A3F;">
-      ARRIVAL
-     </span>
-     <!-- City + Date Row -->
-     <div>
-      <div class="flex items-center justify-between bg-white border border-gray-300 rounded-md px-3 py-2">
-       <!-- Icon + Input -->
-       <div class="flex items-center gap-2">
-        <span class="text-base">
-         ✈
-        </span>
-        <input class="w-20 text-sm outline-none" id="arrival" placeholder="MNL" readonly="" type="text"/>
-       </div>
-       <!-- Date (auto-filled by JS) -->
-       <input class="text-sm font-bold text-darkblue outline-none bg-transparent" id="arrivalDate" readonly="" type="date"/>
-      </div>
-     </div>
-    </div>
-   </div>
-  </section>
-  <!-- Step Progress -->
-  <div class="bg-[#6AABDD] rounded-xl w-[1025px] mx-auto mt-6 shadow-md px-6 py-3 flex justify-between items-center text-white text-sm font-semibold">
-   <!-- Step 1 -->
-   <div class="flex flex-col items-center w-1/4 relative">
-    <div class="absolute -top-8 bg-white text-[#6A7BD9] w-9 h-9 rounded-full flex items-center justify-center font-bold border border-gray-300">
-     1
-    </div>
-    <span class="mt-3 text-white">
-     Choose Flight
-    </span>
-   </div>
-   <!-- Step 2 -->
-   <div class="flex flex-col items-center w-1/4 relative">
-    <div class="absolute -top-8 bg-white text-[#6A7BD9] w-9 h-9 rounded-full flex items-center justify-center font-bold border border-gray-300">
-     2
-    </div>
-    <span class="mt-3 text-white">
-     Add-Ons
-    </span>
-   </div>
-   <!-- Step 3 -->
-   <div class="flex flex-col items-center w-1/4 relative">
-    <div class="absolute -top-8 bg-white text-[#6A7BD9] w-9 h-9 rounded-full flex items-center justify-center font-bold border border-gray-300">
-     3
-    </div>
-    <span class="mt-3 text-white">
-     Seat Selection
-    </span>
-   </div>
-   <!-- Step 4 -->
-   <div class="flex flex-col items-center w-1/4 relative">
-    <div class="absolute -top-8 bg-white text-[#263FAD] w-8 h-8 rounded-full flex items-center justify-center font-bold border border-gray-300">
-     4
-    </div>
-    <span class="mt-3 text-darkblue font-bold">
-     Payment
-    </span>
-   </div>
-  </div>
-  <!-- Selected Flight Card -->
-  <!-- Selected Flight Container -->
-  <section class="w-[1025px] mx-auto mt-6 bg-white rounded-xl p-4 shadow-md">
-   <h2 class="text-2xl font-bold mb-6 text-blueText">
-    Your Selected Flight
-   </h2>
-   <div id="selectedFlightCard">
-   </div>
-   <div class="w-[1025px] mx-auto mt-6">
-   </div>
-  </section>
-  <!-- Add-ons Summary -->
-  <section class="w-[1025px] mx-auto mt-6 bg-white rounded-xl p-6 shadow-md">
-   <h2 class="text-2xl font-bold mb-4 text-blueText">
-    Add-ons Summary
-   </h2>
-   <ul class="text-sm space-y-2 text-darkblue font-medium addons-summary">
-   </ul>
-  </section>
-  <!-- Passenger Details Section -->
-  <section class="w-[1025px] mx-auto mt-8 bg-white p-6 rounded-xl shadow-md">
-   <h2 class="text-2xl font-bold mb-6 text-blueText">
-    Passenger Details
-   </h2>
-   <form class="space-y-6" id="passengerForm">
-    <!-- Row 1: Title, First Name, Family Name -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-     <div>
-      <label class="block text-sm font-bold text-blueText mb-1">
-       Title
-      </label>
-      <select class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="title" required="">
-       <option value="">
-        Select
-       </option>
-       <option>
-        Mr.
-       </option>
-       <option>
-        Ms.
-       </option>
-       <option>
-        Mrs.
-       </option>
-      </select>
-     </div>
-     <div>
-      <label class="block text-sm font-bold text-blueText mb-1">
-       Given / First Name
-      </label>
-      <input class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="firstName" required="" type="text"/>
-     </div>
-     <div>
-      <label class="block text-sm font-bold text-blueText mb-1">
-       Family Name
-      </label>
-      <input class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="lastName" required="" type="text"/>
-     </div>
-    </div>
-    <!-- Row 2: DOB, Nationality -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-     <div>
-      <label class="block text-sm font-bold text-blueText mb-1">
-       Date of Birth
-      </label>
-      <input class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="dob" required="" type="date"/>
-     </div>
-     <div>
-      <label class="block text-sm font-bold text-blueText mb-1">
-       Nationality
-      </label>
-      <input class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="nationality" required="" type="text"/>
-     </div>
-    </div>
-    <!-- Row 3: Country Code + Phone -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-     <div>
-      <label class="block text-sm font-bold text-blueText mb-1">
-       Country Code
-      </label>
-      <select class="w-full md:w-36 border border-gray-300 rounded px-2 py-2 text-sm" id="countryCode" required="">
-       <option value="+60">
-        +60 (Malaysia)
-       </option>
-       <option value="+61">
-        +61 (Australia)
-       </option>
-       <option value="+65">
-        +65 (Singapore)
-       </option>
-       <option value="+1">
-        +1 (USA)
-       </option>
-       <option value="+44">
-        +44 (UK)
-       </option>
-       <option value="+86">
-        +86 (China)
-       </option>
-       <option value="+852">
-        +852 (Hong Kong)
-       </option>
-       <option value="+81">
-        +81 (Japan)
-       </option>
-       <option value="+62">
-        +62 (Indonesia)
-       </option>
-       <option value="+91">
-        +91 (India)
-       </option>
-      </select>
-     </div>
-     <div>
-      <label class="block text-sm font-bold text-blueText mb-1">
-       Mobile Number
-      </label>
-      <input class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="mobile" required="" type="tel"/>
-     </div>
-    </div>
-    <!-- Row 4: Passport Number -->
-    <div>
-     <label class="block text-sm font-bold text-blueText mb-1">
-      Passport Number
-     </label>
-     <input class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="passport" required="" type="text"/>
-    </div>
-    <!-- Row 5: Email -->
-    <div>
-     <label class="block text-sm font-bold text-blueText mb-1">
-      Email Address
-     </label>
-     <input class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="email" required="" type="email"/>
-    </div>
-   </form>
-  </section>
-  <!-- Payment Details Section -->
-  <section class="w-[1025px] mx-auto mt-8 bg-white p-6 rounded-xl shadow-md">
-   <h2 class="text-2xl font-bold mb-6 text-blueText">
-    Payment Details
-   </h2>
-   <form class="space-y-6" id="paymentForm">
-    <!-- Row 1: Name on Card -->
-    <div>
-     <label class="block text-sm font-bold text-blueText mb-1" for="cardName">
-      Name on Card
-     </label>
-     <input class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="cardName" name="cardName" required="" type="text"/>
-    </div>
-    <!-- Row 2: Card Number -->
-    <div>
-     <label class="block text-sm font-bold text-blueText mb-1" for="cardNumber">
-      Card Number
-     </label>
-     <input class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="cardNumber" maxlength="19" name="cardNumber" placeholder="1234 5678 9012 3456" required="" type="text"/>
-    </div>
-    <!-- Row 3: Expiration Date and CVV -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-     <div>
-      <label class="block text-sm font-bold text-blueText mb-1" for="expDate">
-       Expiration Date
-      </label>
-      <input class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="expDate" name="expDate" required="" type="month"/>
-     </div>
-     <div>
-      <label class="block text-sm font-bold text-blueText mb-1" for="cvv">
-       CVV
-      </label>
-      <input class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="cvv" maxlength="4" name="cvv" placeholder="e.g. 123" required="" type="text"/>
-     </div>
-    </div>
-    <!-- Grand Total and Confirm Button -->
-    <div class="flex justify-end mt-8">
-     <div class="text-right">
-      <div class="text-xl font-bold text-blueText mb-2" id="grandTotal">
-       Grand Total: $0.00
-      </div>
-      <button class="bg-[#3D52A2] hover:bg-[#2e3f7d] text-white font-semibold px-6 py-2 rounded-lg transition" onclick="validatePayment()" type="button">
-       Confirm and Pay
-      </button>
-     </div>
-    </div>
-   </form>
-  </section>
-  <!-- Footer -->
-  <footer class="text-sm text-center mt-12 mb-6 text-gray-500">
-   <div class="space-x-4">
-    <a class="hover:underline" href="#">
-     Privacy and Cookie Policy
-    </a>
-    <a class="hover:underline" href="#">
-     Website Terms and Use
-    </a>
-    <a class="hover:underline" href="#">
-     Security
-    </a>
-    <a class="hover:underline" href="#">
-     Accessibility
-    </a>
-    <a class="hover:underline" href="#">
-     Site Map
-    </a>
-   </div>
-   <p class="mt-2">
-    © Copyright 2025 FlyDreamAir
-   </p>
-  </footer>
-  <!--TailWind-->
-  <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Selected Flight Card -->
+        <!-- Selected Flight Container -->
+        <section class="w-[1025px] mx-auto mt-6 bg-white rounded-xl p-4 shadow-md">
+            <h2 class="text-2xl font-bold mb-6 text-blueText">
+                Your Selected Flight
+            </h2>
+            <div id="selectedFlightCard">
+            </div>
+            <div class="w-[1025px] mx-auto mt-6">
+            </div>
+        </section>
+        <!-- Add-ons Summary -->
+        <section class="w-[1025px] mx-auto mt-6 bg-white rounded-xl p-6 shadow-md">
+            <h2 class="text-2xl font-bold mb-4 text-blueText">
+                Add-ons Summary
+            </h2>
+            <ul class="text-sm space-y-2 text-darkblue font-medium addons-summary">
+            </ul>
+        </section>
+        <!-- Passenger Details Section -->
+        <section class="w-[1025px] mx-auto mt-8 bg-white p-6 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold mb-6 text-blueText">
+                Passenger Details
+            </h2>
+            <form class="space-y-6" id="passengerForm">
+                <!-- Row 1: Title, First Name, Family Name -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-sm font-bold text-blueText mb-1">
+                            Title
+                        </label>
+                        <select class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="title" required="">
+                            <option value="">
+                                Select
+                            </option>
+                            <option>
+                                Mr.
+                            </option>
+                            <option>
+                                Ms.
+                            </option>
+                            <option>
+                                Mrs.
+                            </option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-blueText mb-1">
+                            Given / First Name
+                        </label>
+                        <input class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="firstName"
+                            required="" type="text" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-blueText mb-1">
+                            Family Name
+                        </label>
+                        <input class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="lastName" required=""
+                            type="text" />
+                    </div>
+                </div>
+                <!-- Row 2: DOB, Nationality -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-bold text-blueText mb-1">
+                            Date of Birth
+                        </label>
+                        <input class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="dob" required=""
+                            type="date" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-blueText mb-1">
+                            Nationality
+                        </label>
+                        <input class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="nationality"
+                            required="" type="text" />
+                    </div>
+                </div>
+                <!-- Row 3: Country Code + Phone -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-bold text-blueText mb-1">
+                            Country Code
+                        </label>
+                        <select class="w-full md:w-36 border border-gray-300 rounded px-2 py-2 text-sm" id="countryCode"
+                            required="">
+                            <option value="+60">
+                                +60 (Malaysia)
+                            </option>
+                            <option value="+61">
+                                +61 (Australia)
+                            </option>
+                            <option value="+65">
+                                +65 (Singapore)
+                            </option>
+                            <option value="+1">
+                                +1 (USA)
+                            </option>
+                            <option value="+44">
+                                +44 (UK)
+                            </option>
+                            <option value="+86">
+                                +86 (China)
+                            </option>
+                            <option value="+852">
+                                +852 (Hong Kong)
+                            </option>
+                            <option value="+81">
+                                +81 (Japan)
+                            </option>
+                            <option value="+62">
+                                +62 (Indonesia)
+                            </option>
+                            <option value="+91">
+                                +91 (India)
+                            </option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-blueText mb-1">
+                            Mobile Number
+                        </label>
+                        <input class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="mobile" required=""
+                            type="tel" />
+                    </div>
+                </div>
+                <!-- Row 4: Passport Number -->
+                <div>
+                    <label class="block text-sm font-bold text-blueText mb-1">
+                        Passport Number
+                    </label>
+                    <input class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="passport" required=""
+                        type="text" />
+                </div>
+                <!-- Row 5: Email -->
+                <div>
+                    <label class="block text-sm font-bold text-blueText mb-1">
+                        Email Address
+                    </label>
+                    <input class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="email" required=""
+                        type="email" />
+                </div>
+            </form>
+        </section>
+        <!-- Payment Details Section -->
+        <section class="w-[1025px] mx-auto mt-8 bg-white p-6 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold mb-6 text-blueText">
+                Payment Details
+            </h2>
+            <form class="space-y-6" id="paymentForm">
+                <!-- Row 1: Name on Card -->
+                <div>
+                    <label class="block text-sm font-bold text-blueText mb-1" for="cardName">
+                        Name on Card
+                    </label>
+                    <input class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="cardName" name="cardName"
+                        required="" type="text" />
+                </div>
+                <!-- Row 2: Card Number -->
+                <div>
+                    <label class="block text-sm font-bold text-blueText mb-1" for="cardNumber">
+                        Card Number
+                    </label>
+                    <input class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="cardNumber"
+                        maxlength="19" name="cardNumber" placeholder="1234 5678 9012 3456" required="" type="text" />
+                </div>
+                <!-- Row 3: Expiration Date and CVV -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-bold text-blueText mb-1" for="expDate">
+                            Expiration Date
+                        </label>
+                        <input class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="expDate"
+                            name="expDate" required="" type="month" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-blueText mb-1" for="cvv">
+                            CVV
+                        </label>
+                        <input class="w-full border border-gray-300 rounded px-3 py-2 text-sm" id="cvv" maxlength="4"
+                            name="cvv" placeholder="e.g. 123" required="" type="text" />
+                    </div>
+                </div>
+                <!-- Grand Total and Confirm Button -->
+                <div class="flex justify-end mt-8">
+                    <div class="text-right">
+                        <div class="text-xl font-bold text-blueText mb-2" id="grandTotal">
+                            Grand Total: $0.00
+                        </div>
+                        <button
+                            class="bg-[#3D52A2] hover:bg-[#2e3f7d] text-white font-semibold px-6 py-2 rounded-lg transition"
+                            onclick="validatePayment()" type="button">
+                            Confirm and Pay
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <!-- Footer -->
+        <footer class="text-sm text-center mt-12 mb-6 text-gray-500">
+            <div class="space-x-4">
+                <a class="hover:underline" href="#">
+                    Privacy and Cookie Policy
+                </a>
+                <a class="hover:underline" href="#">
+                    Website Terms and Use
+                </a>
+                <a class="hover:underline" href="#">
+                    Security
+                </a>
+                <a class="hover:underline" href="#">
+                    Accessibility
+                </a>
+                <a class="hover:underline" href="#">
+                    Site Map
+                </a>
+            </div>
+            <p class="mt-2">
+                © Copyright 2025 FlyDreamAir
+            </p>
+        </footer>
+        <!--TailWind-->
+        <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- JavaScript -->
-  <script src="passenger-payment/js/passenger-payment.js">
-  </script>
- </body>
+        <!-- JavaScript -->
+        <script src="/passenger-payment/js/passenger-payment.js">
+        </script>
+    </body>
+
 </html>
-
-
