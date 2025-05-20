@@ -1,463 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FlyDreamAir - Your Dream Journey Begins Here</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .hero-bg {
-            background-image: url('/img/sky.gif');
-            background-size: cover;
-            background-position: center;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlyDreamAir - Your Dream Journey Begins Here</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+    .hero-bg {
+      background-image: url('sky.gif');
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
 </head>
-
 <body class="bg-gray-100 text-gray-900">
 
-    <!-- Header -->
-    <header class="bg-white py-4 shadow-md">
-        <div class="container mx-auto flex justify-between items-center px-4">
-            <a href="/" class="flex items-center gap-2">
-                <img src="/img/logo.png" alt="FlyDreamAir logo" class="h-8 w-8">
-                <span class="font-bold text-lg" style="color: #262A3F;">FlyDreamAir</span>
-            </a>
-            <nav class="space-x-4">
-                <a href="/book-flight" class="text-gray-600 hover:text-blue-500 transition duration-300">Book</a>
-                <a href="/user-flight-info" class="text-gray-600 hover:text-blue-500 transition duration-300">Travel
-                    Info</a>
-                <a href="/about" class="text-gray-600 hover:text-blue-500 transition duration-300">About</a>
-            </nav>
-        </div>
-    </header>
+  <!-- Header -->
+  <header class="flex justify-between items-center py-4 px-6 bg-white shadow">
+    <div class="flex items-center gap-2">
+      <img src="logo.png" alt="FlyDreamAir logo" class="h-8 w-8">
+      <span class="font-bold text-lg" style="color: #262A3F;">FlyDreamAir</span>
+    </div>
+    <nav class="hidden md:flex gap-6 text-sm text-gray-700">
+      <a href="#">Services</a>
+      <a href="#">Manage Flight</a>
+      <a href="#">Travel Info</a>
+    </nav>
+    <div class="flex items-center gap-4">
+      <button><i class="fas fa-search"></i></button>
+      <button><i class="fas fa-user-circle"></i></button>
+    </div>
+  </header>
 
     <!-- Hero / Search Section -->
     <section class="relative text-white hero-bg overflow-hidden">
-        <img src="/img/airplane.png"
-            class="absolute bottom-[-90px] -left-60 z-50 w-[px] md:w-[1080px] pointer-events-none"
-            alt="Airplane overlay">
+    <img src="airplane.png"
+        class="absolute bottom-[-90px] -left-60 z-50 w-[px] md:w-[1080px] pointer-events-none"
+        alt="Airplane overlay">
 
-        <div class="relative z-20 container mx-auto px-6 pt-24 pb-24 flex flex-col md:flex-row items-center">
-            <!-- Hero Text -->
-            <div class="md:w-1/2 mb-10 md:mb-0 -mt-60">
-                <h1 class="text-5xl font-black leading-tight drop-shadow-lg">
-                    YOUR DREAM<br>JOURNEY<br>BEGINS HERE.
-                </h1>
-                <p class="mt-4 text-lg drop-shadow">Get the best flights with FlyDreamAir.</p>
-            </div>
-
-            <!-- Search Form -->
-            <div class="bg-white text-gray-800 p-6 rounded-xl shadow-lg md:ml-10 md:w-1/2 w-full">
-                <h2 class="font-bold mb-4 text-lg" style="color: #262A3F;">SEARCH FLIGHT</h2>
-                <form class="space-y-4">
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium">From</label>
-                            <select id="from" class="w-full border rounded px-3 py-2">
-                                <option value="SYD">Sydney, Australia</option>
-                                <option value="MEL">Melbourne, Australia</option>
-                                <option value="BNE">Brisbane, Australia</option>
-                                <option value="PER">Perth, Australia</option>
-                                <option value="ADL">Adelaide, Australia</option>
-                                <option value="DRW">Darwin, Australia</option>
-                                <option value="HBA">Hobart, Australia</option>
-                                <option value="CNS">Cairns, Australia</option>
-                                <option value="OOL">Gold Coast, Australia</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium">To</label>
-                            <select id="to" class="w-full border rounded px-3 py-2">
-                                <option value="MNL">Manila, Philippines</option>
-                                <option value="SGN">Ho Chi Minh, Vietnam</option>
-                                <option value="HND">Tokyo, Japan</option>
-                                <option value="CDG">Paris, France</option>
-                                <option value="LHR">London, UK</option>
-                                <option value="JFK">New York, USA</option>
-                                <option value="SIN">Singapore</option>
-                                <option value="BKK">Bangkok, Thailand</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium">Departure</label>
-                            <input type="date" id="departure" class="w-full border rounded px-3 py-2" min="2024-04-07">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium">Return</label>
-                            <input type="date" id="return" class="w-full border rounded px-3 py-2" min="2024-04-07">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium">Passengers</label>
-                        <div class="grid grid-cols-3 gap-4">
-                            <div>
-                                <label for="adults" class="block text-gray-600 text-xs mb-1">Adults (12+ years)</label>
-                                <select id="adults" class="w-full border rounded px-3 py-2">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="children" class="block text-gray-600 text-xs mb-1">Children (2–11)</label>
-                                <select id="children" class="w-full border rounded px-3 py-2">
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="infants" class="block text-gray-600 text-xs mb-1">Infants (0–2)</label>
-                                <select id="infants" class="w-full border rounded px-3 py-2">
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="w-full text-white py-2 rounded font-semibold" style="background-color: #262A3F;">
-                        <a id="book-now">Book Now</a>
-                    </button>
-                </form>
-            </div>
+    <div class="relative z-20 container mx-auto px-6 pt-24 pb-24 flex flex-col md:flex-row items-center">
+        <!-- Hero Text -->
+        <div class="md:w-1/2 mb-10 md:mb-0 -mt-60">
+        <h1 class="text-5xl font-black leading-tight drop-shadow-lg">
+            YOUR DREAM<br>JOURNEY<br>BEGINS HERE.
+        </h1>
+        <p class="mt-4 text-lg drop-shadow">Get the best flights with FlyDreamAir.</p>
         </div>
+
+        <!-- Search Form -->
+        <div class="bg-white text-gray-800 p-6 rounded-xl shadow-lg md:ml-10 md:w-1/2 w-full">
+        <h2 class="font-bold mb-4 text-lg" style="color: #262A3F;">SEARCH FLIGHT</h2>
+        <form class="space-y-4">
+            <div class="grid grid-cols-2 gap-4">
+            <div>
+                <label class="block text-sm font-medium">From</label>
+                <select class="w-full border rounded px-3 py-2">
+                <option>Sydney, Australia</option>
+                <option>Other, Location</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium">To</label>
+                <select class="w-full border rounded px-3 py-2">
+                <option>Manila, Philippines</option>
+                <option>Other, Location</option>
+                </select>
+            </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+            <div>
+                <label class="block text-sm font-medium">Departure</label>
+                <input type="date" class="w-full border rounded px-3 py-2" value="2025-04-07">
+            </div>
+            <div>
+                <label class="block text-sm font-medium">Return</label>
+                <input type="date" class="w-full border rounded px-3 py-2" value="2025-04-11">
+            </div>
+            </div>
+            <div>
+            <label class="block text-sm font-medium">Passengers</label>
+            <div class="grid grid-cols-3 gap-4">
+                <div>
+                <label for="adults" class="block text-gray-600 text-xs mb-1">Adults (12+ years)</label>
+                <select id="adults" class="w-full border rounded px-3 py-2">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+                </div>
+                <div>
+                <label for="children" class="block text-gray-600 text-xs mb-1">Children (2–11)</label>
+                <select id="children" class="w-full border rounded px-3 py-2">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+                </div>
+                <div>
+                <label for="infants" class="block text-gray-600 text-xs mb-1">Infants (0–2)</label>
+                <select id="infants" class="w-full border rounded px-3 py-2">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                </select>
+                </div>
+            </div>
+            </div>
+            <button class="w-full text-white py-2 rounded font-semibold" style="background-color: #262A3F;">BOOK NOW</button>
+        </form>
+        </div>
+    </div>
     </section>
 
 
-    <!-- Domestic Flights -->
-    <section class="py-12">
-        <div class="text-center">
-            <h2 class="text-2xl font-extrabold" style="color: #262A3F;">DOMESTIC FLIGHTS</h2>
-            <p class="text-gray-600">Travel locally with the best deals.</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 px-6">
-            <div class="bg-white rounded-xl shadow p-4">
-                <img src="/img/melbourne.jpg" alt="Melbourne" class="rounded-md w-full h-64 object-cover">
-                <h3 class="font-bold mt-4">MELBOURNE</h3>
-                <p class="text-sm text-gray-500">From $259.00</p>
-                <button class="mt-2 text-white px-4 py-2 rounded" style="background-color: #262A3F;">Book Now</button>
-            </div>
-            <div class="bg-white rounded-xl shadow p-4">
-                <img src="/img/brisbane.jpg" alt="Brisbane" class="rounded-md w-full h-64 object-cover">
-                <h3 class="font-bold mt-4">BRISBANE</h3>
-                <p class="text-sm text-gray-500">From $231.00</p>
-                <button class="mt-2 text-white px-4 py-2 rounded" style="background-color: #262A3F;">Book Now</button>
-            </div>
-            <div class="bg-white rounded-xl shadow p-4">
-                <img src="/img/perth.jpg" alt="Perth" class="rounded-md w-full h-64 object-cover">
-                <h3 class="font-bold mt-4">PERTH</h3>
-                <p class="text-sm text-gray-500">From $391.00</p>
-                <button class="mt-2 text-white px-4 py-2 rounded" style="background-color: #262A3F;">Book Now</button>
-            </div>
-        </div>
-        <div class="text-center mt-6">
-            <button class="text-white px-6 py-2 rounded-full inline-flex items-center gap-2"
-                style="background-color: #262A3F;">
-                Search More <i class="fas fa-plane"></i>
-            </button>
-        </div>
-    </section>
+  <!-- Domestic Flights -->
+  <section class="py-12">
+    <div class="text-center">
+      <h2 class="text-2xl font-extrabold" style="color: #262A3F;">DOMESTIC FLIGHTS</h2>
+      <p class="text-gray-600">Travel locally with the best deals.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 px-6">
+      <div class="bg-white rounded-xl shadow p-4">
+        <img src="melbourne.jpg" alt="Melbourne" class="rounded-md w-full h-64 object-cover">
+        <h3 class="font-bold mt-4">MELBOURNE</h3>
+        <p class="text-sm text-gray-500">From $259.00</p>
+        <button class="mt-2 text-white px-4 py-2 rounded" style="background-color: #262A3F;">Book Now</button>
+      </div>
+      <div class="bg-white rounded-xl shadow p-4">
+        <img src="brisbane.jpg" alt="Brisbane" class="rounded-md w-full h-64 object-cover">
+        <h3 class="font-bold mt-4">BRISBANE</h3>
+        <p class="text-sm text-gray-500">From $231.00</p>
+        <button class="mt-2 text-white px-4 py-2 rounded" style="background-color: #262A3F;">Book Now</button>
+      </div>
+      <div class="bg-white rounded-xl shadow p-4">
+        <img src="perth.jpg" alt="Perth" class="rounded-md w-full h-64 object-cover">
+        <h3 class="font-bold mt-4">PERTH</h3>
+        <p class="text-sm text-gray-500">From $391.00</p>
+        <button class="mt-2 text-white px-4 py-2 rounded" style="background-color: #262A3F;">Book Now</button>
+      </div>
+    </div>
+    <div class="text-center mt-6">
+      <button class="text-white px-6 py-2 rounded-full inline-flex items-center gap-2" style="background-color: #262A3F;">
+        Search More <i class="fas fa-plane"></i>
+      </button>
+    </div>
+  </section>
 
-    <!-- International Flights -->
-    <section class="py-12 bg-gray-50">
-        <div class="text-center">
-            <h2 class="text-2xl font-extrabold" style="color: #262A3F;">INTERNATIONAL FLIGHTS</h2>
-            <p class="text-gray-600">Explore the world with us.</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 px-6">
-            <div class="bg-white rounded-xl shadow p-4">
-                <img src="/img/hochiminh.jpg" alt="Ho Chi Minh" class="rounded-md w-full h-64 object-cover">
-                <h3 class="font-bold mt-4">HO CHI MINH</h3>
-                <p class="text-sm text-gray-500">From $447.00</p>
-                <button class="mt-2 text-white px-4 py-2 rounded" style="background-color: #262A3F;">Book Now</button>
-            </div>
-            <div class="bg-white rounded-xl shadow p-4">
-                <img src="/img/tokyo.jpg" alt="Tokyo" class="rounded-md w-full h-64 object-cover">
-                <h3 class="font-bold mt-4">TOKYO</h3>
-                <p class="text-sm text-gray-500">From $718.00</p>
-                <button class="mt-2 text-white px-4 py-2 rounded" style="background-color: #262A3F;">Book Now</button>
-            </div>
-            <div class="bg-white rounded-xl shadow p-4">
-                <img src="/img/paris.jpg" alt="Paris" class="rounded-md w-full h-64 object-cover">
-                <h3 class="font-bold mt-4">PARIS</h3>
-                <p class="text-sm text-gray-500">From $1248.00</p>
-                <button class="mt-2 text-white px-4 py-2 rounded" style="background-color: #262A3F;">Book Now</button>
-            </div>
-        </div>
-        <div class="text-center mt-6">
-            <button class="text-white px-6 py-2 rounded-full inline-flex items-center gap-2"
-                style="background-color: #262A3F;">
-                Search More <i class="fas fa-plane"></i>
-            </button>
-        </div>
-    </section>
+  <!-- International Flights -->
+  <section class="py-12 bg-gray-50">
+    <div class="text-center">
+      <h2 class="text-2xl font-extrabold" style="color: #262A3F;">INTERNATIONAL FLIGHTS</h2>
+      <p class="text-gray-600">Explore the world with us.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 px-6">
+      <div class="bg-white rounded-xl shadow p-4">
+        <img src="hochiminh.jpg" alt="Ho Chi Minh" class="rounded-md w-full h-64 object-cover">
+        <h3 class="font-bold mt-4">HO CHI MINH</h3>
+        <p class="text-sm text-gray-500">From $447.00</p>
+        <button class="mt-2 text-white px-4 py-2 rounded" style="background-color: #262A3F;">Book Now</button>
+      </div>
+      <div class="bg-white rounded-xl shadow p-4">
+        <img src="tokyo.jpg" alt="Tokyo" class="rounded-md w-full h-64 object-cover">
+        <h3 class="font-bold mt-4">TOKYO</h3>
+        <p class="text-sm text-gray-500">From $718.00</p>
+        <button class="mt-2 text-white px-4 py-2 rounded" style="background-color: #262A3F;">Book Now</button>
+      </div>
+      <div class="bg-white rounded-xl shadow p-4">
+        <img src="paris.jpg" alt="Paris" class="rounded-md w-full h-64 object-cover">
+        <h3 class="font-bold mt-4">PARIS</h3>
+        <p class="text-sm text-gray-500">From $1248.00</p>
+        <button class="mt-2 text-white px-4 py-2 rounded" style="background-color: #262A3F;">Book Now</button>
+      </div>
+    </div>
+    <div class="text-center mt-6">
+      <button class="text-white px-6 py-2 rounded-full inline-flex items-center gap-2" style="background-color: #262A3F;">
+        Search More <i class="fas fa-plane"></i>
+      </button>
+    </div>
+  </section>
 
     <!-- Our Services Section -->
     <section class="bg-blue-100 py-16">
-        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <!-- Left Column -->
-            <div class="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
-                <h1 class="text-4xl font-extrabold text-[#262A3F] tracking-tight">Our Services</h1>
-                <h2 class="text-2xl font-medium text-[#262A3F]">Why fly with us?</h2>
-                <img src="/img/passenger.jpg" alt="Passenger"
-                    class="rounded-xl shadow-xl w-full max-w-sm object-cover mx-auto md:mx-0">
-
-                <div class="mt-4">
-                    <h3 id="service-heading" class="text-xl md:text-2xl font-semibold text-[#262A3F]">Book Flights
-                        Easily</h3>
-                    <p id="service-description" class="text-[#262A3F] mt-2 leading-relaxed">
-                        At FlyDreamAir, we are committed to...
-                    </p>
-                    <a href="#" class="inline-block mt-4 text-blue-900 underline hover:text-blue-700 transition">Learn
-                        More →</a>
-                </div>
-            </div>
-
-            <!-- Right Column -->
-            <div class="space-y-4">
-                <button
-                    class="service-button bg-white text-[#262A3F] hover:bg-[#f1f1f1] transition p-4 rounded-xl shadow w-full text-left font-medium"
-                    onclick="updateServiceDescription(event, 'book')">
-                    Book Flights Easily
-                </button>
-                <button
-                    class="service-button bg-white text-[#262A3F] hover:bg-[#f1f1f1] transition p-4 rounded-xl shadow w-full text-left font-medium"
-                    onclick="updateServiceDescription(event, 'manage')">
-                    Manage Your Flight
-                </button>
-                <button
-                    class="service-button bg-white text-[#262A3F] hover:bg-[#f1f1f1] transition p-4 rounded-xl shadow w-full text-left font-medium"
-                    onclick="updateServiceDescription(event, 'status')">
-                    Flight Status
-                </button>
-                <button
-                    class="service-button bg-white text-[#262A3F] hover:bg-[#f1f1f1] transition p-4 rounded-xl shadow w-full text-left font-medium"
-                    onclick="updateServiceDescription(event, 'inflight')">
-                    In-Flight Services
-                </button>
-            </div>
+    <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <!-- Left Column -->
+        <div class="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
+        <h1 class="text-4xl font-extrabold text-[#262A3F] tracking-tight">Our Services</h1>
+        <h2 class="text-2xl font-medium text-[#262A3F]">Why fly with us?</h2>
+        <img src="passenger.jpg" alt="Passenger" class="rounded-xl shadow-xl w-full max-w-sm object-cover mx-auto md:mx-0">
+        
+        <div class="mt-4">
+            <h3 id="service-heading" class="text-xl md:text-2xl font-semibold text-[#262A3F]">Book Flights Easily</h3>
+            <p id="service-description" class="text-[#262A3F] mt-2 leading-relaxed">
+            At FlyDreamAir, we are committed to...
+            </p>
+            <a href="#" class="inline-block mt-4 text-blue-900 underline hover:text-blue-700 transition">Learn More →</a>
         </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="space-y-4">
+        <button class="service-button bg-white text-[#262A3F] hover:bg-[#f1f1f1] transition p-4 rounded-xl shadow w-full text-left font-medium" onclick="updateServiceDescription(event, 'book')">
+            Book Flights Easily
+        </button>
+        <button class="service-button bg-white text-[#262A3F] hover:bg-[#f1f1f1] transition p-4 rounded-xl shadow w-full text-left font-medium" onclick="updateServiceDescription(event, 'manage')">
+            Manage Your Flight
+        </button>
+        <button class="service-button bg-white text-[#262A3F] hover:bg-[#f1f1f1] transition p-4 rounded-xl shadow w-full text-left font-medium" onclick="updateServiceDescription(event, 'status')">
+            Flight Status
+        </button>
+        <button class="service-button bg-white text-[#262A3F] hover:bg-[#f1f1f1] transition p-4 rounded-xl shadow w-full text-left font-medium" onclick="updateServiceDescription(event, 'inflight')">
+            In-Flight Services
+        </button>
+        </div>
+    </div>
     </section>
 
     <script>
-        // Modal functions
-        function showModal(message) {
-            const modal = document.getElementById('errorModal');
-            const modalMessage = document.getElementById('modalMessage');
-            modalMessage.textContent = message;
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
+    function updateServiceDescription(event, service) {
+        const descriptionElement = document.getElementById('service-description');
+        const headingElement = document.getElementById('service-heading');
+        const buttons = document.querySelectorAll('.service-button');
 
-        function closeModal() {
-            const modal = document.getElementById('errorModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const bookNowButton = document.getElementById('book-now');
-
-            // Function to get airport code from city name
-            function getAirportCode(cityName) {
-                const airportCodes = {
-                    'SYDNEY': 'SYD',
-                    'MANILA': 'MNL',
-                    'MELBOURNE': 'MEL',
-                    'BRISBANE': 'BNE',
-                    'PERTH': 'PER',
-                    'ADELAIDE': 'ADL',
-                    'DARWIN': 'DRW',
-                    'HOBART': 'HBA',
-                    'CAIRNS': 'CNS',
-                    'GOLD COAST': 'OOL'
-                };
-                return airportCodes[cityName] || cityName;
-            }
-
-            // Set default values
-            const defaultDepartureDate = '2025-04-07';
-            const defaultReturnDate = '2025-04-11';
-
-            // Set default values for form fields
-            if (document.getElementById('from')) document.getElementById('from').value = 'SYD';
-            if (document.getElementById('to')) document.getElementById('to').value = 'MNL';
-            if (document.getElementById('departure')) document.getElementById('departure').value = defaultDepartureDate;
-            if (document.getElementById('return')) document.getElementById('return').value = defaultReturnDate;
-            if (document.getElementById('adults')) document.getElementById('adults').value = '1';
-            if (document.getElementById('children')) document.getElementById('children').value = '0';
-            if (document.getElementById('infants')) document.getElementById('infants').value = '0';
-
-            // Function to handle form submission
-            function handleFlightSearch(e) {
-                if (e) e.preventDefault();
-
-                try {
-                    // Get form values
-                    const fromLocation = document.getElementById('from')?.value;
-                    const toLocation = document.getElementById('to')?.value;
-                    const departureDate = document.getElementById('departure')?.value;
-                    const returnDate = document.getElementById('return')?.value;
-                    const adults = document.getElementById('adults')?.value;
-                    const children = document.getElementById('children')?.value;
-                    const infants = document.getElementById('infants')?.value;
-
-                    // Validate required fields
-                    if (!fromLocation || !toLocation || !departureDate || !returnDate || !adults) {
-                        showModal('Please fill in all required fields');
-                        return;
-                    }
-
-                    // Validate dates
-                    const departDate = new Date(departureDate);
-                    const arriveDate = new Date(returnDate);
-
-                    // Set time to midnight for accurate date comparison
-                    departDate.setHours(0, 0, 0, 0);
-                    arriveDate.setHours(0, 0, 0, 0);
-
-                    if (departDate > arriveDate) {
-                        showModal('Departure date cannot be later than return date');
-                        return;
-                    }
-
-                    // Get city names and convert to airport codes
-                    const fromCity = fromLocation.split(',')[0].trim().toUpperCase();
-                    const toCity = toLocation.split(',')[0].trim().toUpperCase();
-
-                    // Save to localStorage with new structure using form values
-                    const flightSearch = {
-                        tripType: "one-way",
-                        adults: parseInt(adults) || 0,
-                        children: parseInt(children) || 0,
-                        infants: parseInt(infants) || 0,
-                        classType: "Economy",
-                        departure: getAirportCode(fromCity),
-                        arrival: getAirportCode(toCity),
-                        departureDate: departureDate,
-                        arrivalDate: returnDate
-                    };
-
-                    localStorage.setItem('flightSearch', JSON.stringify(flightSearch));
-
-                    // Redirect to seat selection page
-                    window.location.href = '/book-flight';
-                } catch (error) {
-                    console.error('Error processing flight search:', error);
-                    showModal('An error occurred while processing your request. Please try again.');
-                }
-            }
-
-            // Add click event listener to the Book Now button
-            if (bookNowButton) {
-                bookNowButton.addEventListener('click', handleFlightSearch);
-            }
-
-            // Also handle form submission
-            const searchForm = document.querySelector('form');
-            if (searchForm) {
-                searchForm.addEventListener('submit', handleFlightSearch);
-            }
+        // Reset all buttons
+        buttons.forEach(button => {
+        button.classList.remove('bg-[#262A3F]', 'text-white');
+        button.classList.add('bg-white', 'text-[#262A3F]');
         });
 
-        function updateServiceDescription(event, service) {
-            const descriptionElement = document.getElementById('service-description');
-            const headingElement = document.getElementById('service-heading');
-            const buttons = document.querySelectorAll('.service-button');
+        // Highlight active button
+        const clickedButton = event.currentTarget;
+        clickedButton.classList.remove('bg-white', 'text-[#262A3F]');
+        clickedButton.classList.add('bg-[#262A3F]', 'text-white');
 
-            // Reset all buttons
-            buttons.forEach(button => {
-                button.classList.remove('bg-[#262A3F]', 'text-white');
-                button.classList.add('bg-white', 'text-[#262A3F]');
-            });
-
-            // Highlight active button
-            const clickedButton = event.currentTarget;
-            clickedButton.classList.remove('bg-white', 'text-[#262A3F]');
-            clickedButton.classList.add('bg-[#262A3F]', 'text-white');
-
-            // Service content
-            const content = {
-                book: {
-                    heading: "Book Flights Easily",
-                    description: "Book your flights with ease through our user-friendly platform. Search, compare, and book flights in minutes with our intuitive booking system. Get the best deals and flexible options for your travel needs."
-                },
-                manage: {
-                    heading: "Manage Your Booking",
-                    description: "Take control of your booking with our comprehensive management system. Modify your flight details, update passenger information, and make changes to your itinerary."
-                },
-                status: {
-                    heading: "Flight Status",
-                    description: "Stay informed about your flight with real-time status updates. Track your flight's departure, arrival times, gate information, and any schedule changes."
-                },
-                inflight: {
-                    heading: "In-Flight Services",
-                    description: "Enjoy a premium flying experience with our in-flight services. From gourmet meals to entertainment, we ensure you're comfortable and relaxed throughout your flight."
-                }
-            };
-
-            const selectedContent = content[service];
-            headingElement.textContent = selectedContent.heading;
-            descriptionElement.textContent = selectedContent.description;
+        // Service content
+        const content = {
+        book: {
+            heading: "Book Flights Easily",
+            description: "Book your flights with ease through our user-friendly platform. Search, compare, and book flights in minutes with our intuitive booking system. Get the best deals and flexible options for your travel needs."
+        },
+        manage: {
+            heading: "Manage Your Booking",
+            description: "Take control of your booking with our comprehensive management system. Modify your flight details, update passenger information, and make changes to your itinerary."
+        },
+        status: {
+            heading: "Flight Status",
+            description: "Stay informed about your flight with real-time status updates. Track your flight's departure, arrival times, gate information, and any schedule changes."
+        },
+        inflight: {
+            heading: "In-Flight Services",
+            description: "Enjoy a premium flying experience with our in-flight services. From gourmet meals to entertainment, we ensure you’re comfortable and relaxed throughout your flight."
         }
+        };
+
+        const selectedContent = content[service];
+        headingElement.textContent = selectedContent.heading;
+        descriptionElement.textContent = selectedContent.description;
+    }
     </script>
 
-    <!-- Footer -->
-    <footer class="bg-white py-6 border-t text-sm text-gray-600">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center px-6">
-            <div class="flex gap-4">
-                <a href="#">Privacy and Cookie Policy</a>
-                <a href="#">Terms</a>
-                <a href="#">Accessibility</a>
-                <a href="#">Site Map</a>
-            </div>
-            <div class="mt-4 md:mt-0">© Copyright 2025 FlyDreamAir</div>
-        </div>
-    </footer>
-
-    <!-- Modal -->
-    <div id="errorModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-        <div class="bg-white rounded-lg p-6 max-w-sm w-full mx-4">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-lg font-semibold text-[#262A3F]">Error</h3>
-                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
-                        </path>
-                    </svg>
-                </button>
-            </div>
-            <p id="modalMessage" class="text-gray-600 mb-4"></p>
-            <div class="flex justify-end">
-                <button onclick="closeModal()"
-                    class="px-4 py-2 bg-[#262A3F] text-white rounded hover:bg-[#1D2346] transition">
-                    OK
-                </button>
-            </div>
-        </div>
+  <!-- Footer -->
+  <footer class="bg-white py-6 border-t text-sm text-gray-600">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center px-6">
+      <div class="flex gap-4">
+        <a href="#">Privacy and Cookie Policy</a>
+        <a href="#">Terms</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Site Map</a>
+      </div>
+      <div class="mt-4 md:mt-0">© Copyright 2025 FlyDreamAir</div>
     </div>
+  </footer>
 
 </body>
-
 </html>
