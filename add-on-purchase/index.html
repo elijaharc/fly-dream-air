@@ -10,6 +10,12 @@
       body {
         font-family: 'Montserrat', sans-serif;
         color: #262A36;
+
+        .selected {
+        opacity: 100 !important;
+        border-color: #262A3F; 
+        background-color: #e0e7ff;
+  }
       }
     </style>
   </head>
@@ -265,93 +271,100 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-        // Prices for add-ons
-        const prices = {
-          checkin: {
-            standard: 0,
-            premium: 25,
-            platinum: 50,
-          },
-          menu: {
-            chicken: 15,
-            ravioli: 15,
-            beef: 15,
-          },
-          insurance: 50,
-          entertainment: 50,
-          priority: 30,
-        };
+      // Prices for add-ons
+      const prices = {
+        checkin: {
+          standard: 0,
+          premium: 25,
+          platinum: 50,
+        },
+        menu: {
+          chicken: 15,
+          ravioli: 15,
+          beef: 15,
+        },
+        insurance: 50,
+        entertainment: 50,
+        priority: 30,
+      };
 
-        // Track selected add-ons
-        const selected = {
-          checkin: 'standard', // default selected baggage
-          menu: null,
-          insurance: false,
-          entertainment: false,
-          priority: false,
-        };
+      // Track selected add-ons
+      const selected = {
+        checkin: 'standard', // default selected baggage
+        menu: [], // allow multiple selections
+        insurance: false,
+        entertainment: false,
+        priority: false,
+      };
 
-        // Baggage buttons
-        const baggageButtons = document.querySelectorAll('button[data-addon="checkin"]');
-        baggageButtons.forEach((btn) => {
-          btn.addEventListener('click', () => {
-            // Remove opacity from selected
-            baggageButtons.forEach((b) => b.classList.add('opacity-50'));
-            btn.classList.remove('opacity-50');
-            selected.checkin = btn.getAttribute('data-value');
-            updateSummary();
-          });
+      // Baggage buttons
+      const baggageButtons = document.querySelectorAll('button[data-addon="checkin"]');
+      baggageButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          baggageButtons.forEach((b) => b.classList.add('opacity-50'));
+          btn.classList.remove('opacity-50');
+          selected.checkin = btn.getAttribute('data-value');
+          updateSummary();
         });
-
-        // Menu buttons (allow only one selected)
-        const menuButtons = document.querySelectorAll('button[data-addon="menu"]');
-        menuButtons.forEach((btn) => {
-          btn.addEventListener('click', () => {
-            menuButtons.forEach((b) => b.classList.add('opacity-50'));
-            btn.classList.remove('opacity-50');
-            selected.menu = btn.getAttribute('data-value');
-            updateSummary();
-          });
-        });
-
-        // Other add-ons (toggle on/off)
-        const otherAddons = ['insurance', 'entertainment', 'priority'];
-        otherAddons.forEach((addon) => {
-          const buttons = document.querySelectorAll(`button[data-addon="${addon}"]`);
-          buttons.forEach((btn) => {
-            btn.addEventListener('click', () => {
-              if (btn.classList.contains('opacity-50')) {
-                btn.classList.remove('opacity-50');
-                selected[addon] = true;
-              } else {
-                btn.classList.add('opacity-50');
-                selected[addon] = false;
-              }
-              updateSummary();
-            });
-          });
-        });
-
-        function updateSummary() {
-          const basePrice = 500; // Flight base price
-          const baggageCost = prices.checkin[selected.checkin];
-          const menuCost = selected.menu ? prices.menu[selected.menu] : 0;
-          const insuranceCost = selected.insurance ? prices.insurance : 0;
-          const entertainmentCost = selected.entertainment ? prices.entertainment : 0;
-          const priorityCost = selected.priority ? prices.priority : 0;
-          const addonsCost = insuranceCost + entertainmentCost + priorityCost;
-
-          document.getElementById('baggageCost').textContent = `$${baggageCost.toFixed(2)}`;
-          document.getElementById('menuCost').textContent = `$${menuCost.toFixed(2)}`;
-          document.getElementById('addonsCost').textContent = `$${addonsCost.toFixed(2)}`;
-
-          const total = basePrice + baggageCost + menuCost + addonsCost;
-          document.getElementById('totalCost').textContent = `TOTAL: $${total.toFixed(2)}`;
-        }
-
-        // Initialize summary
-        updateSummary();
       });
+
+      // Menu buttons (allow multiple selections)
+      const menuButtons = document.querySelectorAll('button[data-addon="menu"]');
+      menuButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const value = btn.getAttribute('data-value');
+          const index = selected.menu.indexOf(value);
+
+          if (index === -1) {
+            selected.menu.push(value);
+            btn.classList.remove('opacity-50');
+          } else {
+            selected.menu.splice(index, 1);
+            btn.classList.add('opacity-50');
+          }
+
+          updateSummary();
+        });
+      });
+
+      // Other add-ons (toggle on/off)
+      const otherAddons = ['insurance', 'entertainment', 'priority'];
+      otherAddons.forEach((addon) => {
+        const buttons = document.querySelectorAll(`button[data-addon="${addon}"]`);
+        buttons.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            if (btn.classList.contains('opacity-50')) {
+              btn.classList.remove('opacity-50');
+              selected[addon] = true;
+            } else {
+              btn.classList.add('opacity-50');
+              selected[addon] = false;
+            }
+            updateSummary();
+          });
+        });
+      });
+
+      function updateSummary() {
+        const basePrice = 500; // Flight base price
+        const baggageCost = prices.checkin[selected.checkin];
+        const menuCost = selected.menu.reduce((sum, item) => sum + (prices.menu[item] || 0), 0);
+        const insuranceCost = selected.insurance ? prices.insurance : 0;
+        const entertainmentCost = selected.entertainment ? prices.entertainment : 0;
+        const priorityCost = selected.priority ? prices.priority : 0;
+        const addonsCost = insuranceCost + entertainmentCost + priorityCost;
+
+        document.getElementById('baggageCost').textContent = `$${baggageCost.toFixed(2)}`;
+        document.getElementById('menuCost').textContent = `$${menuCost.toFixed(2)}`;
+        document.getElementById('addonsCost').textContent = `$${addonsCost.toFixed(2)}`;
+
+        const total = basePrice + baggageCost + menuCost + addonsCost;
+        document.getElementById('totalCost').textContent = `TOTAL: $${total.toFixed(2)}`;
+      }
+
+      // Initialize summary
+      updateSummary();
+    });
     </script>
   </body>
 </html>
