@@ -59,7 +59,7 @@ function validatePayment() {
 document.addEventListener('DOMContentLoaded', () => {
   const bookingInfo = JSON.parse(localStorage.getItem('bookingInfo')) || {};
   const flight = JSON.parse(localStorage.getItem('selectedFlight')) || {};
-  const addons = JSON.parse(localStorage.getItem('addons')) || {};
+  const addons = JSON.parse(localStorage.getItem('addOnInfo')) || {};
   const seatUpgrade = parseFloat(localStorage.getItem('seatUpgrade')) || 0;
 
   document.getElementById('tripType').value = bookingInfo.tripType || 'round-trip';
