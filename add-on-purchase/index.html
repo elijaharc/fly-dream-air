@@ -368,16 +368,17 @@
             }
           } catch (e) {}
 
-          // Calculate total baggage cost
+          // Calculate total baggage and meal cost
           const baggageTotal = baggageCost * totalTicketNum;
+          const mealTotal = menuCost * totalTicketNum;
 
           document.getElementById('baggageCost').textContent = `$${baggageCost.toFixed(2)} x ${totalTicketNum} = $${baggageTotal.toFixed(2)}`;
-          document.getElementById('menuCost').textContent = `$${menuCost.toFixed(2)}`;
+          document.getElementById('menuCost').textContent = `$${menuCost.toFixed(2)} x ${totalTicketNum} = $${mealTotal.toFixed(2)}`;
           document.getElementById('addonsCost').textContent = `$${addonsCost.toFixed(2)}`;
 
           document.querySelector('#summary .mb-2 > div > span.font-bold').textContent = `$${basePrice.toFixed(2)}`;
 
-          const total = basePrice + baggageTotal + menuCost + addonsCost;
+          const total = basePrice + baggageTotal + mealTotal + addonsCost;
           document.getElementById('totalCost').textContent = `TOTAL: $${total.toFixed(2)}`;
         }
 
