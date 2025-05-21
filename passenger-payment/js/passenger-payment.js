@@ -53,7 +53,6 @@ function validatePayment() {
   }
 
   alert('Payment successful! Redirecting...');
-  window.location.href = '/booking-success/index.html';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
