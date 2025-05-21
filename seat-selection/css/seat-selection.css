@@ -1,12 +1,23 @@
 .seat-btn {
-  transition: transform 0.15s, background 0.15s;
-  background: #e5e7eb; /* Tailwind gray-200, slightly darker than bg-gray-300 */
-  width: 48px;
-  height: 48px;
-  font-size: 1rem;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+  background: #fff;
+  color: #374151;
+  width: 40px;
+  height: 40px;
+  font-size: 0.9rem;
+  border: none;
+  outline: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px; /* Rounded corners instead of circle */
+  cursor: pointer;
 }
+
 .seat-btn:hover {
-  transform: scale(1.13);
-  background: #d1d5db; /* Tailwind gray-300, a bit darker on hover */
+  transform: scale(1.1);
+  background: #dbeafe; /* Tailwind blue-100 */
   z-index: 2;
+}
+.seat-btn.selected {
+  background: #6AABDD; /* Progress bar blue */
+  color: #fff;
 }
