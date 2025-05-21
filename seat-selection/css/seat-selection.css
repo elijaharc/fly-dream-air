@@ -21,3 +21,12 @@
   background: #6AABDD; /* Progress bar blue */
   color: #fff;
 }
+
+.business-class-bg {
+  background: #38c27294; /* very faint light greyish green */
+  border-radius: 14px;
+  padding: 18px 0 10px 0;
+  margin-bottom: 18px;
+  width: 100%;
+  box-shadow: 0 2px 8px 0 rgba(34,197,94,0.04);
+}
