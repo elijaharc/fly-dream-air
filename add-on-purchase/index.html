@@ -1,272 +1,432 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FlyDreamAir | Add-On Purchase</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FlyDreamAir Add-On Purchase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .ticket-box {
-            background-color: #ffffff;
-            border: 1px solid #d3d3d3;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin: 20px auto;
-            max-width: 600px;
-        }
-
-        .ticket-box h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .ticket-box div {
-            margin-bottom: 8px;
-        }
-
-        .ticket-box span {
-            font-weight: 500;
-        }
+      body {
+        font-family: 'Montserrat', sans-serif;
+        color: #262A36;
+      }
     </style>
-</head>
+  </head>
+  <body class="bg-white-100">
 
-<body class="bg-gray-100">
+    <!-- Header -->
     <header class="bg-white py-4 shadow-md">
-        <div class="container mx-auto flex justify-between items-center px-4">
-            <a href="/" class="flex items-center gap-2">
-                <img src="/img/logo.png" alt="FlyDreamAir logo" class="h-8 w-8">
-                <span class="font-bold text-lg" style="color: #262A3F;">FlyDreamAir</span>
-            </a>
-            <nav class="space-x-4">
-                <a href="/book-flight" class="text-gray-600 hover:text-blue-500 transition duration-300">Book</a>
-                <a href="/user-flight-info" class="text-gray-600 hover:text-blue-500 transition duration-300">Travel
-                    Info</a>
-                <a href="/about" class="text-gray-600 hover:text-blue-500 transition duration-300">About</a>
-            </nav>
-        </div>
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <a href="/" class="flex items-center gap-2">
+          <img src="/img/logo.png" alt="FlyDreamAir logo" class="h-8 w-8" />
+          <span class="font-bold text-lg" style="color: #262A3F;">FlyDreamAir</span>
+        </a>
+        <nav class="space-x-4">
+          <a href="/book-flight" class="text-gray-600 hover:text-blue-500 transition duration-300">Book</a>
+          <a href="/user-flight-info" class="text-gray-600 hover:text-blue-500 transition duration-300">Travel Info</a>
+          <a href="/about" class="text-gray-600 hover:text-blue-500 transition duration-300">About</a>
+        </nav>
+      </div>
     </header>
 
-    <main class="container mx-auto px-4 py-10">
-        <!-- Ticket Information -->
-        <div class="ticket-box flex justify-between items-center relative">
-            <div class="text-left">
-                <div id="from-location" class="text-lg font-semibold"></div>
-                <div id="departure-date" class="text-sm text-gray-600"></div>
-            </div>
-            <div class="text-center flex flex-col items-center justify-center w-1/3">
-                <div class="flex items-center justify-center w-full">
-                    <span class="text-xl font-mono tracking-widest select-none" style="letter-spacing: 0.2em;">======</span>
-                    <span class="text-2xl mx-2 select-none">✈</span>
-                    <span class="text-xl font-mono tracking-widest select-none" style="letter-spacing: 0.2em;">======></span>
-                </div>
-                <img src="../img/plane-vector.png" alt="Arrow" class="h-6 mx-auto mt-2" />
-            </div>
-            <div class="text-right">
-                <div id="to-location" class="text-lg font-semibold"></div>
-                <div id="return-date" class="text-sm text-gray-600"></div>
-            </div>
-            <div id="ticket-count" class="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-sm font-semibold text-gray-700">0 tickets</div>
-        </div>
-
-            <!-- Step Progress -->
+    <!-- Step Progress -->
     <div
-        class="bg-[#6AABDD] rounded-xl w-[1025px] mx-auto mt-6 shadow-md px-6 py-3 flex justify-between items-center text-white text-sm font-semibold">
-        <!-- Step 1 -->
-        <div class="flex flex-col items-center w-1/4 relative">
-            <div
-                class="absolute -top-8 bg-white text-[#263FAD] w-9 h-9 rounded-full flex items-center justify-center font-bold border border-gray-300">
-                1
-            </div>
-            <span class="mt-3 text-darkblue font-bold">
-                Choose Flight
-            </span>
+      class="bg-[#6AABDD] rounded-xl w-[1025px] mx-auto mt-6 shadow-md px-6 py-3 flex justify-between items-center text-white text-sm font-semibold"
+    >
+      <!-- Step 1 -->
+      <div class="flex flex-col items-center w-1/4 relative">
+        <div
+          class="absolute -top-8 bg-white text-[#6DB2DD] w-9 h-9 rounded-full flex items-center justify-center font-bold border border-gray-300"
+        >
+          1
         </div>
-        <!-- Step 2 -->
-        <div class="flex flex-col items-center w-1/4 relative">
-            <div
-                class="absolute -top-8 bg-white text-[#6A7BD9] w-9 h-9 rounded-full flex items-center justify-center font-bold border border-gray-300">
-                2
-            </div>
-            <span class="mt-3 text-black">
-                Add-Ons
-            </span>
+        <span class="mt-3 font-bold text-white">Choose Flight</span>
+      </div>
+      <!-- Step 2 -->
+      <div class="flex flex-col items-center w-1/4 relative">
+        <div
+          class="absolute -top-8 bg-white text-[#262A3F] w-9 h-9 rounded-full flex items-center justify-center font-bold border border-gray-300"
+        >
+          2
         </div>
-        <!-- Step 3 -->
-        <div class="flex flex-col items-center w-1/4 relative">
-            <div
-                class="absolute -top-8 bg-white text-[#6A7BD9] w-9 h-9 rounded-full flex items-center justify-center font-bold border border-gray-300">
-                3
-            </div>
-            <span class="mt-3 text-white">
-                Seat Selection
-            </span>
+        <span class="mt-3 text-[#262A3F]">Add-Ons</span>
+      </div>
+      <!-- Step 3 -->
+      <div class="flex flex-col items-center w-1/4 relative">
+        <div
+          class="absolute -top-8 bg-white text-[#6DB2DD] w-9 h-9 rounded-full flex items-center justify-center font-bold border border-gray-300"
+        >
+          3
         </div>
-        <!-- Step 4 -->
-        <div class="flex flex-col items-center w-1/4 relative">
-            <div
-                class="absolute -top-8 bg-white text-[#6A7BD9] w-8 h-8 rounded-full flex items-center justify-center font-bold border border-gray-300">
-                4
-            </div>
-            <span class="mt-3 text-white">
-                Payment
-            </span>
+        <span class="mt-3 text-white">Seat Selection</span>
+      </div>
+      <!-- Step 4 -->
+      <div class="flex flex-col items-center w-1/4 relative">
+        <div
+          class="absolute -top-8 bg-white text-[#6DB2DD] w-8 h-8 rounded-full flex items-center justify-center font-bold border border-gray-300"
+        >
+          4
         </div>
+        <span class="mt-3 text-white">Payment</span>
+      </div>
     </div>
 
-        <!-- Checked-Baggage Section -->
-        <div class="bg-gray-300 rounded-xl shadow-md px-6 py-4 mt-8"> <!-- Changed to darker gray -->
-            <h2 class="text-center text-2xl font-semibold mb-6">Checked-Baggage</h2>
-            <div class="flex justify-between items-center">
-                <!-- 7kg -->
-                <div class="bg-white rounded-lg shadow-md w-1/4 h-32 flex flex-col items-center justify-between py-2">
-                    <h3 class="text-lg font-semibold mt-2">7kg</h3>
-                    <p style="opacity: 0.75; font-size: small">(default option)</p>
-                    <div class="flex items-center">
-                        <button class="baggage-minus bg-gray-200 text-gray-700 text-xl font-bold w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform" data-weight="7kg">
-                        -
-                        </button>
-                        <span class="mx-6 text-xl font-bold baggage-counter" data-weight="7kg">0</span>
-                        <button class="baggage-plus bg-gray-200 text-gray-700 text-xl font-bold w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform" data-weight="7kg">
-                        +
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 10kg -->
-                <div class="bg-white rounded-lg shadow-md w-1/4 h-32 flex flex-col items-center justify-between py-2">
-                    <h3 class="text-lg font-semibold mt-2">10kg</h3>
-                    <div class="flex items-center">
-                        <button class="baggage-minus bg-gray-200 text-gray-700 text-xl font-bold w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform" data-weight="10kg">
-                        -
-                        </button>
-                        <span class="mx-6 text-xl font-bold baggage-counter" data-weight="10kg">0</span>
-                        <button class="baggage-plus bg-gray-200 text-gray-700 text-xl font-bold w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform" data-weight="10kg">
-                        +
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 20kg -->
-                <div class="bg-white rounded-lg shadow-md w-1/4 h-32 flex flex-col items-center justify-between py-2">
-                    <h3 class="text-lg font-semibold mt-2">20kg</h3>
-                    <div class="flex items-center">
-                        <button class="baggage-minus bg-gray-200 text-gray-700 text-xl font-bold w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform" data-weight="20kg">
-                        -
-                        </button>
-                        <span class="mx-6 text-xl font-bold baggage-counter" data-weight="20kg">0</span>
-                        <button class="baggage-plus bg-gray-200 text-gray-700 text-xl font-bold w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform" data-weight="20kg">
-                        +
-                        </button>
-                    </div>
-                </div>
-
-            </div>
+    <!-- Flight Info -->
+    <div class="bg-white p-6 rounded-lg shadow mb-6 max-w-6xl mx-auto">
+      <h2 class="text-center text-xl font-bold text-[#262A3F] mb-4">Your Flight:</h2>
+      <div class="flex justify-around text-center">
+        <div>
+          <div class="text-lg font-semibold">11:15</div>
+          <div>SYD</div>
+          <div class="text-sm text-gray-500">Mon, April 7</div>
         </div>
-
-        <!-- In-Flight Meals Section -->
-        <div class="bg-gray-300 rounded-xl shadow-md px-6 py-4 mt-8 relative"> <!-- Light gray background -->
-            <h2 class="text-2xl font-semibold mb-6 text-center">In-Flight Meals</h2> <!-- Centered text -->
-            <div class="absolute top-0 right-0 mt-4 mr-6">
-                <button class="bg-white text-gray-700 text-lg font-semibold px-6 py-2 rounded-lg shadow-md hover:scale-105 transition-transform">
-                    View Menu
-                </button>
-            </div>
-
-            <!-- Meal Options -->
-            <div id="meal-button-group" class="flex justify-between items-center mt-6">
-                <button data-meals="0" class="meal-btn bg-white text-gray-700 text-lg font-semibold w-1/4 h-16 rounded-lg shadow-md flex items-center justify-center hover:scale-105 transition-transform">
-                    0 meals
-                </button>
-                <button data-meals="1" class="meal-btn bg-white text-gray-700 text-lg font-semibold w-1/4 h-16 rounded-lg shadow-md flex items-center justify-center hover:scale-105 transition-transform">
-                    1 meal
-                </button>
-                <button data-meals="2" class="meal-btn bg-white text-gray-700 text-lg font-semibold w-1/4 h-16 rounded-lg shadow-md flex items-center justify-center hover:scale-105 transition-transform">
-                    2 meals
-                </button>
-            </div>
-            <p class="text-center text-sm text-gray-600 mt-2" style="opacity: 0.75;">Number of meals each ticketholder can have throughout their flight</p>
-
+        <div class="text-center text-gray-500">
+          9h 5m<br />Direct
         </div>
-
-        <!-- Optional Add-ons Section -->
-        <div class="bg-gray-300 rounded-xl shadow-md px-6 py-4 mt-8">
-            <h2 class="text-center text-2xl font-semibold mb-6">Optional add-ons</h2>
-            <div class="flex justify-between items-center">
-                <!-- Check-in Priority -->
-                <div class="bg-white rounded-lg shadow-md w-1/4 h-48 flex flex-col items-center py-2 mx-2">
-                    <div class="flex items-center w-full justify-between px-2 mt-2">
-                        <button class="tick-btn w-8 h-8 bg-green-200 rounded-full flex items-center justify-center text-green-700 text-xl font-bold transition-transform duration-200 scale-100 opacity-50 hover:scale-110" data-addon="checkin" data-value="yes">&#10003;</button>
-                        <h3 class="text-lg font-semibold text-center flex-1">Check-in Priority</h3>
-                        <button class="x-btn w-8 h-8 bg-red-200 rounded-full flex items-center justify-center text-red-700 text-xl font-bold transition-transform duration-200 scale-100 hover:scale-110" data-addon="checkin" data-value="no">&#10005;</button>
-                    </div>
-                    <p class="text-sm text-gray-600 mt-4 px-2 text-center">Skip the regular lines and enjoy priority check-in for a faster, smoother airport experience.</p>
-                </div>
-                <!-- In-flight Entertainment -->
-                <div class="bg-white rounded-lg shadow-md w-1/4 h-48 flex flex-col items-center py-2 mx-2">
-                    <div class="flex items-center w-full justify-between px-2 mt-2">
-                        <button class="tick-btn w-8 h-8 bg-green-200 rounded-full flex items-center justify-center text-green-700 text-xl font-bold transition-transform duration-200 scale-100 opacity-50 hover:scale-110" data-addon="entertainment" data-value="yes">&#10003;</button>
-                        <h3 class="text-lg font-semibold text-center flex-1">In-flight Entertainment</h3>
-                        <button class="x-btn w-8 h-8 bg-red-200 rounded-full flex items-center justify-center text-red-700 text-xl font-bold transition-transform duration-200 scale-100 hover:scale-110" data-addon="entertainment" data-value="no">&#10005;</button>
-                    </div>
-                    <p class="text-sm text-gray-600 mt-4 px-2 text-center">Access a wide selection of movies, TV shows, and games to enjoy during your flight.</p>
-                </div>
-                <!-- Flight Insurance -->
-                <div class="bg-white rounded-lg shadow-md w-1/4 h-48 flex flex-col items-center py-2 mx-2">
-                    <div class="flex items-center w-full justify-between px-2 mt-2">
-                        <button class="tick-btn w-8 h-8 bg-green-200 rounded-full flex items-center justify-center text-green-700 text-xl font-bold transition-transform duration-200 scale-100 opacity-50 hover:scale-110" data-addon="insurance" data-value="yes">&#10003;</button>
-                        <h3 class="text-lg font-semibold text-center flex-1">Flight Insurance</h3>
-                        <button class="x-btn w-8 h-8 bg-red-200 rounded-full flex items-center justify-center text-red-700 text-xl font-bold transition-transform duration-200 scale-100 hover:scale-110" data-addon="insurance" data-value="no">&#10005;</button>
-                    </div>
-                    <p class="text-sm text-gray-600 mt-4 px-2 text-center">Protect your trip with insurance coverage for delays, cancellations, and lost baggage.</p>
-                </div>
-            </div>
+        <div>
+          <div class="text-lg font-semibold">16:20</div>
+          <div>MNL</div>
+          <div class="text-sm text-gray-500">Mon, April 7</div>
         </div>
-
-        <!-- Add-On Summary -->
-        <div class="flex justify-center w-full max-w-[1025px] mx-auto mt-10 mb-8 relative">
-            <div id="addon-summary" class="bg-[#6AABDD] rounded-xl w-2/3 shadow-md px-8 py-6 text-white relative">
-                <h2 class="text-3xl font-extrabold absolute -top-8 left-1/2 -translate-x-1/2 bg-[#6AABDD] px-8 py-2 rounded-t-xl shadow-lg text-center" style="z-index:2;">Add-On Summary</h2>
-                <div id="addon-summary-content" class="space-y-4 pt-8">
-                    <!-- Dynamic content will be inserted here -->
-                </div>
-                <div class="flex justify-center mt-8">
-                    <button id="save-proceed-btn" class="bg-[#263FAD] hover:bg-[#1b2e7a] text-white font-semibold text-lg rounded-lg px-8 py-3 shadow-md transition-colors duration-200 transform transition-transform duration-200">Save and Proceed</button>
-                </div>
-            </div>
+        <div class="w-px bg-gray-300 h-12 mx-4"></div>
+        <div>
+          <div class="text-lg font-semibold">9:05</div>
+          <div>MNL</div>
+          <div class="text-sm text-gray-500">Fri, April 11</div>
         </div>
-    </main>
+        <div class="text-center text-gray-500">
+          9h 5m<br />Direct
+        </div>
+        <div>
+          <div class="text-lg font-semibold">18:10</div>
+          <div>SYD</div>
+          <div class="text-sm text-gray-500">Fri, April 11</div>
+        </div>
+      </div>
+    </div>
 
-    <script src="js/add-on-purchase.js"></script>
+    <!-- Baggage Options -->
+    <section class="mb-6 max-w-6xl mx-auto px-6">
+      <h3 class="text-xl font-bold text-[#262A3F] mb-4">Checked-in Baggage</h3>
+      <div class="grid grid-cols-3 gap-6">
+        <button
+          type="button"
+          data-addon="checkin"
+          data-value="standard"
+          class="border rounded p-6 text-center shadow-sm hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        >
+          <div class="text-lg font-bold">STANDARD</div>
+          <div>7kg</div>
+          <div class="text-[#262A3F] font-semibold mt-1">+ $0.00 per ticket</div>
+        </button>
+        <button
+          type="button"
+          data-addon="checkin"
+          data-value="premium"
+          class="border rounded p-6 text-center shadow-sm hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 opacity-50"
+        >
+          <div class="text-lg font-bold">PREMIUM</div>
+          <div>10kg</div>
+          <div class="text-[#262A3F] font-semibold mt-1">+ $25.00 per ticket</div>
+        </button>
+        <button
+          type="button"
+          data-addon="checkin"
+          data-value="platinum"
+          class="border rounded p-6 text-center shadow-sm hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 opacity-50"
+        >
+          <div class="text-lg font-bold">PLATINUM</div>
+          <div>20kg</div>
+          <div class="text-[#262A3F] font-semibold mt-1">+ $50.00 per ticket</div>
+        </button>
+      </div>
+    </section>
+
+    <!-- FlyDreamAir Menu -->
+    <section class="mb-6 max-w-6xl mx-auto px-6">
+      <h3 class="text-xl font-bold text-[#262A3F] mb-4">FlyDreamAir Menu</h3>
+      <div class="grid grid-cols-3 gap-6">
+        <button
+          type="button"
+          data-addon="menu"
+          data-value="chicken"
+          class="border rounded p-6 text-center shadow-sm hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 opacity-50"
+        >
+          <img
+            src="https://i.pinimg.com/736x/62/0f/c8/620fc8a1152eaba4d4b4f79b57a33214.jpg"
+            alt="Chicken Alfredo"
+            class="mx-auto mb-2 rounded w-80 h-60 object-cover"
+          />
+          <div class="font-bold">Chicken Alfredo</div>
+          <div class="text-[#6DB2DD] font-semibold">+ $15.00</div>
+        </button>
+        <button
+          type="button"
+          data-addon="menu"
+          data-value="ravioli"
+          class="border rounded p-6 text-center shadow-sm hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 opacity-50"
+        >
+          <img
+            src="https://i.pinimg.com/736x/37/3e/a7/373ea75bf70752b5bc4a146047f1254a.jpg"
+            alt="Tuscan Ravioli"
+            class="mx-auto mb-2 rounded w-80 h-60 object-cover"
+          />
+          <div class="font-bold">Tuscan Ravioli</div>
+          <div class="text-[#6DB2DD] font-semibold">+ $15.00</div>
+        </button>
+        <button
+          type="button"
+          data-addon="menu"
+          data-value="beef"
+          class="border rounded p-6 text-center shadow-sm hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 opacity-50"
+        >
+          <img
+            src="https://i.pinimg.com/736x/c4/31/80/c431804d1cea31a49647cc654721f460.jpg"
+            alt="Stir-Fried Beef"
+            class="mx-auto mb-2 rounded w-80 h-60 object-cover"
+          />
+          <div class="font-bold">Stir-Fried Beef</div>
+          <div class="text-[#6DB2DD] font-semibold">+ $15.00</div>
+        </button>
+      </div>
+    </section>
+
+    <!-- Other Add-Ons -->
+    <section class="mb-6 max-w-6xl mx-auto px-6">
+      <h3 class="text-xl font-bold text-[#262A3F] mb-4">Other Add-Ons</h3>
+      <div class="space-y-4">
+        <button
+          type="button"
+          data-addon="insurance"
+          data-value="insurance"
+          class="border rounded p-4 flex justify-between items-center shadow-sm w-full hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 opacity-50"
+        >
+          <div>
+            <div class="font-bold">Late Flight Insurance</div>
+            <div class="text-sm text-gray-500">Compensation if delayed 2+ hours</div>
+          </div>
+          <div class="text-[#6DB2DD] font-semibold">+ $50.00</div>
+        </button>
+        <button
+          type="button"
+          data-addon="entertainment"
+          data-value="entertainment"
+          class="border rounded p-4 flex justify-between items-center shadow-sm w-full hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 opacity-50"
+        >
+          <div>
+            <div class="font-bold">In-Flight Entertainment</div>
+            <div class="text-sm text-gray-500">Movies, series, games, etc.</div>
+          </div>
+          <div class="text-[#6DB2DD] font-semibold">+ $50.00</div>
+        </button>
+        <button
+          type="button"
+          data-addon="priority"
+          data-value="priority"
+          class="border rounded p-4 flex justify-between items-center shadow-sm w-full hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 opacity-50"
+        >
+          <div>
+            <div class="font-bold">Priority Boarding</div>
+            <div class="text-sm text-gray-500">Board early and skip the line</div>
+          </div>
+          <div class="text-[#6DB2DD] font-semibold">+ $30.00</div>
+        </button>
+      </div>
+    </section>
+
+    <!-- Summary -->
+    <aside
+      class="bg-white rounded-lg shadow p-6 text-right max-w-6xl mx-auto mb-12"
+      id="summary"
+    >
+      <div class="mb-2">
+        <div>
+          Your Flight: <span class="font-bold">$500.00</span>
+        </div>
+        <div>
+          Checked-in Baggage: <span class="font-bold" id="baggageCost">$0.00</span>
+        </div>
+        <div>
+          Menu: <span class="font-bold" id="menuCost">$0.00</span>
+        </div>
+        <div>
+          Other Add-Ons: <span class="font-bold" id="addonsCost">$0.00</span>
+        </div>
+      </div>
+      <div class="text-xl font-bold" id="totalCost">TOTAL: $500.00</div>
+      <button
+        id="proceedBtn"
+        class="mt-4 bg-[#262A3F] text-white px-6 py-2 rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      >
+        Proceed
+      </button>
+    </aside>
+
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // For each addon, set up toggle logic
-    const addons = ['checkin', 'entertainment', 'insurance'];
-    addons.forEach(function(addon) {
-        const yesBtn = document.querySelector(`button[data-addon="${addon}"][data-value="yes"]`);
-        const noBtn = document.querySelector(`button[data-addon="${addon}"][data-value="no"]`);
-        // Default: x (no) selected
-        yesBtn.classList.add('opacity-50');
-        noBtn.classList.remove('opacity-50');
-        // Click handlers
-        yesBtn.addEventListener('click', function() {
-            yesBtn.classList.remove('opacity-50');
-            noBtn.classList.add('opacity-50');
-        });
-        noBtn.addEventListener('click', function() {
-            noBtn.classList.remove('opacity-50');
-            yesBtn.classList.add('opacity-50');
-        });
-    });
-});
-</script>
-</body>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Prices for add-ons
+        const prices = {
+          checkin: {
+            standard: 0,
+            premium: 25,
+            platinum: 50,
+          },
+          menu: {
+            chicken: 15,
+            ravioli: 15,
+            beef: 15,
+          },
+          insurance: 50,
+          entertainment: 50,
+          priority: 30,
+        };
 
+        // Track selected add-ons
+        const selected = {
+          checkin: 'standard', // default selected baggage
+          menu: null,
+          insurance: false,
+          entertainment: false,
+          priority: false,
+        };
+
+        // Get base price from localStorage (selectedFlight.price)
+        let basePrice = 500;
+        try {
+          const selectedFlight = JSON.parse(localStorage.getItem('selectedFlight'));
+          if (selectedFlight && selectedFlight.price !== undefined) {
+            basePrice = Number(selectedFlight.price);
+          }
+        } catch (e) {}
+
+        // Baggage buttons
+        const baggageButtons = document.querySelectorAll('button[data-addon="checkin"]');
+        baggageButtons.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            // Remove opacity from selected
+            baggageButtons.forEach((b) => b.classList.add('opacity-50'));
+            btn.classList.remove('opacity-50');
+            selected.checkin = btn.getAttribute('data-value');
+            updateSummary();
+          });
+        });
+
+        // Menu buttons (allow only one selected, allow unselect)
+        const menuButtons = document.querySelectorAll('button[data-addon="menu"]');
+        menuButtons.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const isSelected = !btn.classList.contains('opacity-50');
+            if (isSelected) {
+              // Unselect if already selected
+              btn.classList.add('opacity-50');
+              selected.menu = null;
+            } else {
+              // Select this, unselect others
+              menuButtons.forEach((b) => b.classList.add('opacity-50'));
+              btn.classList.remove('opacity-50');
+              selected.menu = btn.getAttribute('data-value');
+            }
+            updateSummary();
+          });
+        });
+
+        // Other add-ons (toggle on/off)
+        const otherAddons = ['insurance', 'entertainment', 'priority'];
+        otherAddons.forEach((addon) => {
+          const buttons = document.querySelectorAll(`button[data-addon="${addon}"]`);
+          buttons.forEach((btn) => {
+            btn.addEventListener('click', () => {
+              if (btn.classList.contains('opacity-50')) {
+                btn.classList.remove('opacity-50');
+                selected[addon] = true;
+              } else {
+                btn.classList.add('opacity-50');
+                selected[addon] = false;
+              }
+              updateSummary();
+            });
+          });
+        });
+
+        function updateSummary() {
+          const baggageCost = prices.checkin[selected.checkin];
+          const menuCost = selected.menu ? prices.menu[selected.menu] : 0;
+          const insuranceCost = selected.insurance ? prices.insurance : 0;
+          const entertainmentCost = selected.entertainment ? prices.entertainment : 0;
+          const priorityCost = selected.priority ? prices.priority : 0;
+          const addonsCost = insuranceCost + entertainmentCost + priorityCost;
+
+          // Get total ticket number from bookingInfo in localStorage
+          let totalTicketNum = 1;
+          try {
+            const bookingInfo = JSON.parse(localStorage.getItem('bookingInfo'));
+            if (bookingInfo) {
+              totalTicketNum = (parseInt(bookingInfo.adults) || 0) + (parseInt(bookingInfo.children) || 0);
+              if (totalTicketNum === 0) totalTicketNum = 1;
+            }
+          } catch (e) {}
+
+          // Calculate total baggage cost
+          const baggageTotal = baggageCost * totalTicketNum;
+
+          document.getElementById('baggageCost').textContent = `$${baggageCost.toFixed(2)} x ${totalTicketNum} = $${baggageTotal.toFixed(2)}`;
+          document.getElementById('menuCost').textContent = `$${menuCost.toFixed(2)}`;
+          document.getElementById('addonsCost').textContent = `$${addonsCost.toFixed(2)}`;
+
+          document.querySelector('#summary .mb-2 > div > span.font-bold').textContent = `$${basePrice.toFixed(2)}`;
+
+          const total = basePrice + baggageTotal + menuCost + addonsCost;
+          document.getElementById('totalCost').textContent = `TOTAL: $${total.toFixed(2)}`;
+        }
+
+        // Initialize summary
+        updateSummary();
+
+        // Proceed button logic: save add-on info to localStorage and navigate
+        const proceedBtn = document.getElementById('proceedBtn');
+        if (proceedBtn) {
+          proceedBtn.addEventListener('click', function () {
+            // Get ticketPrice from selectedFlight in localStorage
+            let ticketPrice = basePrice;
+            try {
+              const selectedFlight = JSON.parse(localStorage.getItem('selectedFlight'));
+              if (selectedFlight && selectedFlight.price !== undefined) {
+                ticketPrice = Number(selectedFlight.price);
+              }
+            } catch (e) {}
+
+            // Get total ticket number
+            let totalTicketNum = 1;
+            try {
+              const bookingInfo = JSON.parse(localStorage.getItem('bookingInfo'));
+              if (bookingInfo) {
+                totalTicketNum = (parseInt(bookingInfo.adults) || 0) + (parseInt(bookingInfo.children) || 0);
+                if (totalTicketNum === 0) totalTicketNum = 1;
+              }
+            } catch (e) {}
+
+            // Calculate prices for each add-on
+            const baggagePrice = prices.checkin[selected.checkin] * totalTicketNum;
+            const menuPrice = selected.menu ? prices.menu[selected.menu] : 0;
+            const insurancePrice = selected.insurance ? prices.insurance : 0;
+            const entertainmentPrice = selected.entertainment ? prices.entertainment : 0;
+            const priorityPrice = selected.priority ? prices.priority : 0;
+
+            // Prepare addOnInfo object with prices only
+            const addOnInfo = {
+              ticketPrice: ticketPrice,
+              checkBaggage: baggagePrice,
+              meal: menuPrice,
+              insurance: insurancePrice,
+              entertainment: entertainmentPrice,
+              priority: priorityPrice
+            };
+            localStorage.setItem('addOnInfo', JSON.stringify(addOnInfo));
+            window.location.href = '../seat-selection/';
+          });
+        }
+      });
+    </script>
+  </body>
 </html>
