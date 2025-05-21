@@ -410,7 +410,7 @@
 
             // Calculate prices for each add-on
             const baggagePrice = prices.checkin[selected.checkin] * totalTicketNum;
-            const menuPrice = selected.menu ? prices.menu[selected.menu] : 0;
+            const menuPrice = selected.menu ? prices.menu[selected.menu] * totalTicketNum: 0;
             const insurancePrice = selected.insurance ? prices.insurance : 0;
             const entertainmentPrice = selected.entertainment ? prices.entertainment : 0;
             const priorityPrice = selected.priority ? prices.priority : 0;
