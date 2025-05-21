@@ -99,7 +99,17 @@
                 <!-- New bottom div for Seating info -->
                 <div class="relative mt-8 bg-white rounded-xl shadow px-4 pt-8 pb-6 overflow-visible" style="min-height: 120px;">
                   <h3 class="absolute left-1/2 -top-6 -translate-x-1/2 bg-white px-4 py-1 rounded-t-xl text-lg font-bold z-10 border border-gray-300" style="top: -1.5rem;">Seating info</h3>
-                  <!-- Seating info content goes here -->
+                  <div class="mb-2">
+                    <span class="font-semibold">Total Tickets:</span> <span id="seating-total-tickets">-</span>
+                  </div>
+                  <div class="mb-4">
+                    <span class="font-semibold">Selected Seats:</span>
+                    <span id="seating-selected-seats" class="ml-2 text-blue-700"></span>
+                  </div>
+                </div>
+                <div class="w-full flex flex-col items-center mt-6">
+                  <button id="seating-save-proceed" class="px-14 py-4 text-lg bg-[#6AABDD] text-white rounded-full transition-transform duration-150 hover:scale-110 hover:bg-[#5a9ac7] focus:outline-none focus:ring-2 focus:ring-indigo-500" style="min-width: 220px;">Save and proceed</button>
+                  <div id="seating-error-msg" class="text-red-600 text-sm mt-2 text-center min-h-[22px] w-full"></div>
                 </div>
             </div>
         </div>

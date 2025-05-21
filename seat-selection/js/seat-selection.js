@@ -47,4 +47,73 @@ document.addEventListener('DOMContentLoaded', function() {
     } else if (addonInfoDiv) {
         addonInfoDiv.innerHTML = '<span class="text-gray-500">No add-ons selected.</span>';
     }
+
+    // Seating info logic
+    // Get ticket count
+    let ticketCount = 1;
+    if (bookingInfo && (bookingInfo.adults || bookingInfo.children)) {
+        ticketCount = (parseInt(bookingInfo.adults) || 0) + (parseInt(bookingInfo.children) || 0);
+        if (ticketCount === 0) ticketCount = 1;
+    }
+    const seatingTotalTickets = document.getElementById('seating-total-tickets');
+    if (seatingTotalTickets) seatingTotalTickets.textContent = ticketCount;
+
+    // Selected seats display
+    const seatingSelectedSeats = document.getElementById('seating-selected-seats');
+    const saveProceedBtn = document.getElementById('seating-save-proceed');
+    // Add error message element under the button
+    const errorMsg = document.getElementById('seating-error-msg');
+    if (errorMsg) {
+        errorMsg.style.display = 'none';
+    }
+
+    function updateSelectedSeatsDisplay() {
+        const selectedBtns = document.querySelectorAll('.seat-btn.selected');
+        const seats = Array.from(selectedBtns).map(btn => btn.getAttribute('data-seat'));
+        seatingSelectedSeats.textContent = seats.length > 0 ? seats.join(', ') : 'None';
+        // Enable/disable button and show error if needed
+        if (saveProceedBtn) {
+            if (seats.length === ticketCount) {
+                saveProceedBtn.disabled = false;
+                saveProceedBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
+                saveProceedBtn.classList.add('bg-[#6AABDD]', 'hover:bg-[#5a9ac7]');
+                if (errorMsg) errorMsg.style.display = 'none';
+            } else {
+                saveProceedBtn.disabled = true;
+                saveProceedBtn.classList.remove('bg-[#6AABDD]', 'hover:bg-[#5a9ac7]');
+                saveProceedBtn.classList.add('bg-gray-400', 'cursor-not-allowed');
+                // Show error message
+                const diff = Math.abs(ticketCount - seats.length);
+                if (errorMsg) {
+                    if (seats.length < ticketCount) {
+                        errorMsg.textContent = `Please select ${diff} more seat${diff > 1 ? 's' : ''} to continue.`;
+                    } else {
+                        errorMsg.textContent = `Please deselect ${diff} seat${diff > 1 ? 's' : ''} to continue.`;
+                    }
+                    errorMsg.style.display = 'block';
+                }
+            }
+        }
+    }
+    // Update on seat selection
+    document.addEventListener('click', function(e) {
+        if (e.target.classList && e.target.classList.contains('seat-btn')) {
+            setTimeout(updateSelectedSeatsDisplay, 0);
+        }
+    });
+    // Initial update
+    updateSelectedSeatsDisplay();
+
+    // Save and proceed button
+    if (saveProceedBtn) {
+        saveProceedBtn.addEventListener('click', function() {
+            if (saveProceedBtn.disabled) return;
+            // Save selected seats to localStorage
+            const selectedBtns = document.querySelectorAll('.seat-btn.selected');
+            const seats = Array.from(selectedBtns).map(btn => btn.getAttribute('data-seat'));
+            localStorage.setItem('selectedSeats', JSON.stringify(seats));
+            // Optionally, navigate to payment or next step
+            window.location.href = '../passenger-payment/';
+        });
+    }
 });
