@@ -16,15 +16,30 @@ document.addEventListener('DOMContentLoaded', function() {
         let html = '';
         for (const [key, value] of Object.entries(addOnInfo)) {
             if (key === 'checkBaggage' && typeof value === 'object' && value !== null) {
-                html += `<div class="font-bold">Check Baggage:</div>`;
+                html += `<div class="font-bold">Baggage Weights:</div>`;
                 for (const [baggageType, baggageVal] of Object.entries(value)) {
                     let label = baggageType.toUpperCase();
                     let displayVal = baggageVal === true ? 'Yes' : baggageVal === false ? 'No' : baggageVal;
                     html += `<div class="ml-4"><span class="font-bold">${label}:</span> ${displayVal}</div>`;
                 }
             } else {
+                // Custom label replacements
                 let label = key.replace(/([A-Z])/g, ' $1').replace(/^./, s => s.toUpperCase());
-                let displayVal = value === true ? 'Yes' : value === false ? 'No' : value;
+                if (label === 'Meal') label = 'Meals per Ticketholder';
+                if (label === 'Insurance') label = 'Flight Insurance';
+                if (label === 'Entertainment') label = 'In-Flight Entertainment';
+                if (label === 'Priority') label = 'Check-In Priority';
+                // Add $ sign for numeric values
+                let displayVal = value;
+                if (typeof value === 'number' && !isNaN(value)) {
+                    displayVal = `$${value}`;
+                } else if (!isNaN(parseFloat(value)) && isFinite(value)) {
+                    displayVal = `$${value}`;
+                } else if (value === true) {
+                    displayVal = 'Yes';
+                } else if (value === false) {
+                    displayVal = 'No';
+                }
                 html += `<div><span class="font-bold">${label}:</span> ${displayVal}</div>`;
             }
         }
