@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let html = '';
         for (const [key, value] of Object.entries(addOnInfo)) {
             if (key === 'checkBaggage' && typeof value === 'object' && value !== null) {
-                html += `<div class="font-bold">Check Baggage:</div>`;
+                html += `<div class="font-bold">Baggage Weights:</div>`;
                 for (const [baggageType, baggageVal] of Object.entries(value)) {
                     let label = baggageType.toUpperCase();
                     let displayVal = baggageVal === true ? 'Yes' : baggageVal === false ? 'No' : baggageVal;
