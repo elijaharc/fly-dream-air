@@ -99,10 +99,10 @@
         </div>
         <!-- Right Side (25%) -->
         <div class="w-1/2 flex flex-col h-full">
-            <div class="bg-gray-300 rounded-xl shadow-md px-6 py-6 h-full flex flex-col items-center justify-center" style="min-height: 100%;">
+            <div class="bg-gray-300 rounded-xl shadow-md px-6 py-6 h-full flex flex-col items-center justify-center min-h-[600px]" style="min-height: 600px;">
                 <!-- Right div (seat map) -->
-                <h2 class="text-xl font-semibold mb-4 text-center">Seat Map</h2>
-                <p class="text-gray-700 text-center">Seat map or selection grid goes here.</p>
+                <h2 id="seat-map-header" class="text-xl font-semibold mb-4 text-center">Seat Map</h2>
+                <div id="seat-map" class="flex flex-col items-center gap-2"></div>
             </div>
         </div>
     </main>
@@ -111,12 +111,43 @@
     // Populate ticket-box with booking info (same as add-on page, minus ticket count)
     document.addEventListener('DOMContentLoaded', function() {
         const bookingInfo = JSON.parse(localStorage.getItem('bookingInfo')) || {};
-        const { departure, arrival, departureDate, arrivalDate } = bookingInfo;
+        const { departure, arrival, departureDate, arrivalDate, ticketCount } = bookingInfo;
         if (departure && arrival && departureDate && arrivalDate) {
             document.getElementById('from-location').textContent = departure;
             document.getElementById('departure-date').textContent = departureDate;
             document.getElementById('to-location').textContent = arrival;
             document.getElementById('return-date').textContent = arrivalDate;
+        }
+        // Update seat map header with ticket count if available
+        if (typeof ticketCount !== 'undefined' && !isNaN(ticketCount)) {
+            const seatMapHeader = document.getElementById('seat-map-header');
+            if (seatMapHeader) {
+                seatMapHeader.textContent = `Please select ${ticketCount} seat${ticketCount > 1 ? 's' : ''}`;
+            }
+        }
+        // Render seat map
+        const seatMapDiv = document.getElementById('seat-map');
+        if (seatMapDiv) {
+            const rows = ['A','B','C','D','E','F','G','H'];
+            const cols = [1,2,3,4,5,6];
+            rows.forEach(row => {
+                const rowDiv = document.createElement('div');
+                rowDiv.className = 'flex items-center gap-3 mb-1';
+                cols.forEach((col, colIdx) => {
+                    if (colIdx === 3) {
+                        // Add aisle gap between 3rd and 4th column
+                        const aisle = document.createElement('div');
+                        aisle.style.width = '28px';
+                        rowDiv.appendChild(aisle);
+                    }
+                    const seatBtn = document.createElement('button');
+                    seatBtn.className = 'seat-btn bg-gray-700 hover:bg-gray-900 transition-all duration-150 rounded-full w-9 h-9 flex items-center justify-center text-white font-semibold text-sm focus:outline-none';
+                    seatBtn.textContent = row + col;
+                    seatBtn.setAttribute('data-seat', row + col);
+                    rowDiv.appendChild(seatBtn);
+                });
+                seatMapDiv.appendChild(rowDiv);
+            });
         }
     });
     </script>
