@@ -71,6 +71,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectedBtns = document.querySelectorAll('.seat-btn.selected');
         const seats = Array.from(selectedBtns).map(btn => btn.getAttribute('data-seat'));
         seatingSelectedSeats.textContent = seats.length > 0 ? seats.join(', ') : 'None';
+        // Calculate business class seats (rows A and B)
+        const businessClassSeats = seats.filter(seat => seat && (seat.startsWith('A') || seat.startsWith('B')));
+        const upgradedSeatsInfo = document.getElementById('upgraded-seats-info');
+        if (upgradedSeatsInfo) {
+            const count = businessClassSeats.length;
+            const total = count * 50;
+            upgradedSeatsInfo.textContent = `${count} x $50 = $${total}`;
+        }
         // Enable/disable button and show error if needed
         if (saveProceedBtn) {
             if (seats.length === ticketCount) {
@@ -111,7 +119,22 @@ document.addEventListener('DOMContentLoaded', function() {
             // Save selected seats to localStorage
             const selectedBtns = document.querySelectorAll('.seat-btn.selected');
             const seats = Array.from(selectedBtns).map(btn => btn.getAttribute('data-seat'));
-            localStorage.setItem('selectedSeats', JSON.stringify(seats));
+            // Save seat upgrade cost to addOnInfo
+            const businessClassSeats = seats.filter(seat => seat && (seat.startsWith('A') || seat.startsWith('B')));
+            const seatUpgradeCost = businessClassSeats.length * 50;
+            let addOnInfo = {};
+            try {
+                addOnInfo = JSON.parse(localStorage.getItem('addOnInfo')) || {};
+            } catch (e) {}
+            addOnInfo.seatUpgrade = seatUpgradeCost;
+            localStorage.setItem('addOnInfo', JSON.stringify(addOnInfo));
+            // Add selected seats to selectedFlight
+            let selectedFlight = {};
+            try {
+                selectedFlight = JSON.parse(localStorage.getItem('selectedFlight')) || {};
+            } catch (e) {}
+            selectedFlight.selectedSeats = seats;
+            localStorage.setItem('selectedFlight', JSON.stringify(selectedFlight));
             // Optionally, navigate to payment or next step
             window.location.href = '../passenger-payment/';
         });
