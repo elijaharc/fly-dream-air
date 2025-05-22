@@ -114,11 +114,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const ticketPrice = parseFloat(flight.price) || 0;
   const totalTicketCost = ticketPrice * totalPassengers;
-  const checkedBaggage = parseFloat(addons.checkedBaggage) || 0;
+  const checkedBaggage = parseFloat(addons.checkBaggage) || 0;
   const meal = parseFloat(addons.meal) || 0;
   const insurance = parseFloat(addons.insurance) || 0;
   const entertainment = parseFloat(addons.entertainment) || 0;
   const priority = parseFloat(addons.priority) || 0;
+  const seatUpgrade = pasreFloat(addons.seatUpgrade) || 0;
 
   const total =
     totalTicketCost + checkedBaggage + meal + insurance + entertainment + priority + seatUpgrade;
