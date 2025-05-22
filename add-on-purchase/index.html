@@ -305,9 +305,14 @@
         const baggageButtons = document.querySelectorAll('button[data-addon="checkin"]');
         baggageButtons.forEach((btn) => {
           btn.addEventListener('click', () => {
-            // Remove opacity from selected
-            baggageButtons.forEach((b) => b.classList.add('opacity-50'));
+            // Remove outline and add opacity to all
+            baggageButtons.forEach((b) => {
+              b.classList.add('opacity-50');
+              b.classList.remove('ring-2', 'ring-[#6AABDD]');
+            });
+            // Highlight selected
             btn.classList.remove('opacity-50');
+            btn.classList.add('ring-2', 'ring-[#6AABDD]');
             selected.checkin = btn.getAttribute('data-value');
             updateSummary();
           });
@@ -321,11 +326,16 @@
             if (isSelected) {
               // Unselect if already selected
               btn.classList.add('opacity-50');
+              btn.classList.remove('ring-2', 'ring-[#6AABDD]');
               selected.menu = null;
             } else {
               // Select this, unselect others
-              menuButtons.forEach((b) => b.classList.add('opacity-50'));
+              menuButtons.forEach((b) => {
+                b.classList.add('opacity-50');
+                b.classList.remove('ring-2', 'ring-[#6AABDD]');
+              });
               btn.classList.remove('opacity-50');
+              btn.classList.add('ring-2', 'ring-[#6AABDD]');
               selected.menu = btn.getAttribute('data-value');
             }
             updateSummary();
@@ -338,12 +348,15 @@
           const buttons = document.querySelectorAll(`button[data-addon="${addon}"]`);
           buttons.forEach((btn) => {
             btn.addEventListener('click', () => {
-              if (btn.classList.contains('opacity-50')) {
-                btn.classList.remove('opacity-50');
-                selected[addon] = true;
-              } else {
+              const isSelected = !btn.classList.contains('opacity-50');
+              if (isSelected) {
                 btn.classList.add('opacity-50');
+                btn.classList.remove('ring-2', 'ring-[#6AABDD]');
                 selected[addon] = false;
+              } else {
+                btn.classList.remove('opacity-50');
+                btn.classList.add('ring-2', 'ring-[#6AABDD]');
+                selected[addon] = true;
               }
               updateSummary();
             });
