@@ -79,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
     container.innerHTML = `
       <div class="border border-[#B8C4EB] rounded-xl p-4 flex flex-col md:flex-row justify-between items-center bg-white shadow w-full">
         <div class="flex flex-col space-y-4 w-full md:w-4/5">
+          <!-- Outbound Flight -->
           <div class="flex items-center justify-between w-full">
             <div class="text-left">
               <div class="font-bold text-lg">${flight.departTime}</div>
@@ -94,6 +95,25 @@ document.addEventListener('DOMContentLoaded', () => {
               <div class="font-bold text-lg">${flight.arriveTime}</div>
               <div class="text-sm font-semibold text-gray-800">${flight.to}</div>
               <div class="text-sm text-gray-500">${flight.departDate}</div>
+            </div>
+          </div>
+    
+          <!-- Return Flight -->
+          <div class="flex items-center justify-between w-full">
+            <div class="text-left">
+              <div class="font-bold text-lg">${flight.returnDepartTime}</div>
+              <div class="text-sm font-semibold text-gray-800">${flight.returnFrom}</div>
+              <div class="text-sm text-gray-500">${flight.returnDate}</div>
+            </div>
+            <div class="flex flex-col items-center text-xs text-gray-700">
+              <div class="flex items-center space-x-2">
+                <span>🛫</span><span>${flight.returnDuration}</span><span>🛬</span>
+              </div>
+            </div>
+            <div class="text-right">
+              <div class="font-bold text-lg">${flight.returnArriveTime}</div>
+              <div class="text-sm font-semibold text-gray-800">${flight.returnTo}</div>
+              <div class="text-sm text-gray-500">${flight.returnDate}</div>
             </div>
           </div>
         </div>
