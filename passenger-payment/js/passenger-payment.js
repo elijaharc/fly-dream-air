@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const bookingInfo = JSON.parse(localStorage.getItem('bookingInfo')) || {};
   const flight = JSON.parse(localStorage.getItem('selectedFlight')) || {};
   const addons = JSON.parse(localStorage.getItem('addOnInfo')) || {};
-  const seatUpgrade = parseFloat(localStorage.getItem('seatUpgrade')) || 0;
+  //const seatUpgrade = parseFloat(localStorage.getItem('seatUpgrade')) || 0;
 
   document.getElementById('tripType').value = bookingInfo.tripType || 'round-trip';
   document.getElementById('adultCount').value = bookingInfo.adults || '1';
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const insurance = parseFloat(addons.insurance) || 0;
   const entertainment = parseFloat(addons.entertainment) || 0;
   const priority = parseFloat(addons.priority) || 0;
-  const seatUpgrade = pasreFloat(addons.seatUpgrade) || 0;
+  const seatUpgrade = parseFloat(addons.seatUpgrade) || 0;
 
   const total =
     totalTicketCost + checkedBaggage + meal + insurance + entertainment + priority + seatUpgrade;
