@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const viewBookingBtn = document.getElementById('viewBookingBtn');
 
   // Function to show the modal
-  window.openBookingSuccessModal = function () {
+  window.openBookingSuccessModal = function (flightId) {
     if (modal) {
       modal.style.display = 'flex';
       document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function hideModal() {
     modal.style.display = 'none';
     document.body.style.overflow = 'auto'; // Re-enable scrolling
+    window.location.href = '/';
   }
 
   // Close modal when clicking the close button
@@ -49,8 +50,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // In a real application, you would pass the actual booking details
   const bookingDetails = {
     bookingReference: 'FD123456',
-    flightNumber: 'FD789',
-    flightDate: 'June 15, 2024',
+    flightNumber: 'F102',
+    flightDate: 'May 27, 2025',
   };
   updateBookingDetails(bookingDetails);
 });

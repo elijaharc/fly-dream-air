@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,8 +14,9 @@
         }
     </style>
 </head>
-<body class="bg-gray-100">
-    <header class="bg-white py-4 shadow-md">
+
+<body class="bg-gray-100 pt-16">
+    <header class="bg-white py-4 shadow-md fixed top-0 left-0 right-0 z-50">
         <div class="container mx-auto flex justify-between items-center px-4">
             <a href="/" class="flex items-center gap-2">
                 <img src="/img/logo.png" alt="FlyDreamAir logo" class="h-8 w-8">
@@ -22,7 +24,8 @@
             </a>
             <nav class="space-x-4">
                 <a href="/book-flight" class="text-gray-600 hover:text-blue-500 transition duration-300">Book</a>
-                <a href="/user-flight-info" class="text-gray-600 hover:text-blue-500 transition duration-300">Travel Info</a>
+                <a href="/user-flight-info" class="text-gray-600 hover:text-blue-500 transition duration-300">Travel
+                    Info</a>
                 <a href="/about" class="text-gray-600 hover:text-blue-500 transition duration-300">About</a>
             </nav>
         </div>
@@ -92,118 +95,128 @@
             </div>
             <!-- Ticket Info (bottom left div) -->
             <div class="bg-gray-300 rounded-xl shadow-md px-6 py-6 flex-1 relative overflow-visible">
-                <h2 class="text-xl font-semibold mb-4 text-center absolute left-1/2 -top-6 -translate-x-1/2 bg-gray-300 px-4 py-1 rounded-t-xl z-10" style="top: -1.5rem;">Add-On Info</h2>
+                <h2 class="text-xl font-semibold mb-4 text-center absolute left-1/2 -top-6 -translate-x-1/2 bg-gray-300 px-4 py-1 rounded-t-xl z-10"
+                    style="top: -1.5rem;">Add-On Info</h2>
                 <div id="addon-info" class="text-gray-700 space-y-2"></div>
                 <!-- New bottom div for Seating info -->
-                <div class="relative mt-8 bg-white rounded-xl shadow px-4 pt-8 pb-6 overflow-visible" style="min-height: 120px;">
-                  <h3 class="absolute left-1/2 -top-6 -translate-x-1/2 bg-white px-4 py-1 rounded-t-xl text-lg font-bold z-10 border border-gray-300" style="top: -1.5rem;">Seating info</h3>
-                  <div class="mb-2">
-                    <span class="font-semibold">Total Tickets:</span> <span id="seating-total-tickets">-</span>
-                  </div>
-                  <div class="mb-4">
-                    <span class="font-semibold">Selected Seats:</span>
-                    <span id="seating-selected-seats" class="ml-2 text-blue-700"></span>
-                  </div>
-                  <div class="flex justify-between items-center border-t pt-3 mt-3">
-                    <span class="font-semibold">Upgraded seats</span>
-                    <span id="upgraded-seats-info" class="font-semibold text-right"></span>
-                  </div>
+                <div class="relative mt-8 bg-white rounded-xl shadow px-4 pt-8 pb-6 overflow-visible"
+                    style="min-height: 120px;">
+                    <h3 class="absolute left-1/2 -top-6 -translate-x-1/2 bg-white px-4 py-1 rounded-t-xl text-lg font-bold z-10 border border-gray-300"
+                        style="top: -1.5rem;">Seating info</h3>
+                    <div class="mb-2">
+                        <span class="font-semibold">Total Tickets:</span> <span id="seating-total-tickets">-</span>
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-semibold">Selected Seats:</span>
+                        <span id="seating-selected-seats" class="ml-2 text-blue-700"></span>
+                    </div>
+                    <div class="flex justify-between items-center border-t pt-3 mt-3">
+                        <span class="font-semibold">Upgraded seats</span>
+                        <span id="upgraded-seats-info" class="font-semibold text-right"></span>
+                    </div>
                 </div>
                 <div class="w-full flex flex-col items-center mt-6">
-                  <button id="seating-save-proceed" class="px-14 py-4 text-lg bg-[#6AABDD] text-white rounded-full transition-transform duration-150 hover:scale-105 hover:bg-[#5a9ac7] focus:outline-none focus:ring-2 focus:ring-indigo-500" style="min-width: 220px;">Save and proceed</button>
-                  <div id="seating-error-msg" class="text-red-600 text-sm mt-2 text-center min-h-[22px] w-full"></div>
+                    <button id="seating-save-proceed"
+                        class="px-14 py-4 text-lg bg-[#6AABDD] text-white rounded-full transition-transform duration-150 hover:scale-105 hover:bg-[#5a9ac7] focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        style="min-width: 220px;">Save and proceed</button>
+                    <div id="seating-error-msg" class="text-red-600 text-sm mt-2 text-center min-h-[22px] w-full"></div>
                 </div>
             </div>
         </div>
         <!-- Right Side (seat map, thinner and pressed right) -->
         <div class="w-[32%] flex flex-col h-full">
-            <div class="bg-gray-300 rounded-xl shadow-md px-6 py-6 h-full flex flex-col items-center justify-center min-h-[600px] relative overflow-visible" style="min-height: 600px;">
+            <div class="bg-gray-300 rounded-xl shadow-md px-6 py-6 h-full flex flex-col items-center justify-center min-h-[600px] relative overflow-visible"
+                style="min-height: 600px;">
                 <!-- Right div (seat map) -->
-                <h2 id="seat-map-header" class="text-xl font-semibold mb-4 text-center absolute left-1/2 -top-6 -translate-x-1/2 bg-gray-300 px-4 py-1 rounded-t-xl z-10" style="top: -1.5rem;">Seat Map</h2>
-                <div id="seat-map" class="flex flex-col items-center gap-4 mt-6 mb-6" style="height: 420px; justify-content: center;"></div>
+                <h2 id="seat-map-header"
+                    class="text-xl font-semibold mb-4 text-center absolute left-1/2 -top-6 -translate-x-1/2 bg-gray-300 px-4 py-1 rounded-t-xl z-10"
+                    style="top: -1.5rem;">Seat Map</h2>
+                <div id="seat-map" class="flex flex-col items-center gap-4 mt-6 mb-6"
+                    style="height: 420px; justify-content: center;"></div>
             </div>
         </div>
     </main>
     <script src="js/seat-selection.js"></script>
     <script>
-    // Populate ticket-box with booking info (same as add-on page, minus ticket count)
-    document.addEventListener('DOMContentLoaded', function() {
-        const bookingInfo = JSON.parse(localStorage.getItem('bookingInfo')) || {};
-        const { departure, arrival, departureDate, arrivalDate, ticketCount } = bookingInfo;
-        if (departure && arrival && departureDate && arrivalDate) {
-            document.getElementById('from-location').textContent = departure;
-            document.getElementById('departure-date').textContent = departureDate;
-            document.getElementById('to-location').textContent = arrival;
-            document.getElementById('return-date').textContent = arrivalDate;
-        }
-        // Update seat map header with ticket count if available
-        if (typeof ticketCount !== 'undefined' && !isNaN(ticketCount)) {
-            const seatMapHeader = document.getElementById('seat-map-header');
-            if (seatMapHeader) {
-                seatMapHeader.textContent = `Please select ${ticketCount} seat${ticketCount > 1 ? 's' : ''}`;
+        // Populate ticket-box with booking info (same as add-on page, minus ticket count)
+        document.addEventListener('DOMContentLoaded', function () {
+            const bookingInfo = JSON.parse(localStorage.getItem('bookingInfo')) || {};
+            const { departure, arrival, departureDate, arrivalDate, ticketCount } = bookingInfo;
+            if (departure && arrival && departureDate && arrivalDate) {
+                document.getElementById('from-location').textContent = departure;
+                document.getElementById('departure-date').textContent = departureDate;
+                document.getElementById('to-location').textContent = arrival;
+                document.getElementById('return-date').textContent = arrivalDate;
             }
-        }
-        // Render seat map
-        const seatMapDiv = document.getElementById('seat-map');
-        if (seatMapDiv) {
-            seatMapDiv.style.height = '420px'; // Ensure seat map is tall
-            seatMapDiv.style.justifyContent = 'center';
-            const rows = ['A','B','C','D','E','F','G','H'];
-            const cols = [1,2,3,4,5,6];
-            // Business class wrapper for rows A and B
-            const businessClassDiv = document.createElement('div');
-            businessClassDiv.className = 'business-class-bg flex flex-col items-center mb-2';
-            // Add rows A and B to business class div
-            ['A','B'].forEach(row => {
-                const rowDiv = document.createElement('div');
-                rowDiv.className = 'flex items-center gap-3 mb-3';
-                cols.forEach((col, colIdx) => {
-                    if (colIdx === 3) {
-                        const aisle = document.createElement('div');
-                        aisle.style.width = '28px';
-                        rowDiv.appendChild(aisle);
-                    }
-                    const seatBtn = document.createElement('button');
-                    seatBtn.className = 'seat-btn font-semibold text-sm focus:outline-none';
-                    seatBtn.textContent = row + col;
-                    seatBtn.setAttribute('data-seat', row + col);
-                    seatBtn.addEventListener('click', function() {
-                        seatBtn.classList.toggle('selected');
+            // Update seat map header with ticket count if available
+            if (typeof ticketCount !== 'undefined' && !isNaN(ticketCount)) {
+                const seatMapHeader = document.getElementById('seat-map-header');
+                if (seatMapHeader) {
+                    seatMapHeader.textContent = `Please select ${ticketCount} seat${ticketCount > 1 ? 's' : ''}`;
+                }
+            }
+            // Render seat map
+            const seatMapDiv = document.getElementById('seat-map');
+            if (seatMapDiv) {
+                seatMapDiv.style.height = '420px'; // Ensure seat map is tall
+                seatMapDiv.style.justifyContent = 'center';
+                const rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+                const cols = [1, 2, 3, 4, 5, 6];
+                // Business class wrapper for rows A and B
+                const businessClassDiv = document.createElement('div');
+                businessClassDiv.className = 'business-class-bg flex flex-col items-center mb-2';
+                // Add rows A and B to business class div
+                ['A', 'B'].forEach(row => {
+                    const rowDiv = document.createElement('div');
+                    rowDiv.className = 'flex items-center gap-3 mb-3';
+                    cols.forEach((col, colIdx) => {
+                        if (colIdx === 3) {
+                            const aisle = document.createElement('div');
+                            aisle.style.width = '28px';
+                            rowDiv.appendChild(aisle);
+                        }
+                        const seatBtn = document.createElement('button');
+                        seatBtn.className = 'seat-btn font-semibold text-sm focus:outline-none';
+                        seatBtn.textContent = row + col;
+                        seatBtn.setAttribute('data-seat', row + col);
+                        seatBtn.addEventListener('click', function () {
+                            seatBtn.classList.toggle('selected');
+                        });
+                        rowDiv.appendChild(seatBtn);
                     });
-                    rowDiv.appendChild(seatBtn);
+                    businessClassDiv.appendChild(rowDiv);
                 });
-                businessClassDiv.appendChild(rowDiv);
-            });
-            // Add business class label
-            const businessLabel = document.createElement('div');
-            businessLabel.textContent = 'Business class seats';
-            businessLabel.className = 'text-green-900 font-semibold text-sm mt-1 mb-1';
-            businessLabel.style.textAlign = 'center';
-            businessClassDiv.appendChild(businessLabel);
-            seatMapDiv.appendChild(businessClassDiv);
-            // Add the rest of the rows
-            rows.slice(2).forEach(row => {
-                const rowDiv = document.createElement('div');
-                rowDiv.className = 'flex items-center gap-3 mb-3';
-                cols.forEach((col, colIdx) => {
-                    if (colIdx === 3) {
-                        const aisle = document.createElement('div');
-                        aisle.style.width = '28px';
-                        rowDiv.appendChild(aisle);
-                    }
-                    const seatBtn = document.createElement('button');
-                    seatBtn.className = 'seat-btn font-semibold text-sm focus:outline-none';
-                    seatBtn.textContent = row + col;
-                    seatBtn.setAttribute('data-seat', row + col);
-                    seatBtn.addEventListener('click', function() {
-                        seatBtn.classList.toggle('selected');
+                // Add business class label
+                const businessLabel = document.createElement('div');
+                businessLabel.textContent = 'Business class seats';
+                businessLabel.className = 'text-green-900 font-semibold text-sm mt-1 mb-1';
+                businessLabel.style.textAlign = 'center';
+                businessClassDiv.appendChild(businessLabel);
+                seatMapDiv.appendChild(businessClassDiv);
+                // Add the rest of the rows
+                rows.slice(2).forEach(row => {
+                    const rowDiv = document.createElement('div');
+                    rowDiv.className = 'flex items-center gap-3 mb-3';
+                    cols.forEach((col, colIdx) => {
+                        if (colIdx === 3) {
+                            const aisle = document.createElement('div');
+                            aisle.style.width = '28px';
+                            rowDiv.appendChild(aisle);
+                        }
+                        const seatBtn = document.createElement('button');
+                        seatBtn.className = 'seat-btn font-semibold text-sm focus:outline-none';
+                        seatBtn.textContent = row + col;
+                        seatBtn.setAttribute('data-seat', row + col);
+                        seatBtn.addEventListener('click', function () {
+                            seatBtn.classList.toggle('selected');
+                        });
+                        rowDiv.appendChild(seatBtn);
                     });
-                    rowDiv.appendChild(seatBtn);
+                    seatMapDiv.appendChild(rowDiv);
                 });
-                seatMapDiv.appendChild(rowDiv);
-            });
-        }
-    });
+            }
+        });
     </script>
 </body>
+
 </html>
