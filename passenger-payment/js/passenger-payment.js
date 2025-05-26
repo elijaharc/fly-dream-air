@@ -52,8 +52,26 @@ function validatePayment() {
     return;
   }
 
+  // Save booked flight info to local storage array
+  const selectedFlight = JSON.parse(localStorage.getItem('selectedFlight'));
+  const bookingInfo = JSON.parse(localStorage.getItem('bookingInfo'));
+  const addons = JSON.parse(localStorage.getItem('addOnInfo'));
+  const bookedFlight = {
+    flight: selectedFlight,
+    bookingInfo: { ...bookingInfo, bookingDate: new Date().toISOString() },
+    addons: addons,
+  };
+  const bookedFlights = JSON.parse(localStorage.getItem('bookedFlights')) || {};
+  // Add new flight to bookedFlights object with selectedFlight.id as key
+  bookedFlights[selectedFlight.id] = bookedFlight;
+  localStorage.setItem('bookedFlights', JSON.stringify(bookedFlights));
+  // Clear local storage
+  localStorage.removeItem('selectedFlight');
+  localStorage.removeItem('bookingInfo');
+  localStorage.removeItem('addOnInfo');
   alert('Payment successful! Redirecting...');
-  window.location.href = '/booking-success/index.html';
+
+  window.location.href = '/booking-success';
 }
 
 document.addEventListener('DOMContentLoaded', () => {

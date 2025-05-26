@@ -1,139 +1,92 @@
-// Test data for flights
-const testFlights = {
-  upcoming: [
-    {
-      id: 'FD1234',
-      route: 'Sydney (SYD) → Melbourne (MEL)',
-      status: 'Confirmed',
-      departure: {
-        time: '10:30 AM',
-        airport: 'Sydney (SYD)',
-        terminal: 'Terminal 1',
-      },
-      arrival: {
-        time: '12:00 PM',
-        airport: 'Melbourne (MEL)',
-        terminal: 'Terminal 2',
-      },
-      duration: '1h 30m',
-      type: 'Direct Flight',
-      passenger: {
-        name: 'John Doe',
-        seat: '12A',
-      },
-      flightDetails: {
-        aircraft: 'Boeing 737-800',
-        class: 'Economy',
-      },
-      booking: {
-        date: '15 Mar 2024',
-        id: 'BK123456',
-        flightNumber: 'FD1234',
-        price: '$299.00',
-      },
-    },
-    {
-      id: 'FD5678',
-      route: 'Melbourne (MEL) → Brisbane (BNE)',
-      status: 'Confirmed',
-      departure: {
-        time: '08:15 AM',
-        airport: 'Melbourne (MEL)',
-        terminal: 'Terminal 3',
-      },
-      arrival: {
-        time: '10:45 AM',
-        airport: 'Brisbane (BNE)',
-        terminal: 'Terminal 1',
-      },
-      duration: '2h 30m',
-      type: 'Direct Flight',
-      passenger: {
-        name: 'John Doe',
-        seat: '15B',
-      },
-      flightDetails: {
-        aircraft: 'Airbus A320',
-        class: 'Business',
-      },
-      booking: {
-        date: '20 Mar 2024',
-        id: 'BK789012',
-        flightNumber: 'FD5678',
-        price: '$599.00',
-      },
-    },
-  ],
-  past: [
-    {
-      id: 'FD9012',
-      route: 'Sydney (SYD) → Gold Coast (OOL)',
-      status: 'Completed',
-      departure: {
-        time: '09:00 AM',
-        airport: 'Sydney (SYD)',
-        terminal: 'Terminal 2',
-      },
-      arrival: {
-        time: '10:30 AM',
-        airport: 'Gold Coast (OOL)',
-        terminal: 'Terminal 1',
-      },
-      duration: '1h 30m',
-      type: 'Direct Flight',
-      passenger: {
-        name: 'John Doe',
-        seat: '8C',
-      },
-      flightDetails: {
-        aircraft: 'Boeing 737-800',
-        class: 'Economy',
-      },
-      booking: {
-        date: '01 Mar 2024',
-        id: 'BK345678',
-        flightNumber: 'FD9012',
-        price: '$249.00',
-      },
-    },
-    {
-      id: 'FD3456',
-      route: 'Brisbane (BNE) → Sydney (SYD)',
-      status: 'Completed',
-      departure: {
-        time: '02:45 PM',
-        airport: 'Brisbane (BNE)',
-        terminal: 'Terminal 2',
-      },
-      arrival: {
-        time: '05:15 PM',
-        airport: 'Sydney (SYD)',
-        terminal: 'Terminal 1',
-      },
-      duration: '2h 30m',
-      type: 'Direct Flight',
-      passenger: {
-        name: 'John Doe',
-        seat: '22F',
-      },
-      flightDetails: {
-        aircraft: 'Airbus A320',
-        class: 'Premium Economy',
-      },
-      booking: {
-        date: '25 Feb 2024',
-        id: 'BK901234',
-        flightNumber: 'FD3456',
-        price: '$399.00',
-      },
-    },
-  ],
-};
-
-// Function to get flights from localStorage or use test data
+// Function to get flights from localStorage
 function getFlights() {
-  const storedFlights = localStorage.getItem('userFlights');
-  return storedFlights ? JSON.parse(storedFlights) : testFlights;
+  const bookedFlights = JSON.parse(localStorage.getItem('bookedFlights') || '{}');
+
+  // Convert bookedFlights object to arrays of upcoming and past flights
+  const now = new Date();
+  const flights = {
+    upcoming: [],
+    past: [],
+  };
+
+  Object.entries(bookedFlights).forEach(([flightId, booking]) => {
+    const flightDate = new Date(booking.flight.date);
+
+    const flight = {
+      id: flightId,
+      route: `${booking.flight.from} → ${booking.flight.to}`,
+      status: flightDate > now ? 'Confirmed' : 'Completed',
+      departure: {
+        time: formatTime(booking.flight.departTime),
+        airport: booking.flight.from,
+        terminal: 'Terminal 1', // You might want to add this to your flight data
+      },
+      arrival: {
+        time: formatTime(booking.flight.arriveTime),
+        airport: booking.flight.to,
+        terminal: 'Terminal 1', // You might want to add this to your flight data
+      },
+      duration: booking.flight.duration,
+      type: 'Direct Flight', // You might want to add this to your flight data
+      passenger: {
+        name: booking.bookingInfo.passengerName || '',
+        seat: booking.flight.selectedSeats || 'TBD',
+      },
+      flightDetails: {
+        aircraft: booking.flight.aircraft || 'Boeing 737-800', // Default if not specified
+      },
+      booking: {
+        date: new Date(booking.bookingInfo.bookingDate).toLocaleDateString('en-US', {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric',
+        }),
+        id: booking.flight.id,
+        price: `$${booking.flight.price.toFixed(2)}`,
+      },
+    };
+
+    if (flightDate > now) {
+      flights.upcoming.push(flight);
+    } else {
+      flights.past.push(flight);
+    }
+  });
+
+  // Sort upcoming flights by departure time
+  flights.upcoming.sort(
+    (a, b) =>
+      new Date(bookedFlights[a.id].flight.departureTime) -
+      new Date(bookedFlights[b.id].flight.departureTime)
+  );
+
+  // Sort past flights by departure time (most recent first)
+  flights.past.sort(
+    (a, b) =>
+      new Date(bookedFlights[b.id].flight.departureTime) -
+      new Date(bookedFlights[a.id].flight.departureTime)
+  );
+
+  return flights;
+}
+
+// Helper function to calculate duration between two times
+function calculateDuration(departureTime, arrivalTime) {
+  const departure = new Date(departureTime);
+  const arrival = new Date(arrivalTime);
+  const diffMs = arrival - departure;
+  const diffHrs = Math.floor(diffMs / (1000 * 60 * 60));
+  const diffMins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+  return `${diffHrs}h ${diffMins}m`;
+}
+
+// Helper function to format time string
+function formatTime(timeStr) {
+  const [hours, minutes] = timeStr.split(':');
+  const hour = parseInt(hours);
+  const ampm = hour >= 12 ? 'PM' : 'AM';
+  const hour12 = hour % 12 || 12;
+  return `${hour12}:${minutes} ${ampm}`;
 }
 
 // Function to create flight card HTML
@@ -177,13 +130,12 @@ function createFlightCard(flight) {
                 <div>
                     <h3 class="font-semibold text-gray-800 mb-2">Flight Details</h3>
                     <p class="text-gray-600">Aircraft: ${flight.flightDetails.aircraft}</p>
-                    <p class="text-gray-600">Flight Class: ${flight.flightDetails.class}</p>
+
                 </div>
                 <div>
                     <h3 class="font-semibold text-gray-800 mb-2">Booking Information</h3>
                     <p class="text-gray-600">Booking Date: ${flight.booking.date}</p>
                     <p class="text-gray-600">Booking ID: ${flight.booking.id}</p>
-                    <p class="text-gray-600">Flight Number: ${flight.booking.flightNumber}</p>
                     <p class="text-gray-600">Price: ${flight.booking.price}</p>
                 </div>
             </div>
@@ -201,14 +153,31 @@ function createFlightCard(flight) {
 // Function to render flights
 function renderFlights() {
   const flights = getFlights();
-
   // Render upcoming flights
   const upcomingContainer = document.querySelector('#upcoming .max-w-4xl');
-  upcomingContainer.innerHTML = flights.upcoming.map(flight => createFlightCard(flight)).join('');
+  if (flights.upcoming.length === 0) {
+    upcomingContainer.innerHTML = `
+      <div class="text-center py-12">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">No Upcoming Flights</h3>
+        <p class="text-gray-600">You don't have any upcoming flights booked.</p>
+      </div>
+    `;
+  } else {
+    upcomingContainer.innerHTML = flights.upcoming.map(flight => createFlightCard(flight)).join('');
+  }
 
   // Render past flights
   const pastContainer = document.querySelector('#past .max-w-4xl');
-  pastContainer.innerHTML = flights.past.map(flight => createFlightCard(flight)).join('');
+  if (flights.past.length === 0) {
+    pastContainer.innerHTML = `
+      <div class="text-center py-12">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">No Past Flights</h3>
+        <p class="text-gray-600">You haven't taken any flights with us yet.</p>
+      </div>
+    `;
+  } else {
+    pastContainer.innerHTML = flights.past.map(flight => createFlightCard(flight)).join('');
+  }
 }
 
 // Function to switch tabs
