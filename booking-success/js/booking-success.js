@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Handle view booking button click
   viewBookingBtn.addEventListener('click', function () {
+    localStorage.setItem('selectedFlightId', 'F102');
     window.location.href = '/user-flight-info';
   });
 
@@ -51,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const bookingDetails = {
     bookingReference: 'FD123456',
     flightNumber: 'F102',
-    flightDate: 'May 27, 2025',
+    flightDate: 'May 28, 2025',
   };
   updateBookingDetails(bookingDetails);
 });
