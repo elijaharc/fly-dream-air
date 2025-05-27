@@ -71,7 +71,7 @@ function validatePayment() {
   localStorage.removeItem('addOnInfo');
   alert('Payment successful! Redirecting...');
 
-  window.location.href = '/booking-success';
+  window.location.href = '/booking-success/index.html';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
